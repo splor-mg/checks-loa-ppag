@@ -1,3 +1,3 @@
-library(data.table); library(frictionless)
+library(data.table); library(frictionless); library(here)
 
-ppag <- read_package("datapackages/ppag/datapackage.json")
+ppag <- read_package(here("datapackages/ppag/datapackage.json"))
