@@ -1,0 +1,6 @@
+name: checks-loa-ppag
+resources:
+  - name: loa
+    path: https://raw.githubusercontent.com/splor-mg/sisor-dados-2024/main/datapackage.json
+  - name: ppag
+    path: https://raw.githubusercontent.com/splor-mg/ppag-planejamento-dados-2024/main/data/datapackage.json

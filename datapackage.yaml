@@ -1,9 +1,0 @@
-name: checks-loa-ppag
-resources:
-  - name: data
-    path: data
-sources:
-  - name: loa
-    path: https://raw.githubusercontent.com/splor-mg/loa-dados-2023/main/data/datapackage.json
-  - name: ppag
-    path: https://raw.githubusercontent.com/splor-mg/ppag-planejamento-dados-2023/main/data/datapackage.json
