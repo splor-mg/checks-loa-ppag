@@ -1,0 +1,1 @@
+ERROR    checks.check_total_orcamento:check_total_orcamento.py:25 O total do sisor (R$ 122.498.490.178,00) é diferente do sigplan (R$ 122.493.490.178,00) em R$ 5.000.000,00. Vide detalhes em: https://t.ly/N_7oM
