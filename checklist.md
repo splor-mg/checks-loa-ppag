@@ -21,6 +21,8 @@ Checar se a conversão para o excel gera problemas.
 
 >  Verificar se cada programa possui apenas uma área temática. É obrigatório a existência de uma área por programa;
 
+Esse item deve ser capaz de lidar com a desformatação do layout no volume final que aconteceu por causa da base localizadores sem área tematica em uma ação identificada pela DCPPN no final da quinta feira.
+
 ## Verificar se cada programa possui pelo menos algum ODS;
 
 >  Verificar se cada programa possui pelo menos algum ODS;
