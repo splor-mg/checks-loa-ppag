@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^venv$
+^checks$
+^datapackages
+^docs
+^logs$

@@ -1,0 +1,53 @@
+---
+title: "report"
+output: html_document
+date: "2023-11-24"
+---
+
+```{r setup, include=FALSE, }
+library(frictionless)
+library(checkmate)
+library(printr)
+
+testrmd::init()
+
+sigplan <- suppressMessages(read_package(here::here("datapackages/sigplan/datapackage.json")))
+acoes_planejamento <- read_resource(sigplan, "acoes_planejamento")
+programas_planejamento <- read_resource(sigplan, "programas_planejamento")
+localizadores_todos_planejamento <- read_resource(sigplan, "localizadores_todos_planejamento")
+
+sisor <- suppressMessages(read_package(here::here("datapackages/sisor/datapackage.json")))
+base_qdd_fiscal <- read_resource(sisor, "base_qdd_fiscal")
+base_qdd_investimento <- read_resource(sisor, "base_qdd_investimento")
+base_qdd_plurianual <- read_resource(sisor, "base_qdd_plurianual")
+```
+
+```{r, printr.help.sections="description", echo=FALSE}
+help(check_total_orcamento_fiscal)
+```
+
+
+### Total orçamento fiscal
+
+```{r, echo=FALSE, test = TRUE}
+check <- check_total_orcamento_fiscal(base_qdd_fiscal, acoes_planejamento)
+stopifnot(check$pass)
+check$info
+```
+
+### Total orçamento de investimento
+
+```{r, echo=FALSE, test = TRUE}
+check <- check_total_orcamento_investimento(base_qdd_investimento, acoes_planejamento)
+stopifnot(check$pass)
+check$info
+```
+
+### Test
+
+```{r, echo=FALSE, test=TRUE}
+check <- check_total_orcamento_fiscal_plurianual(base_qdd_plurianual, acoes_planejamento)
+stopifnot(check$valid)
+check$info
+```
+

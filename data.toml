@@ -1,0 +1,9 @@
+title = "checks-loa-ppag"
+
+[packages]
+
+[packages.sisor]
+path = "https://raw.githubusercontent.com/splor-mg/sisor-dados-2024/main/datapackage.json"
+
+[packages.sigplan]
+path = "https://raw.githubusercontent.com/splor-mg/ppag-planejamento-dados-2024/main/data/datapackage.json"
