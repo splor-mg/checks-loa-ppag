@@ -3,6 +3,9 @@
 #' Verificar se o valor total do orçamento (orçamento fiscal e orçamento de 
 #' investimento das empresas controladas) coincide com a projeção do PPAG 
 #' para o ano seguinte
+#' @name check_total_orcamento
+NULL
+
 #' @export
 check_total_orcamento_fiscal <- function(base_qdd_fiscal, acoes_planejamento) {
 
@@ -102,10 +105,5 @@ check_total_orcamento_fiscal_plurianual <- function(base_qdd_plurianual, acoes_p
                                  VL_LOA_DESP_ANO2 == vr_meta_orcamentaria_ano2,
                                  VL_LOA_DESP_ANO3 == vr_meta_orcamentaria_ano3)
   
-  info <- validate::summary(report)
-  pass <- isTRUE(all.equal(info$items, info$passes))
-  if (!pass) {
-    info <- validate::violating(df, report)
-  }
-  list("valid" = pass, "info" = info)
+  format_check_result(df, report)
 }
