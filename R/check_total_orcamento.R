@@ -7,37 +7,25 @@
 NULL
 
 #' @export
-check_total_orcamento_fiscal <- function(base_qdd_fiscal, acoes_planejamento) {
+check_total_
+
+#' @export
+check_total_orcamento_fiscal_qdd <- function(base_qdd_fiscal, acoes_planejamento) {
 
   x <- base_qdd_fiscal |> 
-       group_by(UO_COD) |> 
-       summarize(VL_LOA = sum(VL_LOA_DESP)) |> 
-       arrange(UO_COD)
+       summarize(BASE_QDD_FISCAL = sum(VL_LOA_DESP))
   
   y <- acoes_planejamento |> 
        filter(is_deleted_acao == FALSE & 
               identificador_tipo_acao_cod %in% c(1, 2, 4, 7, 9)) |> 
-       group_by(uo_acao_cod) |> 
-       summarize(VL_LOA = sum(vr_meta_orcamentaria_ano0)) |> 
-       rename(UO_COD = uo_acao_cod) |> 
-       arrange(UO_COD)
+       summarize(ACOES_PLANEJAMENTO = sum(vr_meta_orcamentaria_ano0))
   
-  df <- full_join(x, y, by = "UO_COD") |> 
-        mutate(across(starts_with("VL_LOA"), replace_na)) |> 
-        mutate(across(starts_with("VL_LOA"), pp))
+  df <- bind_cols(x, y) |> 
+        mutate(across(everything(), pp))
+
+  report <- validate::check_that(df, BASE_QDD_FISCAL == ACOES_PLANEJAMENTO)
   
-  rules <- validate::validator(VL_LOA.x == VL_LOA.y)
-  report <- validate::confront(df, rules)
-  
-  info <- validate::summary(report)
-  pass <- isTRUE(all.equal(info$items, info$passes))
-  if (!pass) {
-    info <- validate::violating(df, report)
-    msg <- glue::glue_data(info, 
-                          "O total do sisor (R$ {pp(VL_LOA.x)}) é diferente do sigplan (R$ {pp(VL_LOA.y)}) em R$ {pp(VL_LOA.x - VL_LOA.y)} para unidade {UO_COD}")
-    log_warn(skip_formatter(msg))
-  }
-  list("pass" = pass, "info" = info)
+  format_check_result(df, report)
 }
 
 #' @export
