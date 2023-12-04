@@ -14,7 +14,7 @@ test_that("check_area_tematica_exists", {
     1301,         4292,      FALSE,            117,           "MOBILIDADE E TRANSPORTES",         "05AT05",           "Infraestrutura"
   ) 
   
-  result <- check_area_tematica_exists_acoes(acoes_planejamento)
+  result <- check_area_tematica_exists_acoes(acoes_planejamento, output = TRUE)
   
   expect_equal(result$info$programa_cod, c(1, 8, 117))
 })

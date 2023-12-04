@@ -27,16 +27,29 @@ replace_na <- function(x) {
   dplyr::coalesce(x, 0)
 }
 
-format_check_result <- function(df, report, status = "ok") {
+format_check_result <- function(df, report, status = "ok", stop_on_failure, output) {
   summary <- validate::summary(report)
   valid <- isTRUE(all.equal(summary$items, summary$passes))
+  pass <- validate::satisfying(df, report)
+  fail <- validate::violating(df, report, include_missing = TRUE)
   info <- validate::satisfying(df, report)
-  if(!valid) {
-    info <- validate::violating(df, report, include_missing = TRUE)
+  if(valid) {
+    info <- summary
+  } else {
+    if (stop_on_failure) { stop(status) }
+    info <- fail
   }
-  result <- list("valid" = valid, 
-                 "status" = status,
-                 "summary" = summary,
-                 "info" = info)
+  
+  if (output) {
+    result <- list("valid" = valid, 
+                   "summary" = summary,
+                   "status" = status,
+                   "info" = info,
+                   "fail" = fail,
+                   "pass" = pass)  
+  } else {
+    result <- valid
+  }
+  
   result
 }

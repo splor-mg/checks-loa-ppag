@@ -7,11 +7,23 @@
 \alias{check_area_tematica_exists_localizadores}
 \title{Área temática por programa}
 \usage{
-check_area_tematica_exists_programas(programas_planejamento)
+check_area_tematica_exists_programas(
+  programas_planejamento,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
 
-check_area_tematica_exists_acoes(acoes_planejamento)
+check_area_tematica_exists_acoes(
+  acoes_planejamento,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
 
-check_area_tematica_exists_localizadores(localizadores_todos_planejamento)
+check_area_tematica_exists_localizadores(
+  localizadores_todos_planejamento,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
 }
 \description{
 Verifica se cada programa possui apenas uma área temática. É obrigatório a existência de uma área por programa (ie. one and only one).

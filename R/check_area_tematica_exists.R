@@ -15,7 +15,7 @@ NULL
 
 #' @rdname check_area_tematica_exists
 #' @export
-check_area_tematica_exists_programas <- function(programas_planejamento) {
+check_area_tematica_exists_programas <- function(programas_planejamento, stop_on_failure = FALSE, output = FALSE) {
   
   df <- programas_planejamento |> 
        filter(is_deleted_programa == FALSE) |> 
@@ -25,12 +25,12 @@ check_area_tematica_exists_programas <- function(programas_planejamento) {
   
   report <- validate::check_that(df, area_tematica_cod_count == 1)
   
-  format_check_result(df, report)
+  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @rdname check_area_tematica_exists
 #' @export
-check_area_tematica_exists_acoes <- function(acoes_planejamento) {
+check_area_tematica_exists_acoes <- function(acoes_planejamento, stop_on_failure = FALSE, output = FALSE) {
   
   df <- acoes_planejamento |> 
     filter(is_deleted_acao == FALSE) |> 
@@ -40,12 +40,12 @@ check_area_tematica_exists_acoes <- function(acoes_planejamento) {
 
   report <- validate::check_that(df, area_tematica_cod_count == 1)
   
-  format_check_result(df, report)
+  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @rdname check_area_tematica_exists
 #' @export
-check_area_tematica_exists_localizadores <- function(localizadores_todos_planejamento) {
+check_area_tematica_exists_localizadores <- function(localizadores_todos_planejamento, stop_on_failure = FALSE, output = FALSE) {
   
   df <- localizadores_todos_planejamento |> 
     filter(is_deleted_localizador == FALSE) |> 
@@ -55,5 +55,5 @@ check_area_tematica_exists_localizadores <- function(localizadores_todos_planeja
   
   report <- validate::check_that(df, area_tematica_cod_count == 1)
   
-  format_check_result(df, report, status = "Base localizadores_todos_planejamento possui erros.")
+  format_check_result(df, report, status = "Base localizadores_todos_planejamento possui erros.", stop_on_failure = stop_on_failure, output = output)
 }
