@@ -1,8 +1,8 @@
 as_data_table <- function(df) {
-  if (is.data.table(df)) {
+  if (data.table::is.data.table(df)) {
     result <- data.table::copy(df)
   } else {
-    result <- as.data.table(df)
+    result <- data.table::as.data.table(df)
   }
   result
 }
@@ -25,6 +25,15 @@ join <- function(x, y, by) {
 
 replace_na <- function(x) {
   dplyr::coalesce(x, 0)
+}
+
+format_accounting <- function(df, pattern = "^vlr_|^vl_|^vr") {
+  result <- as_data_table(df)
+  cols <- names(df)[grepl(pattern, names(df))]
+  
+  # format those columns
+  result[, (cols) := lapply(.SD, function(x) pp(replace_na(x))), .SDcols = cols]
+  result[]
 }
 
 format_check_result <- function(df, report, status = "ok", stop_on_failure, output) {

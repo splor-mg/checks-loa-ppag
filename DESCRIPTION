@@ -16,7 +16,8 @@ Imports:
   formattable,
   validate,
   testrmd,
-  printr
+  printr,
+  data.table
 Remotes: 
     github::rmflight/testrmd
 Suggests: 

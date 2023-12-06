@@ -7,7 +7,31 @@
 NULL
 
 #' @export
-check_total_
+check_equivalencia <- function() {
+  key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
+  
+  x <- base_qdd_plurianual |> 
+       summarize(across(starts_with("vlr_loa_desp"), sum), .by = all_of(key))
+
+    y <- acoes_planejamento |> 
+         rename(uo_cod = uo_acao_cod) |> 
+         filter(is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(1, 2, 4, 7, 9)) |> 
+         summarize(across(starts_with("vr_meta_orcamentaria"), sum), .by = all_of(key))
+           
+    df <- full_join(x, y, by = key) |> 
+          select(all_of(key) | ends_with("0") | ends_with("1") | ends_with("2") | ends_with("3")) |>
+          format_accounting()
+    
+    report <- validate::check_that(df, 
+                                   vlr_loa_desp_ano0 == vr_meta_orcamentaria_ano0,
+                                   vlr_loa_desp_ano1 == vr_meta_orcamentaria_ano1,
+                                   vlr_loa_desp_ano2 == vr_meta_orcamentaria_ano2,
+                                   vlr_loa_desp_ano3 == vr_meta_orcamentaria_ano3)
+    
+    validate::summary(report)
+    format_check_result(df, report)
+    
+    }
 
 #' @export
 check_total_orcamento_fiscal_qdd <- function(base_qdd_fiscal, acoes_planejamento) {
