@@ -5,19 +5,13 @@ date: "2023-11-24"
 ---
 
 ```{r setup, include=FALSE, }
-library(frictionless)
 library(checkmate)
 library(printr)
 
 testrmd::init()
 
-sisor <- suppressMessages(read_package(here::here("datapackages/sisor/datapackage.json")))
-base_qdd_plurianual <- read_resource(sisor, "base_qdd_plurianual")
-
-sigplan <- suppressMessages(read_package(here::here("datapackages/sigplan/datapackage.json")))
-acoes_planejamento <- read_resource(sigplan, "acoes_planejamento")
-programas_planejamento <- read_resource(sigplan, "programas_planejamento")
-localizadores_todos_planejamento <- read_resource(sigplan, "localizadores_todos_planejamento")
+sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
+sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 ```
 
 

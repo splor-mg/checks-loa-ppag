@@ -7,7 +7,7 @@
 NULL
 
 #' @export
-check_equivalencia <- function() {
+check_equivalencia <- function(base_qdd_plurianual, acoes_planejamento, stop_on_failure = FALSE, output = FALSE) {
   key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
   
   x <- base_qdd_plurianual |> 
@@ -29,7 +29,7 @@ check_equivalencia <- function() {
                                    vlr_loa_desp_ano3 == vr_meta_orcamentaria_ano3)
     
     validate::summary(report)
-    format_check_result(df, report)
+    format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
     
     }
 
