@@ -27,7 +27,7 @@ replace_na <- function(x) {
   dplyr::coalesce(x, 0)
 }
 
-format_accounting <- function(df, pattern = "^vlr_|^vl_|^vr", replace_missing = TRUE) {
+as_accounting <- function(df, pattern = "^vlr_|^vl_|^vr", replace_missing = FALSE) {
   result <- as_data_table(df)
   cols <- names(df)[grepl(pattern, names(df))]
   
@@ -77,4 +77,23 @@ read_datapackage <- function(path) {
   })
   names(result) <- resource_names
   result
+}
+
+summarize <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
+  data <- as_data_table(data)
+  columns <- names(data)[grepl(cols, names(data))]
+  
+  if(!is.null(rename)) {
+    data.table::setnames(data, names(rename), as.character(rename))
+  }
+  
+  if (is.null(by)) {
+    by <- setdiff(names(data), columns)
+  }
+  
+  if(deparse1(substitute(filter)) != "NULL") {
+    data <- data[eval(substitute(filter)), ]
+  }
+  
+  data[, lapply(.SD, sum), by = by, .SDcols = columns]
 }
