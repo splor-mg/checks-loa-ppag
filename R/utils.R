@@ -27,12 +27,18 @@ replace_na <- function(x) {
   dplyr::coalesce(x, 0)
 }
 
-format_accounting <- function(df, pattern = "^vlr_|^vl_|^vr") {
+format_accounting <- function(df, pattern = "^vlr_|^vl_|^vr", replace_missing = TRUE) {
   result <- as_data_table(df)
   cols <- names(df)[grepl(pattern, names(df))]
   
+  if(replace_missing) {
+    format <- function(x) pp(replace_na(x))
+  } else {
+    format <- function(x) pp(x)
+  }
+  
   # format those columns
-  result[, (cols) := lapply(.SD, function(x) pp(replace_na(x))), .SDcols = cols]
+  result[, (cols) := lapply(.SD, format), .SDcols = cols]
   result[]
 }
 

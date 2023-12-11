@@ -61,10 +61,10 @@ check_equivalencia_qdd_investimento <- function(base_qdd_investimento, acoes_pla
     
   y <- acoes_planejamento |> 
        rename(uo_cod = uo_acao_cod) |> 
-       filter(is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(3, 5, 6, 8)) |> 
+       filter(is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(3, 6, 8)) |> 
        summarize(vr_meta_orcamentaria_ano0 = sum(vr_meta_orcamentaria_ano0), .by = all_of(key))        
   
-  df <- full_join(x, y, by = key) |> format_accounting()
+  df <- full_join(x, y, by = key) |> format_accounting(replace_missing = FALSE)
   
   report <- validate::check_that(df, vlr_loa_desp_invest == vr_meta_orcamentaria_ano0)
   
@@ -82,7 +82,7 @@ check_equivalencia_qdd_plurianual_invest <- function(base_qdd_plurianual_invest,
   
   y <- acoes_planejamento |> 
     rename(uo_cod = uo_acao_cod) |> 
-    filter(is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(3, 5, 6, 8)) |> 
+    filter(is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(3, 6, 8)) |> 
     summarize(across(starts_with("vr_meta_orcamentaria"), sum), .by = all_of(key))
   
   df <- full_join(x, y, by = key) |> 

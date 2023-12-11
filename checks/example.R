@@ -9,8 +9,6 @@ base_qdd_plurianual_invest <- sisor$base_qdd_plurianual_invest
 
 acoes_planejamento <- sigplan$acoes_planejamento
 
-
-check_equivalencia_qdd_investimento(sisor$base_qdd_investimento, sigplan$acoes_planejamento)
-check_equivalencia_qdd_plurianual_invest(sisor$base_qdd_plurianual_invest, sigplan$acoes_planejamento)
-
-names(base)
+result <- check_equivalencia_qdd_investimento(base_qdd_investimento, acoes_planejamento, output = TRUE)
+result$valid
+result$summary
