@@ -81,12 +81,12 @@ read_datapackage <- function(path) {
 
 summarize <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
   data <- as_data_table(data)
-  columns <- names(data)[grepl(cols, names(data))]
   
   if(!is.null(rename)) {
     data.table::setnames(data, names(rename), as.character(rename))
   }
   
+  columns <- names(data)[grepl(cols, names(data))]
   if (is.null(by)) {
     by <- setdiff(names(data), columns)
   }
