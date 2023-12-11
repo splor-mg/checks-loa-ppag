@@ -1,13 +1,16 @@
-library(frictionless)
 library(checkmate)
 
-sigplan <- read_package("datapackages/sigplan/datapackage.json")
-localizadores_todos_planejamento <- read_resource(sigplan, "localizadores_todos_planejamento")
+sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
+sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 
-?check_area_tematica_exists
-check_area_tematica_exists_localizadores
+base_qdd_fiscal <- sisor$base_qdd_fiscal
+base_qdd_investimento <- sisor$base_qdd_investimento
+base_qdd_plurianual_invest <- sisor$base_qdd_plurianual_invest
 
-check_area_tematica_exists_localizadores(localizadores_todos_planejamento)
-check_area_tematica_exists_localizadores(localizadores_todos_planejamento, stop_on_failure = TRUE)
-result <- check_area_tematica_exists_localizadores(localizadores_todos_planejamento, output = TRUE)
+acoes_planejamento <- sigplan$acoes_planejamento
 
+
+check_equivalencia_qdd_investimento(sisor$base_qdd_investimento, sigplan$acoes_planejamento)
+check_equivalencia_qdd_plurianual_invest(sisor$base_qdd_plurianual_invest, sigplan$acoes_planejamento)
+
+names(base)
