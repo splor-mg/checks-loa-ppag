@@ -17,7 +17,8 @@ Imports:
   validate,
   testrmd,
   printr,
-  data.table
+  data.table,
+  stringr
 Remotes: 
     github::rmflight/testrmd
 Suggests: 
