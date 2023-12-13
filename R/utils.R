@@ -44,7 +44,7 @@ as_accounting <- function(df, pattern = "^vlr_|^vl_|^vr", replace_missing = FALS
 
 format_check_result <- function(df, report, status = "ok", stop_on_failure, output) {
   summary <- validate::summary(report)
-  if (summary$error) {stop("Erro durante a validação da expressão ", summary$expression)}
+  if (any(summary$error)) {stop("Erro durante a validação da expressão ", summary$expression)}
   valid <- isTRUE(all.equal(summary$items, summary$passes))
   pass <- validate::satisfying(df, report)
   fail <- validate::violating(df, report, include_missing = TRUE)
