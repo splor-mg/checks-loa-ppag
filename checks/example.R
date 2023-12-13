@@ -9,11 +9,15 @@ base_qdd_investimento <- sisor$base_qdd_investimento
 base_qdd_plurianual_invest <- sisor$base_qdd_plurianual_invest
 base_repasse_recursos <- sisor$base_repasse_recursos
 acoes_planejamento <- sigplan$acoes_planejamento
-sisor$base_intra_orcamentaria_detalhamento
-sisor$base_intra_orcamentaria_repasse
+base_intra_orcamentaria_detalhamento <- sisor$base_intra_orcamentaria_detalhamento
+base_intra_orcamentaria_repasse <- sisor$base_intra_orcamentaria_repasse
+base_orcam_receita_fiscal <- sisor$base_orcam_receita_fiscal
+base_orcam_despesa_item_fiscal <- sisor$base_orcam_despesa_item_fiscal
+base_detalhamento_obras <- sisor$base_detalhamento_obras
 
 
-check_repasse_recursos(base_qdd_fiscal, base_repasse_recursos)
+check_intra_receita(base_orcam_receita_fiscal, base_intra_orcamentaria_repasse)
+check_intra_detalhamento(base_intra_orcamentaria_detalhamento, output = TRUE)
 
 
 data <- data.frame(a = c("a", "a", "a", "a","b"), b_1 = rnorm(5), b_2 = rnorm(5))
