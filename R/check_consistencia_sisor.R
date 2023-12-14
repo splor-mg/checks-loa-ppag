@@ -46,9 +46,10 @@ check_consistencia_sisor <- function(base_qdd_fiscal,
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_qdd_fiscal == vlr_item_fiscal)
-  format_check_result(df,
+  check_result(df,
     report,
     stop_on_failure = stop_on_failure,
-    output = output
+    output = output,
+    summary = summarize(df, "vlr")
   )
 }

@@ -1,5 +1,13 @@
 library(checkmate)
 
+# checks
+
+out <- check_consistencia_sisor(base_qdd_fiscal, base_orcam_despesa_item_fiscal, output = TRUE)
+
+check_area_tematica_exists_acoes(sigplan$acoes_planejamento)
+
+# bases
+
 sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
 sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 
@@ -16,17 +24,3 @@ base_orcam_despesa_item_fiscal <- sisor$base_orcam_despesa_item_fiscal
 base_detalhamento_obras <- sisor$base_detalhamento_obras
 
 
-check_intra_receita(base_orcam_receita_fiscal, base_intra_orcamentaria_repasse)
-check_intra_detalhamento(base_intra_orcamentaria_detalhamento, output = TRUE)
-
-
-data <- data.frame(a = c("a", "a", "a", "a","b"), b_1 = rnorm(5), b_2 = rnorm(5))
-
-debugonce(summarize)
-summarize(data, by = "dim", rename = list(b = "fact", a = "dim"))
-summarize(data, "b", by = "a")
-summarize(data, by = "a")
-summarize(data, by = "a", columns = "_1")
-
-summarize(data, by = "a", filter = b > 0)
-summarize(data, by = "a", filter = a == "b" & b > 0)

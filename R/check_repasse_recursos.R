@@ -18,5 +18,5 @@ check_repasse_recursos <- function(base_qdd_fiscal, base_repasse_recursos, stop_
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_desp == vlr_repasse)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

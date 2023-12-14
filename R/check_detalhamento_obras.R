@@ -18,7 +18,7 @@ check_detalhamento_obras_orcam_fiscal_tesouro <- function(base_qdd_fiscal, base_
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(vlr_loa_desp == vlr_tesouro_ano0)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -38,7 +38,7 @@ check_detalhamento_obras_orcam_fiscal_tesouro_plurianual <- function(base_qdd_pl
     vlr_loa_desp_ano2 > vlr_tesouro_ano2,
     vlr_loa_desp_ano3 > vlr_tesouro_ano3
   )
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -53,7 +53,7 @@ check_detalhamento_obras_orcam_fiscal_outros <- function(base_qdd_fiscal, base_d
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(vlr_loa_desp == vlr_outros_ano0)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -73,7 +73,7 @@ check_detalhamento_obras_orcam_fiscal_outros_plurianual <- function(base_qdd_plu
     vlr_loa_desp_ano2 > vlr_tesouro_ano2,
     vlr_loa_desp_ano3 > vlr_tesouro_ano3
   )
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -88,7 +88,7 @@ check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento, b
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(vlr_loa_desp_invest == vlr_outros_ano0)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -108,5 +108,5 @@ check_detalhamento_obras_orcam_investimento_plurianual <- function(base_qdd_plur
     vlr_loa_desp_invest_ano2 > vlr_outros_ano2,
     vlr_loa_desp_invest_ano3 > vlr_outros_ano3
   )
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

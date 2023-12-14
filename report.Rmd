@@ -14,6 +14,17 @@ sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
 sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 ```
 
+```{r, printr.help.sections="description", echo=FALSE}
+?check_consistencia_sisor
+```
+
+#### QDD Fiscal e Orçamento da Despesa Fiscal/Itens de Despesa
+
+```{r, echo=FALSE, test=TRUE}
+check <- check_consistencia_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despesa_item_fiscal, output = TRUE)
+check$info
+stopifnot(check$valid)
+```
 
 ```{r, printr.help.sections="description", echo=FALSE}
 ?check_area_tematica_exists
@@ -22,7 +33,7 @@ sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 #### Programas
 
 ```{r, echo=FALSE, test=TRUE}
-check <- check_area_tematica_exists_programas(programas_planejamento, output = TRUE)
+check <- check_area_tematica_exists_programas(sigplan$programas_planejamento, output = TRUE)
 check$info
 stopifnot(check$valid)
 ```
@@ -30,7 +41,7 @@ stopifnot(check$valid)
 #### Ações
 
 ```{r, echo=FALSE, test=TRUE}
-check <- check_area_tematica_exists_acoes(acoes_planejamento, output = TRUE)
+check <- check_area_tematica_exists_acoes(sigplan$acoes_planejamento, output = TRUE)
 check$info
 stopifnot(check$valid)
 ```
@@ -38,7 +49,7 @@ stopifnot(check$valid)
 #### Localizadores
 
 ```{r, echo=FALSE, test=TRUE, message=FALSE}
-check <- check_area_tematica_exists_localizadores(localizadores_todos_planejamento, output = TRUE)
+check <- check_area_tematica_exists_localizadores(sigplan$localizadores_todos_planejamento, output = TRUE)
 check$info
 stopifnot(check$valid)
 ```

@@ -68,7 +68,7 @@ check_consistencia_sigplan_localizadores <- function(acoes_planejamento, localiz
     vr_meta_fisica_ano2_acoes == vr_meta_fisica_ano2_localizadores,
     vr_meta_fisica_ano3_acoes == vr_meta_fisica_ano3_localizadores)
   
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -104,5 +104,5 @@ check_consistencia_sigplan_programas <- function(acoes_planejamento, programas_p
     vr_meta_orcamentaria_ano2_acoes == vr_meta_orcamentaria_ano2_programas,
     vr_meta_orcamentaria_ano3_acoes == vr_meta_orcamentaria_ano3_programas)
   
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

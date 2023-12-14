@@ -42,8 +42,8 @@ as_accounting <- function(df, pattern = "^vlr_|^vl_|^vr", replace_missing = FALS
   result[]
 }
 
-format_check_result <- function(df, report, status = "ok", stop_on_failure, output) {
-  summary <- validate::summary(report)
+check_result <- function(df, report, status = "ok", stop_on_failure, output, summary = NULL) {
+  summary <- summary %||% validate::summary(report)
   if (any(summary$error)) {stop("Erro durante a validação da expressão ", summary$expression)}
   valid <- isTRUE(all.equal(summary$items, summary$passes))
   pass <- validate::satisfying(df, report)
@@ -70,16 +70,6 @@ format_check_result <- function(df, report, status = "ok", stop_on_failure, outp
   result
 }
 
-read_datapackage <- function(path) {
-  package <- suppressMessages(frictionless::read_package(here::here(path)))
-  resource_names <- frictionless::resources(package)
-  result <- lapply(resource_names, function(resource_name) {
-    data.table::as.data.table(frictionless::read_resource(package, resource_name))
-  })
-  names(result) <- resource_names
-  result
-}
-
 summarize <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
   data <- as_data_table(data)
   
@@ -88,9 +78,6 @@ summarize <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
   }
   
   columns <- names(data)[grepl(cols, names(data))]
-  if (is.null(by)) {
-    by <- setdiff(names(data), columns)
-  }
   
   if(deparse1(substitute(filter)) != "NULL") {
     data <- data[eval(substitute(filter)), ]
@@ -100,3 +87,5 @@ summarize <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
 }
 
 `%notin%` <- Negate(`%in%`)
+
+`%||%` <- function(x, y) if (is.null(x)) y else x

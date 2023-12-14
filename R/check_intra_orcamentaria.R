@@ -39,7 +39,7 @@ check_intra_repasse <- function(base_orcam_despesa_item_fiscal, base_intra_orcam
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_desp == vlr_repassado)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -57,11 +57,11 @@ check_intra_receita <- function(base_orcam_receita_fiscal, base_intra_orcamentar
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_rec == vlr_repassado)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)  
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)  
 }
 
 #' @export
 check_intra_detalhamento <- function(base_intra_orcamentaria_detalhamento, stop_on_failure = FALSE, output = FALSE) {
   report <- base_intra_orcamentaria_detalhamento |> check_that(vlr_recebido == vlr_detalhado)
-  format_check_result(base_intra_orcamentaria_detalhamento, report, stop_on_failure = stop_on_failure, output = output)  
+  check_result(base_intra_orcamentaria_detalhamento, report, stop_on_failure = stop_on_failure, output = output)  
 }

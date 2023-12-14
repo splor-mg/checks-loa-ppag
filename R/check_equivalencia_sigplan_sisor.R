@@ -22,7 +22,7 @@ check_equivalencia_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, s
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_desp == vr_meta_orcamentaria_ano0)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -48,7 +48,7 @@ check_equivalencia_qdd_plurianual <- function(base_qdd_plurianual, acoes_planeja
     vlr_loa_desp_ano3 == vr_meta_orcamentaria_ano3
   )
 
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @export
@@ -69,7 +69,7 @@ check_equivalencia_qdd_investimento <- function(base_qdd_investimento, acoes_pla
 
   report <- df |> check_that(vlr_loa_desp_invest == vr_meta_orcamentaria_ano0)
 
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 
@@ -96,5 +96,5 @@ check_equivalencia_qdd_plurianual_invest <- function(base_qdd_plurianual_invest,
     vlr_loa_desp_invest_ano3 == vr_meta_orcamentaria_ano3
   )
 
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

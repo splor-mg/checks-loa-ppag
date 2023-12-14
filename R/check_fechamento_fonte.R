@@ -14,7 +14,7 @@ check_fechamento_fonte_orcam_fiscal <- function(base_orcam_receita_fiscal, base_
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_rec == vlr_loa_desp)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 check_fechamento_fonte_orcam_investimento <- function(base_orcam_receita_investimento, base_qdd_investimento, stop_on_failure = FALSE, output = FALSE) {
@@ -36,5 +36,5 @@ check_fechamento_fonte_orcam_investimento <- function(base_orcam_receita_investi
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_rec_invest  == vlr_loa_desp_invest)
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

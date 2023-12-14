@@ -18,14 +18,14 @@ NULL
 check_area_tematica_exists_programas <- function(programas_planejamento, stop_on_failure = FALSE, output = FALSE) {
   
   df <- programas_planejamento |> 
-       filter(is_deleted_programa == FALSE) |> 
-       distinct(programa_cod, programa_desc, area_tematica_cod, area_tematica_desc) |> 
-       group_by(programa_cod) |> 
-       summarize(area_tematica_cod_count = sum(!is.na(area_tematica_cod)))
+          dplyr::filter(is_deleted_programa == FALSE) |> 
+          dplyr::distinct(programa_cod, programa_desc, area_tematica_cod, area_tematica_desc) |> 
+          dplyr::group_by(programa_cod) |> 
+          dplyr::summarize(area_tematica_cod_count = sum(!is.na(area_tematica_cod)))
   
   report <- validate::check_that(df, area_tematica_cod_count == 1)
   
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @rdname check_area_tematica_exists
@@ -33,14 +33,14 @@ check_area_tematica_exists_programas <- function(programas_planejamento, stop_on
 check_area_tematica_exists_acoes <- function(acoes_planejamento, stop_on_failure = FALSE, output = FALSE) {
   
   df <- acoes_planejamento |> 
-    filter(is_deleted_acao == FALSE) |> 
-    distinct(programa_cod, programa_desc, area_tematica_cod, area_tematica_desc) |> 
-    group_by(programa_cod) |> 
-    summarize(area_tematica_cod_count = sum(!is.na(area_tematica_cod)))
+    dplyr::filter(is_deleted_acao == FALSE) |> 
+    dplyr::distinct(programa_cod, programa_desc, area_tematica_cod, area_tematica_desc) |> 
+    dplyr::group_by(programa_cod) |> 
+    dplyr::summarize(area_tematica_cod_count = sum(!is.na(area_tematica_cod)))
 
   report <- validate::check_that(df, area_tematica_cod_count == 1)
   
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
 #' @rdname check_area_tematica_exists
@@ -48,12 +48,12 @@ check_area_tematica_exists_acoes <- function(acoes_planejamento, stop_on_failure
 check_area_tematica_exists_localizadores <- function(localizadores_todos_planejamento, stop_on_failure = FALSE, output = FALSE) {
   
   df <- localizadores_todos_planejamento |> 
-    filter(is_deleted_localizador == FALSE) |> 
-    distinct(programa_cod, programa_desc, area_tematica_cod, area_tematica_desc) |> 
-    group_by(programa_cod) |> 
-    summarize(area_tematica_cod_count = sum(!is.na(area_tematica_cod)))
+    dplyr::filter(is_deleted_localizador == FALSE) |> 
+    dplyr::distinct(programa_cod, programa_desc, area_tematica_cod, area_tematica_desc) |> 
+    dplyr::group_by(programa_cod) |> 
+    dplyr::summarize(area_tematica_cod_count = sum(!is.na(area_tematica_cod)))
   
   report <- validate::check_that(df, area_tematica_cod_count == 1)
   
-  format_check_result(df, report, status = "Base localizadores_todos_planejamento possui erros.", stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, status = "Base localizadores_todos_planejamento possui erros.", stop_on_failure = stop_on_failure, output = output)
 }

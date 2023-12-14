@@ -9,5 +9,5 @@ check_repasse_recursos <- function(base_limite_cota, stop_on_failure = FALSE, ou
     vlr_limite_ano2 == vlr_utilizado_ano2,
     vlr_limite_ano3 == vlr_utilizado_ano3
   )
-  format_check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
