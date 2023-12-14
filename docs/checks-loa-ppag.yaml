@@ -1,0 +1,289 @@
+- cod: 1
+  rule: Verificar em TODAS as colunas de TODAS as bases se os campos que começam com
+    “-“ (hífen) trouxeram todos os dados do sistema.
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 2
+  rule: Verificar se cada programa possui apenas uma área temática. É obrigatório
+    a existência de uma área por programa;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 3
+  rule: Verificar se cada programa possui pelo menos algum ODS;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 4
+  rule: Verificar se existem programas com ODS 18 - Não Possui Objetivo de Desenvolvimento
+    Sustentável, conjugado com outro (s) ODS (s) (neste caso, verificar com o órgão
+    qual deveria ser o correto);
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 5
+  rule: Quantos programas existem? ______ (deverá ser a mesma quantidade das bases
+    ação e localizadores);
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 6
+  rule: Os programas excluídos devem ser os mesmos nas bases programas, ações e localizadores
+    assim como a quantidade destes;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 7
+  rule: Os programas incluídos (novos) devem ser os mesmos nas bases programas e ação.
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 8
+  rule: Verificar se as ações estratégicas possuem algum projeto estratégico;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 9
+  rule: Verificar se cada programa possui apenas uma área temática. É obrigatório
+    a existência de uma área por programa;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 10
+  rule: Verificar se os setores de governo estão corretos;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 11
+  rule: Quantos programas existem? ______ (deverá ser a mesma quantidade da base programas
+    e localizadores);
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 12
+  rule: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 13
+  rule: Verificar se os totais dos valores orçamentários e físicos de cada ano do
+    PPAG estão iguais aos da base localizadores;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 14
+  rule: Verificar quantos são e quais são os programas excluídos e incluídos;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 15
+  rule: Verificar quantos são e quais são as ações excluídas e incluídas.
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 16
+  rule: Quantos programas existem? _____ (deverá ser a mesma quantidade da base programas
+    e localizadores);
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 17
+  rule: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 18
+  rule: Verificar se os totais dos valores orçamentários e físicos de cada ano do
+    PPAG estão iguais aos da base localizadores;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 19
+  rule: Conferir os valores físicos e orçamentários (de todos os anos) das ações com
+    a soma dos localizadores para cada ação.
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 20
+  rule: Conferir se quando o indicador tiver o índice de referência “em apuração”,
+    também existe a justificativa;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 21
+  rule: Conferir se quando o indicador tiver alguma previsão “em apuração”, também
+    existe a justificativa;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 22
+  rule: Verificar se algum índice de referência está com data futura;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 23
+  rule: Verificar se quando o indicador permanece na revisão, ele continua sem índice
+    de referência e/ou sem previsão das metas (isso ocorre quando estas estão marcadas
+    - “em apuração”). O ideal é que esse indicador tenha índice de referência;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 24
+  rule: Verificar se índices de referência com valor “zero” estão corretos;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 25
+  rule: Verificar se indicadores com ausência de meta em algum ano estão corretos
+    - atentar principalmente para o último ano da revisão;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 26
+  rule: 'Observar se indicadores sem metas em anos específicos é devido à periodicidade
+    do indicador. Ex: indicador bianual só terá previsão de meta a cada dois anos;'
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 27
+  rule: Verificar se as metas previstas como “zero” estão corretas;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 28
+  rule: Verificar porque existem indicadores sem índice, mas com metas previstas;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 29
+  rule: Verificar porque existem indicadores com índice, mas sem metas previstas;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 30
+  rule: Após conferir as bases do PPAG (Sigplan) é necessário verificar se estas estão
+    compatíveis com as bases do Orçamento (Sisor);
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 31
+  rule: Verificar se o valor total do orçamento (orçamento fiscal e orçamento de investimento
+    das empresas controladas) coincide com a projeção do PPAG para o ano seguinte;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 32
+  rule: Verificar se o valor total do orçamento plurianual (orçamento fiscal e orçamento
+    de investimento das empresas controladas) coincide com a projeção do PPAG para
+    os demais três anos;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 33
+  rule: Conferir se o valor do orçamento de investimento é o mesmo nas bases do Sisor
+    e Sigplan;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 34
+  rule: Conferir se o valor do orçamento fiscal é o mesmo nas bases Sisor e Sigplan
+    assim como da base Item fiscal;
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 35
+  rule: Verificar se a quantidade de ações orçamentárias do PPAG é a mesma nas bases
+    do orçamento fiscal e do orçamento de investimento. Para tanto, é importante lembrar
+    de excluir as ações não orçamentárias nas bases do Sigplan.
+  functions: NA
+  docs: NA
+  issues: NA
+  source: Check List para Conferência das bases 2023.docx
+- cod: 36
+  rule: QDD Fiscal + QDD Investimento igual a Detalhamento Plurianual Fiscal + Detalhamento
+    Plurianual Investimento
+  functions: NA
+  docs: NA
+  issues: NA
+  source: checklist_conferência_SISOR_2023.xlsx
+- cod: 37
+  rule: QDD Fiscal igual a Orçamento da Despesa Fiscal/Itens de Despesa
+  functions: check_consistencia_sisor
+  docs: check_consistencia_sisor
+  issues: NA
+  source: checklist_conferência_SISOR_2023.xlsx
+- cod: 38
+  rule: Detalhamento de Obras igual a QDD Fiscal - elemento de despesa 51 | QDD Invest
+    - Cat. 4610
+  functions: NA
+  docs: NA
+  issues: NA
+  source: checklist_conferência_SISOR_2023.xlsx
+- cod: 39
+  rule: Repasse de Recursos  igual a QDD Fiscal - IPU 2 e IPU 5
+  functions: NA
+  docs: NA
+  issues: NA
+  source: checklist_conferência_SISOR_2023.xlsx
+- cod: 40
+  rule: Base Intraorçamentária de Repasse igual a QDD fiscal - modalidade 91
+  functions: 
+    - check_intra_despesa
+    - check_intra_receita
+  docs: check_intra_orcamentaria
+  issues: ""
+  source: checklist_conferência_SISOR_2023.xlsx
+- cod: 41
+  rule: Base Intraorçamentária de Repasse (valor UO Beneficiada) igual a Base Intraorçamentária
+    Detalhamento (valor UO Beneficiada)
+  functions: check_intra_detalhamento
+  docs: check_intra_orcamentaria
+  issues: NA
+  source: checklist_conferência_SISOR_2023.xlsx
+- cod: 42
+  rule: Detalhamento de Obras plurianual igual a Menor ou Igual ao GND 44 - QDD FISCAL*
+  functions: NA
+  docs: NA
+  issues: NA
+  source: checklist_conferência_SISOR_2023.xlsx
+- cod: 43
+  rule: Limite de Cota igual a Valor Limite anual = Valor Utilizado + Valor Transferido
+  functions: NA
+  docs: NA
+  issues: NA
+  source: checklist_conferência_SISOR_2023.xlsx
