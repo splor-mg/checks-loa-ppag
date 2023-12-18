@@ -89,3 +89,24 @@ summarize <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
 `%notin%` <- Negate(`%in%`)
 
 `%||%` <- function(x, y) if (is.null(x)) y else x
+
+
+to_data_table <- function(path) {
+  your_list <- yaml::yaml.load_file(path)
+  
+  # Function to process each item
+  process_item <- function(item) {
+    sapply(item, function(x) {
+      if (length(x) > 1) {
+        paste(x, collapse = "; ")
+      } else {
+        x
+      }
+    }, simplify = FALSE, USE.NAMES = TRUE)
+  }
+  
+  # Process the list and convert to data.table
+  processed_list <- lapply(your_list, process_item)
+  result <- data.table::rbindlist(processed_list, fill = TRUE)
+  result
+}

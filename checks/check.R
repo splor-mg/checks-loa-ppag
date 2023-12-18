@@ -1,22 +1,27 @@
 library(checkmate)
 
+# to_data_table("docs/checks-loa-ppag.yaml") |> writexl::write_xlsx("output.xlsx")
+
 # checks
 
-out <- check_consistencia_sisor(base_qdd_fiscal, base_orcam_despesa_item_fiscal, output = TRUE)
+out <- check_ods_consistency(programas_planejamento, TRUE)
+out$fail |> kableExtra::kable(format = "markdown")
 
-check_area_tematica_exists_acoes(sigplan$acoes_planejamento)
+indicadores_planejamento[1] |> t()
 
 # bases
 
 sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
-sisor <- read_datapackage("datapackages/sisor/datapackage.json")
+acoes_planejamento <- sigplan$acoes_planejamento
+programas_planejamento <- sigplan$programas_planejamento
+indicadores_planejamento <- sigplan$indicadores_planejamento
 
+sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 base_qdd_fiscal <- sisor$base_qdd_fiscal
 base_qdd_plurianual <- sisor$base_qdd_plurianual
 base_qdd_investimento <- sisor$base_qdd_investimento
 base_qdd_plurianual_invest <- sisor$base_qdd_plurianual_invest
 base_repasse_recursos <- sisor$base_repasse_recursos
-acoes_planejamento <- sigplan$acoes_planejamento
 base_intra_orcamentaria_detalhamento <- sisor$base_intra_orcamentaria_detalhamento
 base_intra_orcamentaria_repasse <- sisor$base_intra_orcamentaria_repasse
 base_orcam_receita_fiscal <- sisor$base_orcam_receita_fiscal

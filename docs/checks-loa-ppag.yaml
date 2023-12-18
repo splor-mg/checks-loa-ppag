@@ -3,28 +3,33 @@
     “-“ (hífen) trouxeram todos os dados do sistema.
   functions: NA
   docs: NA
-  issues: NA
+  issues: 
+    - splor-mg/checks-loa-ppag#10
   source: Check List para Conferência das bases 2023.docx
 - cod: 2
   rule: Verificar se cada programa possui apenas uma área temática. É obrigatório
     a existência de uma área por programa;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: 
+    - check_area_tematica_exists_programas
+    - check_area_tematica_exists_acoes
+    - check_area_tematica_exists_localizadores
+  docs: check_area_tematica_exists
+  issues: 
+    - splor-mg/checks-loa-ppag#5
   source: Check List para Conferência das bases 2023.docx
 - cod: 3
   rule: Verificar se cada programa possui pelo menos algum ODS;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_ods_exists
+  docs: check_ods
+  issues: 
+    - splor-mg/checks-loa-ppag#9
   source: Check List para Conferência das bases 2023.docx
 - cod: 4
   rule: Verificar se existem programas com ODS 18 - Não Possui Objetivo de Desenvolvimento
     Sustentável, conjugado com outro (s) ODS (s) (neste caso, verificar com o órgão
     qual deveria ser o correto);
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_ods_consistency
+  docs: check_ods
   source: Check List para Conferência das bases 2023.docx
 - cod: 5
   rule: Quantos programas existem? ______ (deverá ser a mesma quantidade das bases
@@ -273,7 +278,8 @@
     Detalhamento (valor UO Beneficiada)
   functions: check_intra_detalhamento
   docs: check_intra_orcamentaria
-  issues: NA
+  issues: 
+    - splor-mg/checks-loa-ppag#8
   source: checklist_conferência_SISOR_2023.xlsx
 - cod: 42
   rule: Detalhamento de Obras plurianual igual a Menor ou Igual ao GND 44 - QDD FISCAL*
