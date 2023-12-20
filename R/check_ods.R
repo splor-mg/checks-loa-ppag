@@ -35,10 +35,9 @@ check_ods_consistency <- function(programas_planejamento, output = FALSE, stop_o
   
   df <- programas_planejamento |> 
     dplyr::filter(is_deleted_programa == FALSE & programa_cod %in% PROGRAMAS) |> 
-    dplyr::distinct(programa_cod, programa_desc, ods_titulo, ods_subtitulo) |> 
-    dplyr::count(programa_cod, programa_desc)
+    dplyr::distinct(programa_cod, programa_desc, ods_titulo)
     
-  report <- validate::check_that(df, n == 1)
+  report <- validate::check_that(df, is_unique(programa_cod))
   
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)  
 }

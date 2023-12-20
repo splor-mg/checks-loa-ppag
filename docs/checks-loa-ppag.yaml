@@ -15,7 +15,7 @@
     - check_area_tematica_exists_localizadores
   docs: check_area_tematica_exists
   issues: 
-    - splor-mg/checks-loa-ppag#5
+    - splor-mg/checks-loa-ppag#5(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 3
   rule: Verificar se cada programa possui pelo menos algum ODS;
@@ -30,52 +30,49 @@
     qual deveria ser o correto);
   functions: check_ods_consistency
   docs: check_ods
+  issues: 
+    - splor-mg/checks-loa-ppag#11
   source: Check List para Conferência das bases 2023.docx
 - cod: 5
   rule: Quantos programas existem? ______ (deverá ser a mesma quantidade das bases
     ação e localizadores);
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_count_programas
+  docs: check_counts
   source: Check List para Conferência das bases 2023.docx
 - cod: 6
   rule: Os programas excluídos devem ser os mesmos nas bases programas, ações e localizadores
     assim como a quantidade destes;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_count_programas_is_deleted
+  docs: check_counts
+  issues: 
+    - splor-mg/checks-loa-ppag#12
   source: Check List para Conferência das bases 2023.docx
 - cod: 7
   rule: Os programas incluídos (novos) devem ser os mesmos nas bases programas e ação.
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_count_programas_is_new
+  docs: check_counts
   source: Check List para Conferência das bases 2023.docx
 - cod: 8
   rule: Verificar se as ações estratégicas possuem algum projeto estratégico;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_projetos_estrategicos
+  docs: check_projetos_estrategicos
   source: Check List para Conferência das bases 2023.docx
 - cod: 9
   rule: Verificar se cada programa possui apenas uma área temática. É obrigatório
     a existência de uma área por programa;
-  functions: NA
-  docs: NA
-  issues: NA
+  notes: duplicado (rule 2)
   source: Check List para Conferência das bases 2023.docx
 - cod: 10
   rule: Verificar se os setores de governo estão corretos;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_setor_governo
+  docs: check_setor_governo
+  issues: 
+    splor-mg/checks-loa-ppag#13
   source: Check List para Conferência das bases 2023.docx
 - cod: 11
   rule: Quantos programas existem? ______ (deverá ser a mesma quantidade da base programas
     e localizadores);
-  functions: NA
-  docs: NA
-  issues: NA
+  notes: duplicado (rule 5)
   source: Check List para Conferência das bases 2023.docx
 - cod: 12
   rule: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
@@ -105,15 +102,11 @@
 - cod: 16
   rule: Quantos programas existem? _____ (deverá ser a mesma quantidade da base programas
     e localizadores);
-  functions: NA
-  docs: NA
-  issues: NA
+  notes: duplicado (rule 5)
   source: Check List para Conferência das bases 2023.docx
 - cod: 17
   rule: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
-  functions: NA
-  docs: NA
-  issues: NA
+  notes: duplicado (rule 12)
   source: Check List para Conferência das bases 2023.docx
 - cod: 18
   rule: Verificar se os totais dos valores orçamentários e físicos de cada ano do

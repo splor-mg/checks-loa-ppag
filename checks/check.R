@@ -4,10 +4,11 @@ library(checkmate)
 
 # checks
 
-out <- check_ods_consistency(programas_planejamento, TRUE)
-out$fail |> kableExtra::kable(format = "markdown")
+out <- check_count_programas_deleted(programas_planejamento, output = TRUE)
 
-indicadores_planejamento[1] |> t()
+out$fail |> kableExtra::kable("markdown")
+
+out$pass
 
 # bases
 
@@ -15,6 +16,7 @@ sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
 acoes_planejamento <- sigplan$acoes_planejamento
 programas_planejamento <- sigplan$programas_planejamento
 indicadores_planejamento <- sigplan$indicadores_planejamento
+localizadores_todos_planejamento <- sigplan$localizadores_todos_planejamento
 
 sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 base_qdd_fiscal <- sisor$base_qdd_fiscal
