@@ -37,20 +37,20 @@
   rule: Quantos programas existem? ______ (deverá ser a mesma quantidade das bases
     ação e localizadores);
   functions: check_count_programas
-  docs: check_counts
+  docs: check_count
   source: Check List para Conferência das bases 2023.docx
 - cod: 6
   rule: Os programas excluídos devem ser os mesmos nas bases programas, ações e localizadores
     assim como a quantidade destes;
   functions: check_count_programas_is_deleted
-  docs: check_counts
+  docs: check_count
   issues: 
     - splor-mg/checks-loa-ppag#12
   source: Check List para Conferência das bases 2023.docx
 - cod: 7
   rule: Os programas incluídos (novos) devem ser os mesmos nas bases programas e ação.
   functions: check_count_programas_is_new
-  docs: check_counts
+  docs: check_count
   source: Check List para Conferência das bases 2023.docx
 - cod: 8
   rule: Verificar se as ações estratégicas possuem algum projeto estratégico;
@@ -76,28 +76,28 @@
   source: Check List para Conferência das bases 2023.docx
 - cod: 12
   rule: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_count_acoes
+  docs: check_count
   source: Check List para Conferência das bases 2023.docx
 - cod: 13
   rule: Verificar se os totais dos valores orçamentários e físicos de cada ano do
     PPAG estão iguais aos da base localizadores;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_consistencia_sigplan_localizadores
+  docs: check_consistencia_sigplan
   source: Check List para Conferência das bases 2023.docx
 - cod: 14
   rule: Verificar quantos são e quais são os programas excluídos e incluídos;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: 
+    - check_count_programas_is_deleted
+    - check_count_programas_is_new
+  docs: check_count
   source: Check List para Conferência das bases 2023.docx
 - cod: 15
   rule: Verificar quantos são e quais são as ações excluídas e incluídas.
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_count_acoes_is_deleted
+  docs: check_count
+  issues: 
+    - A base acoes_planejamento é a única que possui a coluna is_new_acao
   source: Check List para Conferência das bases 2023.docx
 - cod: 16
   rule: Quantos programas existem? _____ (deverá ser a mesma quantidade da base programas
@@ -111,34 +111,26 @@
 - cod: 18
   rule: Verificar se os totais dos valores orçamentários e físicos de cada ano do
     PPAG estão iguais aos da base localizadores;
-  functions: NA
-  docs: NA
-  issues: NA
+  notes: duplicado (rule 13)
   source: Check List para Conferência das bases 2023.docx
 - cod: 19
   rule: Conferir os valores físicos e orçamentários (de todos os anos) das ações com
     a soma dos localizadores para cada ação.
-  functions: NA
-  docs: NA
-  issues: NA
+  notes: duplicado (rule 13)
   source: Check List para Conferência das bases 2023.docx
 - cod: 20
   rule: Conferir se quando o indicador tiver o índice de referência “em apuração”,
     também existe a justificativa;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_indicadores_justificativa_indice_referencia_apuracao
   source: Check List para Conferência das bases 2023.docx
 - cod: 21
   rule: Conferir se quando o indicador tiver alguma previsão “em apuração”, também
     existe a justificativa;
-  functions: NA
-  docs: NA
-  issues: NA
+  functions: check_indicadores_justificativa_previsao_em_apuracao
   source: Check List para Conferência das bases 2023.docx
 - cod: 22
   rule: Verificar se algum índice de referência está com data futura;
-  functions: NA
+  functions: check_indicadores_indice_referencia_data_futura
   docs: NA
   issues: NA
   source: Check List para Conferência das bases 2023.docx
@@ -146,22 +138,19 @@
   rule: Verificar se quando o indicador permanece na revisão, ele continua sem índice
     de referência e/ou sem previsão das metas (isso ocorre quando estas estão marcadas
     - “em apuração”). O ideal é que esse indicador tenha índice de referência;
-  functions: NA
-  docs: NA
-  issues: NA
+  notes:
+    - wontfix
   source: Check List para Conferência das bases 2023.docx
 - cod: 24
   rule: Verificar se índices de referência com valor “zero” estão corretos;
-  functions: NA
-  docs: NA
-  issues: NA
+  notes:
+    - wontfix
   source: Check List para Conferência das bases 2023.docx
 - cod: 25
   rule: Verificar se indicadores com ausência de meta em algum ano estão corretos
     - atentar principalmente para o último ano da revisão;
-  functions: NA
-  docs: NA
-  issues: NA
+  notes:
+    - wontfix
   source: Check List para Conferência das bases 2023.docx
 - cod: 26
   rule: 'Observar se indicadores sem metas em anos específicos é devido à periodicidade

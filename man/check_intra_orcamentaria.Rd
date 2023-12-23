@@ -4,6 +4,6 @@
 \alias{check_intra_orcamentaria}
 \title{Receitas e Despesas Intra-Orcamentárias}
 \description{
-Verificar se as operações intra-orçamentárias registradas na
-Base Intraorçamentária de Repasse estão adequadamente detalhadas no orçamento
+Verifica se as operações intra-orçamentárias registradas na
+base intraorçamentária de repasse estão adequadamente detalhadas no orçamento.
 }

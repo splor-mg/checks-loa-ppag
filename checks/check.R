@@ -4,11 +4,12 @@ library(checkmate)
 
 # checks
 
-out <- check_count_programas_deleted(programas_planejamento, output = TRUE)
+check_previsoes_zeradas(indicadores_planejamento)
+out <- check_previsoes_zeradas(indicadores_planejamento, output = TRUE)
 
-out$fail |> kableExtra::kable("markdown")
+out$fail |> View()
 
-out$pass
+
 
 # bases
 
