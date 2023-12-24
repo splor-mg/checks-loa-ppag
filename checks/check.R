@@ -4,10 +4,7 @@ library(checkmate)
 
 # checks
 
-check_previsoes_zeradas(indicadores_planejamento)
-out <- check_previsoes_zeradas(indicadores_planejamento, output = TRUE)
-
-out$fail |> View()
+check_consistencia_sisor(base_qdd_fiscal, base_orcam_despesa_item_fiscal)
 
 
 

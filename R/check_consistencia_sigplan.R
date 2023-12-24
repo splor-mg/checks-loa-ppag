@@ -22,6 +22,7 @@
 #' @name check_consistencia_sigplan
 NULL
 
+#' @rdname check_consistencia_sigplan
 #' @export
 check_consistencia_sigplan_localizadores <- function(acoes_planejamento, localizadores_todos_planejamento, stop_on_failure = FALSE, output = FALSE) {
   key <- c("programa_cod", "area_tematica_cod", "acao_cod", "uo_acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
@@ -71,6 +72,7 @@ check_consistencia_sigplan_localizadores <- function(acoes_planejamento, localiz
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
+#' @rdname check_consistencia_sigplan
 #' @export
 check_consistencia_sigplan_programas <- function(acoes_planejamento, programas_planejamento, stop_on_failure = FALSE, output = FALSE) {
   key <- c("programa_cod", "area_tematica_cod", "uo_programa_cod")

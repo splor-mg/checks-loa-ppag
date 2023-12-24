@@ -5,3 +5,6 @@
 ^datapackages
 ^docs
 ^logs$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

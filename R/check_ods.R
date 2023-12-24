@@ -4,12 +4,13 @@
 #' 
 #' São realizadas duas verificações:
 #' 
-#' - cada programa possui pelo menos um ODS com exceção do programa padronizado 705;
-#' - se existem programas com ODS 18 - Não Possui ODS, conjugado com outro(s) ODS(s).
+#' - cada programa possui pelo menos um ODS com exceção do programa padronizado 705 ([check_ods_exists()]);
+#' - se existem programas com ODS 18 - Não Possui ODS, conjugado com outro(s) ODS(s) [check_ods_consistency()].
 #' 
 #' @name check_ods
 NULL
 
+#' @rdname check_ods
 #' @export
 check_ods_exists <- function(programas_planejamento, output = FALSE, stop_on_failure = FALSE) {
   
@@ -26,6 +27,7 @@ check_ods_exists <- function(programas_planejamento, output = FALSE, stop_on_fai
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
+#' @rdname check_ods
 #' @export
 check_ods_consistency <- function(programas_planejamento, output = FALSE, stop_on_failure = FALSE) {
   

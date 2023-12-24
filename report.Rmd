@@ -1,12 +1,14 @@
 ---
-title: "Report"
-output: rmarkdown::html_vignette
+title: "Checklist para conferência das bases SIGPLAN/SISOR"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
 date: "2023-11-24"
 ---
 
 ```{r setup, include=FALSE, }
 library(checkmate)
-library(printr)
 
 testrmd::init()
 
@@ -14,42 +16,56 @@ sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
 sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 ```
 
-```{r, printr.help.sections="description", echo=FALSE}
-?check_consistencia_sisor
-```
+## [Área temática por programa](file:///Users/fjunior/Projects/splor/checks-loa-ppag/docs/reference/check_area_tematica_exists.html)
 
-#### QDD Fiscal e Orçamento da Despesa Fiscal/Itens de Despesa
-
-```{r, echo=FALSE, test=TRUE}
-check <- check_consistencia_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despesa_item_fiscal, output = TRUE)
-check$info
-stopifnot(check$valid)
-```
-
-```{r, printr.help.sections="description", echo=FALSE}
-?check_area_tematica_exists
-```
-
-#### Programas
+### Programas
 
 ```{r, echo=FALSE, test=TRUE}
 check <- check_area_tematica_exists_programas(sigplan$programas_planejamento, output = TRUE)
-check$info
+knitr::kable(check$info)
 stopifnot(check$valid)
 ```
 
-#### Ações
+### Ações
 
 ```{r, echo=FALSE, test=TRUE}
 check <- check_area_tematica_exists_acoes(sigplan$acoes_planejamento, output = TRUE)
-check$info
+knitr::kable(check$info)
 stopifnot(check$valid)
 ```
 
-#### Localizadores
+### Localizadores
 
 ```{r, echo=FALSE, test=TRUE, message=FALSE}
 check <- check_area_tematica_exists_localizadores(sigplan$localizadores_todos_planejamento, output = TRUE)
-check$info
+knitr::kable(check$info)
+stopifnot(check$valid)
+```
+
+## Consistência SIGPLAN
+
+### check_consistencia_sigplan_localizadores
+
+```{r, echo=FALSE, test=TRUE, message=FALSE}
+check <- check_consistencia_sigplan_localizadores(sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
+knitr::kable(check$info)
+stopifnot(check$valid)
+```
+
+### check_consistencia_sigplan_programas
+
+```{r, echo=FALSE, test=TRUE, message=FALSE}
+check <- check_consistencia_sigplan_programas(sigplan$acoes_planejamento, sigplan$programas_planejamento, output = TRUE)
+knitr::kable(check$info)
+stopifnot(check$valid)
+```
+
+## [Consistência SISOR](file:///Users/fjunior/Projects/splor/checks-loa-ppag/docs/reference/check_consistencia_sisor.html)
+
+### QDD Fiscal
+
+```{r, echo=FALSE, test=TRUE}
+check <- check_consistencia_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despesa_item_fiscal, output = TRUE)
+knitr::kable(check$info)
 stopifnot(check$valid)
 ```

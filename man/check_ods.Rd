@@ -2,11 +2,26 @@
 % Please edit documentation in R/check_ods.R
 \name{check_ods}
 \alias{check_ods}
+\alias{check_ods_exists}
+\alias{check_ods_consistency}
 \title{Verificar vinculação dos programas aos Objetivos de Desenvolvimento Sustentável (ODS)}
+\usage{
+check_ods_exists(
+  programas_planejamento,
+  output = FALSE,
+  stop_on_failure = FALSE
+)
+
+check_ods_consistency(
+  programas_planejamento,
+  output = FALSE,
+  stop_on_failure = FALSE
+)
+}
 \description{
 São realizadas duas verificações:
 \itemize{
-\item cada programa possui pelo menos um ODS com exceção do programa padronizado 705;
-\item se existem programas com ODS 18 - Não Possui ODS, conjugado com outro(s) ODS(s).
+\item cada programa possui pelo menos um ODS com exceção do programa padronizado 705 (\code{\link[=check_ods_exists]{check_ods_exists()}});
+\item se existem programas com ODS 18 - Não Possui ODS, conjugado com outro(s) ODS(s) \code{\link[=check_ods_consistency]{check_ods_consistency()}}.
 }
 }
