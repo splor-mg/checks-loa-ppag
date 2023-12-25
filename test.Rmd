@@ -9,6 +9,8 @@ date: "2023-12-25"
 ```{r setup, include=FALSE}
 library(checkmate)
 
+FAIL_COUNT <- 0
+
 sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
 sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 ```
@@ -19,6 +21,9 @@ check <- function(before, options, envir) {
     if (isTRUE(envir$check$valid)) {
       '<span class="label label-info">Check passed</span>'
     } else {
+      
+      FAIL_COUNT <<- FAIL_COUNT+1
+      
       download <- downloadthis::download_this(check$fail, 
   output_name = "fail",
   output_extension = ".xlsx",
@@ -58,3 +63,7 @@ check <- check_consistencia_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despes
 check$info
 ```
 
+
+<div class="alert alert-danger">
+  The total error count is `r FAIL_COUNT`.
+</div>
