@@ -1,0 +1,4 @@
+.datatables {
+    overflow-x: auto; /* Enable horizontal scrolling for overflow */
+    max-width: 1000px;
+}

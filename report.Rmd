@@ -2,6 +2,8 @@
 title: "Checklist para conferência das bases SIGPLAN/SISOR"
 output:
   html_document:
+    theme: null
+    css: style.css
     toc: true
     toc_depth: 3
 date: "2023-11-24"
@@ -22,7 +24,7 @@ sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 
 ```{r, echo=FALSE, test=TRUE}
 check <- check_area_tematica_exists_programas(sigplan$programas_planejamento, output = TRUE)
-knitr::kable(check$info)
+render_table(check$info)
 stopifnot(check$valid)
 ```
 
@@ -30,7 +32,7 @@ stopifnot(check$valid)
 
 ```{r, echo=FALSE, test=TRUE}
 check <- check_area_tematica_exists_acoes(sigplan$acoes_planejamento, output = TRUE)
-knitr::kable(check$info)
+render_table(check$info)
 stopifnot(check$valid)
 ```
 
@@ -38,7 +40,7 @@ stopifnot(check$valid)
 
 ```{r, echo=FALSE, test=TRUE, message=FALSE}
 check <- check_area_tematica_exists_localizadores(sigplan$localizadores_todos_planejamento, output = TRUE)
-knitr::kable(check$info)
+render_table(check$info)
 stopifnot(check$valid)
 ```
 
@@ -48,7 +50,7 @@ stopifnot(check$valid)
 
 ```{r, echo=FALSE, test=TRUE, message=FALSE}
 check <- check_consistencia_sigplan_localizadores(sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
-knitr::kable(check$info)
+render_table(check$info)
 stopifnot(check$valid)
 ```
 
@@ -56,7 +58,7 @@ stopifnot(check$valid)
 
 ```{r, echo=FALSE, test=TRUE, message=FALSE}
 check <- check_consistencia_sigplan_programas(sigplan$acoes_planejamento, sigplan$programas_planejamento, output = TRUE)
-knitr::kable(check$info)
+render_table(check$info)
 stopifnot(check$valid)
 ```
 
@@ -64,6 +66,6 @@ stopifnot(check$valid)
 
 ```{r, echo=FALSE, test=TRUE}
 check <- check_consistencia_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despesa_item_fiscal, output = TRUE)
-knitr::kable(check$info)
+render_table(check$info)
 stopifnot(check$valid)
 ```

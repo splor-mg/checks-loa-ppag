@@ -112,3 +112,21 @@ to_data_table <- function(path) {
   result <- data.table::rbindlist(processed_list, fill = TRUE)
   result
 }
+
+#' @export
+render_table <- function(data) {
+  DT::datatable(data,
+                extensions = "Buttons",
+                options = list(
+                  dom = "Blfrtip",
+                  buttons = c("copy"),
+                  searching = FALSE,
+                  lengthChange = FALSE
+                )
+  )
+}
+
+#' @export
+my_custom_hook <- function(x, options) {
+  return(options)
+}

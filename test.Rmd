@@ -1,0 +1,60 @@
+---
+title: "test"
+output: 
+  html_document:
+    df_print: paged
+date: "2023-12-25"
+---
+
+```{r setup, include=FALSE}
+library(checkmate)
+
+sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
+sisor <- read_datapackage("datapackages/sisor/datapackage.json")
+```
+
+```{r, echo=FALSE}
+check <- function(before, options, envir) {
+  if (before == FALSE) {
+    if (isTRUE(envir$check$valid)) {
+      '<span class="label label-info">Check passed</span>'
+    } else {
+      download <- downloadthis::download_this(check$fail, 
+  output_name = "fail",
+  output_extension = ".xlsx",
+  button_label = "Download",
+  button_type = "danger"
+)
+      
+      msg <- '<span class="label label-danger">Check failed</span>'
+      
+      paste0(msg, download)
+      
+    }
+  }
+}
+
+knitr::knit_hooks$set(check = check)
+```
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_area_tematica_exists_programas(sigplan$programas_planejamento, output = TRUE)
+check$info
+```
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_consistencia_sigplan_localizadores(sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
+check$info
+```
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_consistencia_sigplan_programas(sigplan$acoes_planejamento, sigplan$programas_planejamento, output = TRUE)
+check$info
+```
+
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_consistencia_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despesa_item_fiscal, output = TRUE)
+check$info
+```
+
