@@ -1,7 +1,7 @@
 ---
 title: "Checklist para conferência das bases SIGPLAN/SISOR"
 output:
-  distill::distill_article:
+  html_document:
     toc: true
     toc_depth: 3
 date: "2023-11-24"
@@ -16,9 +16,9 @@ sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
 sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 ```
 
-## [Área temática por programa](file:///Users/fjunior/Projects/splor/checks-loa-ppag/docs/reference/check_area_tematica_exists.html)
+## check_area_tematica_exists
 
-### Programas
+### check_area_tematica_exists_programas
 
 ```{r, echo=FALSE, test=TRUE}
 check <- check_area_tematica_exists_programas(sigplan$programas_planejamento, output = TRUE)
@@ -26,7 +26,7 @@ knitr::kable(check$info)
 stopifnot(check$valid)
 ```
 
-### Ações
+### check_area_tematica_exists_acoes
 
 ```{r, echo=FALSE, test=TRUE}
 check <- check_area_tematica_exists_acoes(sigplan$acoes_planejamento, output = TRUE)
@@ -34,7 +34,7 @@ knitr::kable(check$info)
 stopifnot(check$valid)
 ```
 
-### Localizadores
+### check_area_tematica_exists_localizadores
 
 ```{r, echo=FALSE, test=TRUE, message=FALSE}
 check <- check_area_tematica_exists_localizadores(sigplan$localizadores_todos_planejamento, output = TRUE)
@@ -42,7 +42,7 @@ knitr::kable(check$info)
 stopifnot(check$valid)
 ```
 
-## Consistência SIGPLAN
+## check_consistencia_sigplan
 
 ### check_consistencia_sigplan_localizadores
 
@@ -60,9 +60,7 @@ knitr::kable(check$info)
 stopifnot(check$valid)
 ```
 
-## [Consistência SISOR](file:///Users/fjunior/Projects/splor/checks-loa-ppag/docs/reference/check_consistencia_sisor.html)
-
-### QDD Fiscal
+## check_consistencia_sisor
 
 ```{r, echo=FALSE, test=TRUE}
 check <- check_consistencia_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despesa_item_fiscal, output = TRUE)

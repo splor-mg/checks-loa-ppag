@@ -26,12 +26,12 @@ check_area_tematica_exists_localizadores(
 )
 }
 \description{
-Verifica se cada programa possui apenas uma área temática. É obrigatório a existência de uma área por programa (ie. one and only one).
+Verifica se cada programa possui apenas uma área temática. É obrigatório a existência de uma área por programa (ie. \emph{one and only one}).
 
 A verificação é realizada por base de dados:
 \itemize{
-\item programas_planejamento
-\item acoes_planejamento
-\item localizadores_todos_planejamento
+\item programas_planejamento (\code{\link[=check_area_tematica_exists_programas]{check_area_tematica_exists_programas()}})
+\item acoes_planejamento (\code{\link[=check_area_tematica_exists_acoes]{check_area_tematica_exists_acoes()}})
+\item localizadores_todos_planejamento (\code{\link[=check_area_tematica_exists_localizadores]{check_area_tematica_exists_localizadores()}})
 }
 }

@@ -2,13 +2,13 @@
 #'
 #' @description
 #' 
-#' Verifica se cada programa possui apenas uma área temática. É obrigatório a existência de uma área por programa (ie. one and only one).
+#' Verifica se cada programa possui apenas uma área temática. É obrigatório a existência de uma área por programa (ie. _one and only one_).
 #' 
 #' A verificação é realizada por base de dados:
 #' 
-#' - programas_planejamento
-#' - acoes_planejamento
-#' - localizadores_todos_planejamento
+#' - programas_planejamento ([check_area_tematica_exists_programas()])
+#' - acoes_planejamento ([check_area_tematica_exists_acoes()])
+#' - localizadores_todos_planejamento ([check_area_tematica_exists_localizadores()])
 #' 
 #' @name check_area_tematica_exists
 NULL

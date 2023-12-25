@@ -2,7 +2,24 @@
 % Please edit documentation in R/check_consistencia_sigplan.R
 \name{check_consistencia_sigplan}
 \alias{check_consistencia_sigplan}
+\alias{check_consistencia_sigplan_localizadores}
+\alias{check_consistencia_sigplan_programas}
 \title{Verificar se os totais dos valores orçamentários e físicos de cada ano do PPAG estão consistentes entre as bases}
+\usage{
+check_consistencia_sigplan_localizadores(
+  acoes_planejamento,
+  localizadores_todos_planejamento,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
+
+check_consistencia_sigplan_programas(
+  acoes_planejamento,
+  programas_planejamento,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
+}
 \description{
 Verificar se os totais dos valores orçamentários e físicos de cada ano do PPAG são iguais
 entre as bases "Programas", "Ações" e "Localizadores" com agrupamento pelas colunas:
