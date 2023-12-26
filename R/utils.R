@@ -114,40 +114,14 @@ to_data_table <- function(path) {
 }
 
 #' @export
-render_table <- function(data) {
-  DT::datatable(data,
-                extensions = "Buttons",
-                options = list(
-                  dom = "Blfrtip",
-                  buttons = c("copy"),
-                  searching = FALSE,
-                  lengthChange = FALSE
-                )
-  )
-}
-
-#' @export
 check_hook <- function(before, options, envir) {
   if (before == FALSE) {
     if (isTRUE(envir$check$valid)) {
       CHECK_COUNT$pass <<- CHECK_COUNT$pass + 1
-      '<span class="label label-info">Check passed</span>'
+      return('<span class="label label-info">Check passed</span>')
     } else {
-      
       CHECK_COUNT$fail <<- CHECK_COUNT$fail + 1
-      
-      download <- downloadthis::download_this(check$fail, 
-                                              output_name = "fail",
-                                              output_extension = ".xlsx",
-                                              button_label = "download",
-                                              button_type = "danger",
-                                              class = "button_small"
-      )
-      
-      msg <- '<p class="label label-danger">Check failed</p>'
-      
-      paste0(msg, download)
-      
+      return('<p class="label label-danger">Check failed</p>')
     }
   }
 }

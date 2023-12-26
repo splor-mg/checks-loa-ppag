@@ -3,10 +3,8 @@ title: "Checklist para conferência das bases SIGPLAN/SISOR"
 output: 
   html_document:
     df_print: paged
-    toc_depth: 3
     toc: true
     toc_float: true
-    collapsed: false
 date: "`r format(Sys.time())`"
 ---
 
@@ -22,7 +20,6 @@ CHECK_COUNT <- list(pass = 0, fail = 0)
 sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
 sisor <- read_datapackage("datapackages/sisor/datapackage.json")
 ```
-
 
 ## check_area_tematica_exists
 
