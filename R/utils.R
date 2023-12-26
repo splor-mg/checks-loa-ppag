@@ -127,6 +127,50 @@ render_table <- function(data) {
 }
 
 #' @export
-my_custom_hook <- function(x, options) {
-  return(options)
+check_hook <- function(before, options, envir) {
+  if (before == FALSE) {
+    if (isTRUE(envir$check$valid)) {
+      CHECK_COUNT$pass <<- CHECK_COUNT$pass + 1
+      '<span class="label label-info">Check passed</span>'
+    } else {
+      
+      CHECK_COUNT$fail <<- CHECK_COUNT$fail + 1
+      
+      download <- downloadthis::download_this(check$fail, 
+                                              output_name = "fail",
+                                              output_extension = ".xlsx",
+                                              button_label = "download",
+                                              button_type = "danger",
+                                              class = "button_small"
+      )
+      
+      msg <- '<p class="label label-danger">Check failed</p>'
+      
+      paste0(msg, download)
+      
+    }
+  }
+}
+
+#' @export
+document_hook <- function(x) {
+  content <- old_hook(x)
+  content <- paste(content, collapse = "\n")
+  
+  matches <- regexec("^(.*)\r?\n---\r?\n(.*)$", content)
+  matches <- regmatches(content, matches)
+  
+  header <- matches[[1]][2]
+  body <- matches[[1]][3] 
+  
+  if(CHECK_COUNT$fail == 0) {
+    alert_type <- "alert-success"
+  } else {
+    alert_type <- "alert-danger"
+  }
+  pass <- glue::glue('<p>Passing <span class="badge">{CHECK_COUNT$pass}</span></p>')
+  fail <- glue::glue('<p>Failing <span class="badge">{CHECK_COUNT$fail}</span></p>')
+  info <- glue::glue('<div class="alert {alert_type}"> {pass} {fail} </div>')
+  return(old_hook(c(header, "---", info, body)))
+  
 }
