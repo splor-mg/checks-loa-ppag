@@ -89,8 +89,9 @@ check_consistencia_sigplan_programas <- function(acoes_planejamento, programas_p
               ))
   
   y <- programas_planejamento |> 
+       dplyr::filter(is_deleted_programa == FALSE) |> 
+       unique(by = c("uo_programa_cod", "programa_cod")) |> 
     summarize("vr_meta_orcamentaria_ano", 
-              filter = is_deleted_programa == FALSE,
               by = key,
               rename = list(
                 vr_meta_orcamentaria_ano0 = "vr_meta_orcamentaria_ano0_programas",
