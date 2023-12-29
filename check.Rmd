@@ -9,11 +9,13 @@ date: "`r format(Sys.time())`"
 ---
 
 ```{r setup, include=FALSE}
-library(checkmate)
+library(checks.planejamento)
+
+knitr::opts_chunk$set(rownames.print = FALSE)
 
 old_hook <- knitr::knit_hooks$get("document")
-knitr::knit_hooks$set(document = checkmate::document_hook,
-                      check = checkmate::check_hook)
+knitr::knit_hooks$set(document = checks.planejamento::document_hook,
+                      check = checks.planejamento::check_hook)
 
 CHECK_COUNT <- list(pass = 0, fail = 0)
 
@@ -30,23 +32,263 @@ check <- check_area_tematica_exists_programas(sigplan$programas_planejamento, ou
 check$info
 ```
 
-## check_consistencia_sigplan
-
-### check_consistencia_sigplan_localizadores
+### check_area_tematica_exists_acoes
 
 ```{r, check=TRUE, echo=FALSE}
-check <- check_consistencia_sigplan_localizadores(sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
+check <- check_area_tematica_exists_acoes(sigplan$acoes_planejamento, output = TRUE)
 check$info
 ```
 
+### check_area_tematica_exists_localizadores
+
 ```{r, check=TRUE, echo=FALSE}
-check <- check_consistencia_sigplan_programas(sigplan$acoes_planejamento, sigplan$programas_planejamento, output = TRUE)
+check <- check_area_tematica_exists_localizadores(sigplan$localizadores_todos_planejamento, output = TRUE)
 check$info
 ```
 
-## check_consistencia_sisor
+## check_count
+
+### check_count_programas
 
 ```{r, check=TRUE, echo=FALSE}
-check <- check_consistencia_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despesa_item_fiscal, output = TRUE)
+check <- check_count_programas(sigplan$programas_planejamento, sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
+check$info
+```
+
+### check_count_programas_is_deleted
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_count_programas_is_deleted(sigplan$programas_planejamento, sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
+check$info
+```
+
+### check_count_programas_is_new
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_count_programas_is_new(sigplan$programas_planejamento, sigplan$acoes_planejamento, output = TRUE)
+check$info
+```
+
+### check_count_acoes
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_count_acoes(sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
+check$info
+```
+
+## check_detalhamento_obras
+
+### check_detalhamento_obras_orcam_fiscal_tesouro
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_detalhamento_obras_orcam_fiscal_tesouro(sisor$base_qdd_fiscal, sisor$base_detalhamento_obras, output = TRUE)
+check$info
+```
+
+### check_detalhamento_obras_orcam_fiscal_tesouro_plurianual
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_detalhamento_obras_orcam_fiscal_tesouro_plurianual(sisor$base_qdd_plurianual, sisor$base_detalhamento_obras, output = TRUE)
+check$info
+```
+
+### check_detalhamento_obras_orcam_fiscal_outros
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_detalhamento_obras_orcam_fiscal_outros(sisor$base_qdd_fiscal, sisor$base_detalhamento_obras, output = TRUE)
+check$info
+```
+
+### check_detalhamento_obras_orcam_fiscal_outros_plurianual
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_detalhamento_obras_orcam_fiscal_outros_plurianual(sisor$base_qdd_plurianual, sisor$base_detalhamento_obras, output = TRUE)
+check$info
+```
+
+### check_detalhamento_obras_orcam_investimento
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_detalhamento_obras_orcam_investimento(sisor$base_qdd_investimento, sisor$base_detalhamento_obras, output = TRUE)
+check$info
+```
+
+### check_detalhamento_obras_orcam_investimento_plurianual
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_detalhamento_obras_orcam_investimento_plurianual(sisor$base_qdd_plurianual_invest, sisor$base_detalhamento_obras, output = TRUE)
+check$info
+```
+
+## check_fechamento_fonte
+
+### check_fechamento_fonte_orcam_fiscal
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_fechamento_fonte_orcam_fiscal(sisor$base_orcam_receita_fiscal, sisor$base_qdd_fiscal, output = TRUE)
+check$info
+```
+
+### check_fechamento_fonte_orcam_investimento
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_fechamento_fonte_orcam_investimento(sisor$base_orcam_receita_investimento, sisor$base_qdd_investimento, output = TRUE)
+check$info
+```
+
+## check_indicadores
+
+### check_indicadores_justificativa_indice_referencia_em_apuracao
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_justificativa_indice_referencia_em_apuracao(sigplan$indicadores_planejamento, output = TRUE)
+check$info
+```
+
+### check_indicadores_indice_referencia_data_futura
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_indice_referencia_data_futura(sigplan$indicadores_planejamento, output = TRUE)
+check$info
+```
+
+### check_indicadores_indice_referencia_zerado
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_indice_referencia_zerado(sigplan$indicadores_planejamento, output = TRUE)
+check$info
+```
+
+### check_indicadores_justificativa_previsao_em_apuracao
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_justificativa_previsao_em_apuracao(sigplan$indicadores_planejamento, output = TRUE)
+check$info
+```
+
+### check_indicadores_previsoes_zeradas
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_previsoes_zeradas(sigplan$indicadores_planejamento, output = TRUE)
+check$info
+```
+
+## check_intra_orcamentaria
+
+### check_intra_despesa
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_intra_despesa(sisor$base_orcam_despesa_item_fiscal, sisor$base_intra_orcamentaria_repasse, output = TRUE)
+check$info
+```
+
+### check_intra_receita
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_intra_receita(sisor$base_orcam_receita_fiscal, sisor$base_intra_orcamentaria_repasse, output = TRUE)
+check$info
+```
+
+### check_intra_detalhamento
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_intra_detalhamento(sisor$base_intra_orcamentaria_detalhamento, output = TRUE)
+check$info
+```
+
+## check_limite
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_limite(sisor$base_limite_cota, output = TRUE)
+check$info
+```
+
+## check_ods
+
+### check_ods_exists
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_ods_exists(sigplan$programas_planejamento, output = TRUE)
+check$info
+```
+
+### check_ods_consistency
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_ods_consistency(sigplan$programas_planejamento, output = TRUE)
+check$info
+```
+
+## check_projetos_estrategicos
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_projetos_estrategicos(sigplan$acoes_planejamento, output = TRUE)
+check$info
+```
+
+## check_repasse_recursos
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_repasse_recursos(sisor$base_qdd_fiscal, sisor$base_repasse_recursos, output = TRUE)
+check$info
+```
+
+## check_setor_governo
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_setor_governo(sigplan$acoes_planejamento, output = TRUE)
+check$info
+```
+
+## check_valores_sigplan
+
+### check_valores_sigplan_localizadores
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_valores_sigplan_localizadores(sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
+check$info
+```
+
+### check_valores_sigplan_programas
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_valores_sigplan_programas(sigplan$acoes_planejamento, sigplan$programas_planejamento, output = TRUE)
+check$info
+```
+
+## check_valores_sigplan_sisor
+
+### check_valores_qdd_fiscal
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_valores_qdd_fiscal(sisor$base_qdd_fiscal, sigplan$acoes_planejamento, output = TRUE)
+check$info
+```
+
+### check_valores_qdd_plurianual
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_valores_qdd_plurianual(sisor$base_qdd_plurianual, sigplan$acoes_planejamento, output = TRUE)
+check$info
+```
+
+### check_valores_qdd_investimento
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_valores_qdd_investimento(sisor$base_qdd_investimento, sigplan$acoes_planejamento, output = TRUE)
+check$info
+```
+
+### check_valores_qdd_plurianual_invest
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_valores_qdd_plurianual_invest(sisor$base_qdd_plurianual_invest, sigplan$acoes_planejamento, output = TRUE)
+check$info
+```
+
+## check_valores_sisor
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_valores_sisor(sisor$base_qdd_fiscal, sisor$base_orcam_despesa_item_fiscal, output = TRUE)
 check$info
 ```

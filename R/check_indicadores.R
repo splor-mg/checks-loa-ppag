@@ -20,9 +20,8 @@ check_indicadores_justificativa_indice_referencia_em_apuracao <- function(indica
     df,
     if (is_deleted_programa == FALSE &
       is_deleted_indicador == FALSE & 
-      is_em_apuracao_indice_de_referencia == TRUE) {
+      is_em_apuracao_indice_de_referencia == TRUE) 
       !is.na(justificativa_status_apuracao_indice_ref)
-    }
   )
 
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
@@ -66,9 +65,9 @@ check_indicadores_justificativa_previsao_em_apuracao <- function(indicadores_pla
     if (is.na(previsao_para_ano0) |
         is.na(previsao_para_ano1) |
         is.na(previsao_para_ano2) |
-        is.na(previsao_para_ano3)) {
+        is.na(previsao_para_ano3)) 
       !is.na(justificativa_status_apuracao_previsoes)
-    }
+    
   )
   
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)

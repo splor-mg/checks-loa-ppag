@@ -1,10 +1,18 @@
-library(checkmate)
-
 # to_data_table("docs/checks-loa-ppag.yaml") |> writexl::write_xlsx("output.xlsx")
+# library("checkPlanejamento")
+# library("checkplanejamento")
+# library("check.planejamento")
+library("checks.planejamento")
+
 
 # checks
 
-check_consistencia_sisor(base_qdd_fiscal, base_orcam_despesa_item_fiscal)
+out <- check_indicadores_indice_referencia_data_futura(indicadores_planejamento, output = TRUE)
+out$fail |> 
+  dplyr::select(programa_cod, programa_nome, indicador, indice_de_referencia, is_em_apuracao_indice_de_referencia, dt_apuracao, justificativa_status_apuracao_indice_ref, updated_at) |> 
+  knitr::kable() |> 
+  clipr::write_clip()
+
 
 
 
@@ -27,5 +35,3 @@ base_intra_orcamentaria_repasse <- sisor$base_intra_orcamentaria_repasse
 base_orcam_receita_fiscal <- sisor$base_orcam_receita_fiscal
 base_orcam_despesa_item_fiscal <- sisor$base_orcam_despesa_item_fiscal
 base_detalhamento_obras <- sisor$base_detalhamento_obras
-
-

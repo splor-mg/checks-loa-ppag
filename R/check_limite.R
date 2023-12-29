@@ -1,7 +1,7 @@
 #' Valor Limite anual = Valor Utilizado + Valor Transferido
 #'
 #' @export
-check_repasse_recursos <- function(base_limite_cota, stop_on_failure = FALSE, output = FALSE) {
+check_limite <- function(base_limite_cota, stop_on_failure = FALSE, output = FALSE) {
   df <- base_limite_cota |> as_accounting()
   report <- df |> check_that(
     vlr_limite_ano0 == vlr_utilizado_ano0 + vlr_transferido,

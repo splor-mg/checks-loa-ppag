@@ -1,4 +1,4 @@
-Package: checkmate
+Package: checks.planejamento
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
@@ -16,11 +16,8 @@ Imports:
   dplyr,
   formattable,
   validate,
-  testrmd,
   data.table,
   stringr
-Remotes: 
-    github::rmflight/testrmd
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

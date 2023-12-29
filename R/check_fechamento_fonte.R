@@ -1,5 +1,8 @@
 #' Fechamento receita e despesa por fonte
 #'
+#' @name check_fechamento_fonte
+NULL
+
 #' @export
 check_fechamento_fonte_orcam_fiscal <- function(base_orcam_receita_fiscal, base_qdd_fiscal, stop_on_failure = FALSE, output = FALSE) {
   key <- c("fonte_cod")
@@ -17,6 +20,7 @@ check_fechamento_fonte_orcam_fiscal <- function(base_orcam_receita_fiscal, base_
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
 
+#' @export
 check_fechamento_fonte_orcam_investimento <- function(base_orcam_receita_investimento, base_qdd_investimento, stop_on_failure = FALSE, output = FALSE) {
   key <- c("fonte_cod")
 

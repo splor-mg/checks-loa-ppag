@@ -2,9 +2,57 @@
 % Please edit documentation in R/check_detalhamento_obras.R
 \name{check_detalhamento_obras}
 \alias{check_detalhamento_obras}
-\title{Total do orçamento fiscal e investimento SIGPLAN vs SISOR}
+\alias{check_detalhamento_obras_orcam_fiscal_tesouro}
+\alias{check_detalhamento_obras_orcam_fiscal_tesouro_plurianual}
+\alias{check_detalhamento_obras_orcam_fiscal_outros}
+\alias{check_detalhamento_obras_orcam_fiscal_outros_plurianual}
+\alias{check_detalhamento_obras_orcam_investimento}
+\alias{check_detalhamento_obras_orcam_investimento_plurianual}
+\title{Consistência entre entre detalhamento de obras e QDD (Fiscal, Investimento, Plurianuais)}
+\usage{
+check_detalhamento_obras_orcam_fiscal_tesouro(
+  base_qdd_fiscal,
+  base_detalhamento_obras,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
+
+check_detalhamento_obras_orcam_fiscal_tesouro_plurianual(
+  base_qdd_plurianual,
+  base_detalhamento_obras,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
+
+check_detalhamento_obras_orcam_fiscal_outros(
+  base_qdd_fiscal,
+  base_detalhamento_obras,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
+
+check_detalhamento_obras_orcam_fiscal_outros_plurianual(
+  base_qdd_plurianual,
+  base_detalhamento_obras,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
+
+check_detalhamento_obras_orcam_investimento(
+  base_qdd_investimento,
+  base_detalhamento_obras,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
+
+check_detalhamento_obras_orcam_investimento_plurianual(
+  base_qdd_plurianual_invest,
+  base_detalhamento_obras,
+  stop_on_failure = FALSE,
+  output = FALSE
+)
+}
 \description{
-Verificar se o valor total do orçamento (orçamento fiscal e orçamento de
-investimento das empresas controladas) coincide com a projeção do PPAG
-para o ano seguinte
+Detalhamento de Obras igual a QDD Fiscal - elemento de despesa 51 | QDD Invest - Cat. 4610
+Detalhamento de Obras plurianual igual a Menor ou Igual ao GND 44 - QDD FISCAL*
 }
