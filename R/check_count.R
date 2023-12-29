@@ -93,7 +93,7 @@ check_count_acoes <- function(acoes_planejamento, localizadores_todos_planejamen
     dplyr::distinct(uo_acao_cod, uo_acao_nome, acao_cod, acao_desc) |> 
     dplyr::rename(localizadores = acao_desc)
   
-  df <- merge(x, y, by = "acao_cod", all = TRUE)
+  df <- merge(x, y, by = c("uo_acao_cod", "acao_cod"), all = TRUE)
   
   report <- validate::check_that(df, acoes == localizadores)
   
@@ -115,7 +115,7 @@ check_count_acoes_is_deleted <- function(acoes_planejamento, localizadores_todos
     dplyr::distinct(uo_acao_cod, uo_acao_nome, acao_cod, acao_desc) |> 
     dplyr::rename(localizadores = acao_desc)
   
-  df <- merge(x, y, by = "acao_cod", all = TRUE)
+  df <- merge(x, y, by = c("uo_acao_cod", "acao_cod"), all = TRUE)
   
   report <- validate::check_that(df, acoes == localizadores)
   
@@ -130,7 +130,7 @@ check_count_acoes_is_new <- function(acoes_planejamento, localizadores_todos_pla
     dplyr::filter(is_deleted_acao == FALSE & is_new_acao == TRUE) |> 
     dplyr::distinct(acao_cod, acao_desc)
   
-  df <- merge(x, y, by = "acao_cod", all = TRUE)
+  df <- merge(x, y, by = c("uo_acao_cod", "acao_cod"), all = TRUE)
   
   report <- validate::check_that(df, acoes == localizadores)
   
