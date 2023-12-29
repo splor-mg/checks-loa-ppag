@@ -85,12 +85,12 @@ check_count_acoes <- function(acoes_planejamento, localizadores_todos_planejamen
   
   x <- acoes_planejamento |> 
     dplyr::filter(is_deleted_acao == FALSE) |> 
-    dplyr::distinct(acao_cod, acao_desc) |> 
+    dplyr::distinct(uo_acao_cod, uo_acao_nome, acao_cod, acao_desc) |> 
     dplyr::rename(acoes = acao_desc)
   
   y <- localizadores_todos_planejamento |> 
     dplyr::filter(is_deleted_acao == FALSE) |> 
-    dplyr::distinct(acao_cod, acao_desc) |> 
+    dplyr::distinct(uo_acao_cod, uo_acao_nome, acao_cod, acao_desc) |> 
     dplyr::rename(localizadores = acao_desc)
   
   df <- merge(x, y, by = "acao_cod", all = TRUE)
@@ -107,12 +107,12 @@ check_count_acoes_is_deleted <- function(acoes_planejamento, localizadores_todos
   
   x <- acoes_planejamento |> 
     dplyr::filter(is_deleted_acao == TRUE) |> 
-    dplyr::distinct(acao_cod, acao_desc) |> 
+    dplyr::distinct(uo_acao_cod, uo_acao_nome, acao_cod, acao_desc) |> 
     dplyr::rename(acoes = acao_desc)
   
   y <- localizadores_todos_planejamento |> 
     dplyr::filter(is_deleted_acao == TRUE) |> 
-    dplyr::distinct(acao_cod, acao_desc) |> 
+    dplyr::distinct(uo_acao_cod, uo_acao_nome, acao_cod, acao_desc) |> 
     dplyr::rename(localizadores = acao_desc)
   
   df <- merge(x, y, by = "acao_cod", all = TRUE)
