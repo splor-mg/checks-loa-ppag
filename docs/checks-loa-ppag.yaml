@@ -31,7 +31,7 @@
   functions: check_ods_consistency
   docs: check_ods
   issues: 
-    - splor-mg/checks-planejamento#11
+    - splor-mg/checks-planejamento#11(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 5
   rule: Quantos programas existem? ______ (deverá ser a mesma quantidade das bases
@@ -82,8 +82,8 @@
 - cod: 13
   rule: Verificar se os totais dos valores orçamentários e físicos de cada ano do
     PPAG estão iguais aos da base localizadores;
-  functions: check_consistencia_sigplan_localizadores
-  docs: check_consistencia_sigplan
+  functions: check_valores_sigplan_localizadores
+  docs: check_valores_sigplan
   source: Check List para Conferência das bases 2023.docx
 - cod: 14
   rule: Verificar quantos são e quais são os programas excluídos e incluídos;
@@ -97,7 +97,7 @@
   functions: check_count_acoes_is_deleted
   docs: check_count
   issues: 
-    - A base acoes_planejamento é a única que possui a coluna is_new_acao
+    - splor-mg/checks-planejamento#26
   source: Check List para Conferência das bases 2023.docx
 - cod: 16
   rule: Quantos programas existem? _____ (deverá ser a mesma quantidade da base programas
@@ -122,6 +122,8 @@
   rule: Conferir se quando o indicador tiver o índice de referência “em apuração”,
     também existe a justificativa;
   functions: check_indicadores_justificativa_indice_referencia_apuracao
+  issues: 
+    - splor-mg/checks-planejamento#27
   source: Check List para Conferência das bases 2023.docx
 - cod: 21
   rule: Conferir se quando o indicador tiver alguma previsão “em apuração”, também
@@ -233,8 +235,8 @@
   source: checklist_conferência_SISOR_2023.xlsx
 - cod: 37
   rule: QDD Fiscal igual a Orçamento da Despesa Fiscal/Itens de Despesa
-  functions: check_consistencia_sisor
-  docs: check_consistencia_sisor
+  functions: check_valores_sisor
+  docs: check_valores_sisor
   issues: NA
   source: checklist_conferência_SISOR_2023.xlsx
 - cod: 38
