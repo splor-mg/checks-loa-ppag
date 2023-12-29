@@ -76,6 +76,13 @@ check <- check_count_acoes(sigplan$acoes_planejamento, sigplan$localizadores_tod
 check$info
 ```
 
+### check_count_acoes_is_deleted
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_count_acoes_is_deleted(sigplan$acoes_planejamento, sigplan$localizadores_todos_planejamento, output = TRUE)
+check$info
+```
+
 ## check_detalhamento_obras
 
 ### check_detalhamento_obras_orcam_fiscal_tesouro
