@@ -118,10 +118,10 @@ check_hook <- function(before, options, envir) {
   if (before == FALSE) {
     if (isTRUE(envir$check$valid)) {
       CHECK_COUNT$pass <<- CHECK_COUNT$pass + 1
-      return('<span class="label label-info">Check passed</span>')
+      return('<span class="label label-info">Sucesso</span>')
     } else {
       CHECK_COUNT$fail <<- CHECK_COUNT$fail + 1
-      return('<p class="label label-danger">Check failed</p>')
+      return('<p class="label label-danger">Erro</p>')
     }
   }
 }
@@ -142,8 +142,8 @@ document_hook <- function(x) {
   } else {
     alert_type <- "alert-danger"
   }
-  pass <- glue::glue('<p>Passing <span class="badge">{CHECK_COUNT$pass}</span></p>')
-  fail <- glue::glue('<p>Failing <span class="badge">{CHECK_COUNT$fail}</span></p>')
+  pass <- glue::glue('<p>Sucesso <span class="badge">{CHECK_COUNT$pass}</span></p>')
+  fail <- glue::glue('<p>Erro <span class="badge">{CHECK_COUNT$fail}</span></p>')
   info <- glue::glue('<div class="alert {alert_type}"> {pass} {fail} </div>')
   return(old_hook(c(header, "---", info, body)))
   

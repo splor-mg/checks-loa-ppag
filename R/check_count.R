@@ -102,7 +102,7 @@ check_count_acoes <- function(acoes_planejamento, localizadores_todos_planejamen
   )
 }
 
-
+#' @export
 check_count_acoes_is_deleted <- function(acoes_planejamento, localizadores_todos_planejamento, output = FALSE, stop_on_failure = FALSE) {
   
   x <- acoes_planejamento |> 
@@ -124,6 +124,7 @@ check_count_acoes_is_deleted <- function(acoes_planejamento, localizadores_todos
   )
 }
 
+#' @export
 check_count_acoes_is_new <- function(acoes_planejamento, localizadores_todos_planejamento, output = FALSE, stop_on_failure = FALSE) {
   
   x <- acoes_planejamento |> 
