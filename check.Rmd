@@ -205,8 +205,17 @@ check$info
 
 ## check_limite
 
+### check_limite_ano0
+
 ```{r, check=TRUE, echo=FALSE}
-check <- check_limite(sisor$base_limite_cota, output = TRUE)
+check <- check_limite_ano0(sisor$base_limite_cota, output = TRUE)
+check$info
+```
+
+### check_limite_plurianual
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_limite_plurianual(sisor$base_limite_cota, output = TRUE)
 check$info
 ```
 
