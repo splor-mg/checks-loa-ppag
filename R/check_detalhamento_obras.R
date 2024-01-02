@@ -37,10 +37,10 @@ check_detalhamento_obras_orcam_fiscal_tesouro_plurianual <- function(base_qdd_pl
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(
-    vlr_loa_desp_ano0 > vlr_tesouro_ano0,
-    vlr_loa_desp_ano1 > vlr_tesouro_ano1,
-    vlr_loa_desp_ano2 > vlr_tesouro_ano2,
-    vlr_loa_desp_ano3 > vlr_tesouro_ano3
+    vlr_loa_desp_ano0 >= vlr_tesouro_ano0,
+    vlr_loa_desp_ano1 >= vlr_tesouro_ano1,
+    vlr_loa_desp_ano2 >= vlr_tesouro_ano2,
+    vlr_loa_desp_ano3 >= vlr_tesouro_ano3
   )
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
