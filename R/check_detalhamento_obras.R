@@ -88,7 +88,7 @@ check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento, b
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
   x <- base_qdd_investimento |> 
-    summarize("vlr_loa_desp_invest", by = key, filter = categoria_cod == "4610 - IMOBILIZAÇÕES")
+    summarize("vlr_loa_desp_invest", by = key, filter = natureza_cod == 4613)
   
   y <- base_detalhamento_obras |> 
     summarize("vlr_outros_ano0", by = key, filter = str_sub(uo_cod, 1, 1) == 5)
