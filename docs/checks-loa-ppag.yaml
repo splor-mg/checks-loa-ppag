@@ -129,20 +129,22 @@
   rule: Conferir se quando o indicador tiver alguma previsão “em apuração”, também
     existe a justificativa;
   functions: check_indicadores_justificativa_previsao_em_apuracao
+  issues: 
+    - splor-mg/checks-planejamento#27
   source: Check List para Conferência das bases 2023.docx
 - cod: 22
   rule: Verificar se algum índice de referência está com data futura;
   functions: check_indicadores_indice_referencia_data_futura
   docs: check_indicadores
   issues: 
-    - splor-mg/checks-planejamento#22
+    - splor-mg/checks-planejamento#22(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 23
   rule: Verificar se quando o indicador permanece na revisão, ele continua sem índice
     de referência e/ou sem previsão das metas (isso ocorre quando estas estão marcadas
     - “em apuração”). O ideal é que esse indicador tenha índice de referência;
-  notes:
-    - wontfix
+  issues:
+    - splor-mg/checks-planejamento#30
   source: Check List para Conferência das bases 2023.docx
 - cod: 24
   rule: Verificar se índices de referência com valor “zero” estão corretos;
@@ -155,7 +157,7 @@
   functions: check_indicadores_previsoes_zeradas
   docs: check_indicadores
   issues: 
-    - splor-mg/checks-planejamento#23  
+    - splor-mg/checks-planejamento#23
   source: Check List para Conferência das bases 2023.docx
 - cod: 26
   rule: 'Observar se indicadores sem metas em anos específicos é devido à periodicidade
@@ -163,24 +165,22 @@
   functions: check_indicadores_previsoes_zeradas
   docs: check_indicadores
   issues: 
-    - splor-mg/checks-planejamento#23
+    - splor-mg/checks-planejamento#23(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 27
   rule: Verificar se as metas previstas como “zero” estão corretas;
   functions: check_indicadores_previsoes_zeradas
   docs: check_indicadores
-  issues: 
-    - splor-mg/checks-planejamento#23  
   source: Check List para Conferência das bases 2023.docx
 - cod: 28
   rule: Verificar porque existem indicadores sem índice, mas com metas previstas;
-  notes:
-    - wontfix
+  issues: 
+    - splor-mg/checks-planejamento#31
   source: Check List para Conferência das bases 2023.docx
 - cod: 29
   rule: Verificar porque existem indicadores com índice, mas sem metas previstas;
-  notes:
-    - wontfix
+  issues: 
+    - splor-mg/checks-planejamento#32
   source: Check List para Conferência das bases 2023.docx
 - cod: 30
   rule: Após conferir as bases do PPAG (Sigplan) é necessário verificar se estas estão
@@ -280,5 +280,5 @@
   functions: check_limite
   docs: check_limite
   issues: 
-    - splor-mg/checks-planejamento#24
+    - splor-mg/checks-planejamento#24(closed)
   source: checklist_conferência_SISOR_2023.xlsx
