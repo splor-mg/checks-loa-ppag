@@ -7,7 +7,7 @@
 São realizadas as seguintes verificações:
 \itemize{
 \item Indicadores com índice de referência “em apuração” possuem justificativa (\code{\link{check_indicadores_justificativa_indice_referencia_em_apuracao}});
-\item Indicadores não possuem índice de referência com data futura (\code{\link{check_indicadores_indice_referencia_data_futura}});
+\item Indicadores não possuem índice de referência com data futura (dt_apuracao <= updated_at ) (\code{\link{check_indicadores_indice_referencia_data_futura}});
 \item Indicadores não possuem índice de referência zerados (\code{\link{check_indicadores_indice_referencia_zerado}});
 \item Indicadores com previsões “em apuração” possuem justificativa (\code{\link{check_indicadores_justificativa_previsao_em_apuracao}});
 \item Indicadores não possuem previsões zeradas (\code{\link{check_indicadores_previsoes_zeradas}});
