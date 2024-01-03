@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_count_programas_is_deleted.R
 \name{check_count_programas_is_deleted}
 \alias{check_count_programas_is_deleted}
-\title{Verificar quantidade de programas e ações entre as bases (incluindo excluídos e incluídos)}
+\title{Verificar quantidade de programas excluídos entre as bases}
 \usage{
 check_count_programas_is_deleted(
   programas_planejamento,
@@ -13,5 +13,7 @@ check_count_programas_is_deleted(
 )
 }
 \description{
-Verificar quantidade de programas e ações entre as bases (incluindo excluídos e incluídos)
+Se o processo de exclusão de programas que foram incluídos e excluídos
+durante o mesmo ciclo (momento R) não tiver sido realizado no SIGPLAN
+esse teste vai apontar problemas.
 }

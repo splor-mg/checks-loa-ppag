@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_count_acoes.R
 \name{check_count_acoes}
 \alias{check_count_acoes}
-\title{Verificar quantidade de programas e ações entre as bases (incluindo excluídos e incluídos)}
+\title{Verificar quantidade de ações entre as bases}
 \usage{
 check_count_acoes(
   acoes_planejamento,
@@ -12,5 +12,5 @@ check_count_acoes(
 )
 }
 \description{
-Verificar quantidade de programas e ações entre as bases (incluindo excluídos e incluídos)
+Verificar quantidade de ações entre as bases
 }

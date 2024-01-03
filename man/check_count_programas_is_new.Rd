@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_count_programas_is_new.R
 \name{check_count_programas_is_new}
 \alias{check_count_programas_is_new}
-\title{Verificar quantidade de programas e ações entre as bases (incluindo excluídos e incluídos)}
+\title{Verificar quantidade de programas incluídos entre as bases}
 \usage{
 check_count_programas_is_new(
   programas_planejamento,
@@ -12,5 +12,5 @@ check_count_programas_is_new(
 )
 }
 \description{
-Verificar quantidade de programas e ações entre as bases (incluindo excluídos e incluídos)
+Verificar quantidade de programas incluídos entre as bases
 }
