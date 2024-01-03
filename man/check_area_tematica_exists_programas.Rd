@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_area_tematica_exists_programas.R
 \name{check_area_tematica_exists_programas}
 \alias{check_area_tematica_exists_programas}
-\title{Área temática por programa}
+\title{Verifica se cada programa possui apenas uma área temática - programas_planejamento}
 \usage{
 check_area_tematica_exists_programas(
   programas_planejamento,
@@ -11,5 +11,5 @@ check_area_tematica_exists_programas(
 )
 }
 \description{
-Verifica se cada programa possui apenas uma área temática. É obrigatório a existência de uma área por programa (ie. \emph{one and only one}).
+É obrigatório a existência de uma área por programa (ie. \emph{one and only one}).
 }
