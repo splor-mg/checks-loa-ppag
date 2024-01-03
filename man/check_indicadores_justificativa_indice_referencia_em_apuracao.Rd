@@ -12,5 +12,5 @@ check_indicadores_justificativa_indice_referencia_em_apuracao(
 )
 }
 \description{
-Verifica se indicadores com índice de referência “em apuração” possuem justificativa
+Somente são aceitas como válidas justificativas acima de 50 caracteres
 }

@@ -12,5 +12,5 @@ check_indicadores_justificativa_previsao_em_apuracao(
 )
 }
 \description{
-Verifica se indicadores com previsões “em apuração” possuem justificativa
+Somente são aceitas como válidas justificativas acima de 50 caracteres
 }
