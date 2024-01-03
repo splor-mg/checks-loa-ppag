@@ -11,10 +11,10 @@ check_valores_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, stop_o
   key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
 
   x <- base_qdd_fiscal |>
-    summarize("vlr_loa_desp$", by = key)
+    aggregate("vlr_loa_desp$", by = key)
 
   y <- acoes_planejamento |>
-    summarize("vr_meta_orcamentaria_ano0",
+    aggregate("vr_meta_orcamentaria_ano0",
       by = key,
       filter = is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(1, 2, 4, 7, 9),
       rename = list(uo_acao_cod = "uo_cod")
@@ -30,10 +30,10 @@ check_valores_qdd_plurianual <- function(base_qdd_plurianual, acoes_planejamento
   key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
 
   x <- base_qdd_plurianual |>
-    summarize("vlr_loa_desp", by = key)
+    aggregate("vlr_loa_desp", by = key)
 
   y <- acoes_planejamento |>
-    summarize("vr_meta_orcamentaria_ano",
+    aggregate("vr_meta_orcamentaria_ano",
       by = key,
       rename = list(uo_acao_cod = "uo_cod"),
       filter = is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(1, 2, 4, 7, 9)
@@ -56,10 +56,10 @@ check_valores_qdd_investimento <- function(base_qdd_investimento, acoes_planejam
   key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
 
   x <- base_qdd_investimento |>
-    summarize("vlr_loa_desp_invest", by = key)
+    aggregate("vlr_loa_desp_invest", by = key)
 
   y <- acoes_planejamento |>
-    summarize("vr_meta_orcamentaria_ano0",
+    aggregate("vr_meta_orcamentaria_ano0",
       by = key,
       rename = list(uo_acao_cod = "uo_cod"),
       filter = is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(3, 6, 8)
@@ -78,10 +78,10 @@ check_valores_qdd_plurianual_invest <- function(base_qdd_plurianual_invest, acoe
   key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
 
   x <- base_qdd_plurianual_invest |>
-    summarize("vlr_loa_desp_invest", by = key)
+    aggregate("vlr_loa_desp_invest", by = key)
 
   y <- acoes_planejamento |>
-    summarize("vr_meta_orcamentaria_ano",
+    aggregate("vr_meta_orcamentaria_ano",
       by = key,
       rename = list(uo_acao_cod = "uo_cod"),
       filter = is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(3, 6, 8)

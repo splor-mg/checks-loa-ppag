@@ -14,10 +14,10 @@ check_detalhamento_obras_orcam_fiscal_tesouro <- function(base_qdd_fiscal, base_
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
 
   x <- base_qdd_fiscal |> 
-        summarize("vlr_loa_desp$", by = key, filter = elemento_cod == 51 & fonte_cod %in% c(10, 15))
+        aggregate("vlr_loa_desp$", by = key, filter = elemento_cod == 51 & fonte_cod %in% c(10, 15))
 
   y <- base_detalhamento_obras |> 
-        summarize("vlr_tesouro_ano0", by = key, filter = str_sub(uo_cod, 1, 1) != 5)
+        aggregate("vlr_tesouro_ano0", by = key, filter = str_sub(uo_cod, 1, 1) != 5)
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(vlr_loa_desp == vlr_tesouro_ano0)
@@ -30,10 +30,10 @@ check_detalhamento_obras_orcam_fiscal_tesouro_plurianual <- function(base_qdd_pl
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
   x <- base_qdd_plurianual |> 
-    summarize("vlr_loa_desp_ano", by = key, filter = grupo_cod == 4 & fonte_cod %in% c(10, 15))
+    aggregate("vlr_loa_desp_ano", by = key, filter = grupo_cod == 4 & fonte_cod %in% c(10, 15))
   
   y <- base_detalhamento_obras |> 
-    summarize("vlr_tesouro_ano", by = key, filter = str_sub(uo_cod, 1, 1) != 5)
+    aggregate("vlr_tesouro_ano", by = key, filter = str_sub(uo_cod, 1, 1) != 5)
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(
@@ -51,10 +51,10 @@ check_detalhamento_obras_orcam_fiscal_outros <- function(base_qdd_fiscal, base_d
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
   x <- base_qdd_fiscal |> 
-    summarize("vlr_loa_desp$", by = key, filter = elemento_cod == 51 & fonte_cod %notin% c(10, 15))
+    aggregate("vlr_loa_desp$", by = key, filter = elemento_cod == 51 & fonte_cod %notin% c(10, 15))
   
   y <- base_detalhamento_obras |> 
-    summarize("vlr_outros_ano0", by = key, filter = str_sub(uo_cod, 1, 1) != 5)
+    aggregate("vlr_outros_ano0", by = key, filter = str_sub(uo_cod, 1, 1) != 5)
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(vlr_loa_desp == vlr_outros_ano0)
@@ -67,10 +67,10 @@ check_detalhamento_obras_orcam_fiscal_outros_plurianual <- function(base_qdd_plu
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
   x <- base_qdd_plurianual |> 
-    summarize("vlr_loa_desp_ano", by = key, filter = grupo_cod == 4 & fonte_cod %notin% c(10, 15))
+    aggregate("vlr_loa_desp_ano", by = key, filter = grupo_cod == 4 & fonte_cod %notin% c(10, 15))
   
   y <- base_detalhamento_obras |> 
-    summarize("vlr_outros_ano", by = key, filter = str_sub(uo_cod, 1, 1) != 5)
+    aggregate("vlr_outros_ano", by = key, filter = str_sub(uo_cod, 1, 1) != 5)
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(
@@ -88,10 +88,10 @@ check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento, b
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
   x <- base_qdd_investimento |> 
-    summarize("vlr_loa_desp_invest", by = key, filter = natureza_cod == 4613)
+    aggregate("vlr_loa_desp_invest", by = key, filter = natureza_cod == 4613)
   
   y <- base_detalhamento_obras |> 
-    summarize("vlr_outros_ano0", by = key, filter = str_sub(uo_cod, 1, 1) == 5)
+    aggregate("vlr_outros_ano0", by = key, filter = str_sub(uo_cod, 1, 1) == 5)
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(vlr_loa_desp_invest == vlr_outros_ano0)
@@ -104,10 +104,10 @@ check_detalhamento_obras_orcam_investimento_plurianual <- function(base_qdd_plur
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
   x <- base_qdd_plurianual_invest |> 
-    summarize("vlr_loa_desp_invest", by = key, filter = categoria == "4610")
+    aggregate("vlr_loa_desp_invest", by = key, filter = categoria == "4610")
   
   y <- base_detalhamento_obras |> 
-    summarize("vlr_outros_ano", by = key, filter = str_sub(uo_cod, 1, 1) == 5)
+    aggregate("vlr_outros_ano", by = key, filter = str_sub(uo_cod, 1, 1) == 5)
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(

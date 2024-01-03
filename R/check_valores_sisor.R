@@ -33,13 +33,13 @@ check_valores_sisor <- function(base_qdd_fiscal,
   )
 
   x <- base_qdd_fiscal |>
-    summarize("vlr_qdd_fiscal",
+    aggregate("vlr_qdd_fiscal",
       by = key,
       rename = list(vlr_loa_desp = "vlr_qdd_fiscal")
     )
 
   y <- base_orcam_despesa_item_fiscal |>
-    summarize("vlr_item_fiscal",
+    aggregate("vlr_item_fiscal",
       by = key,
       rename = list(vlr_loa_desp = "vlr_item_fiscal")
     )
@@ -50,6 +50,6 @@ check_valores_sisor <- function(base_qdd_fiscal,
     report,
     stop_on_failure = stop_on_failure,
     output = output,
-    summary = summarize(df, "vlr")
+    summary = aggregate(df, "vlr")
   )
 }

@@ -11,7 +11,7 @@ check_intra_despesa <- function(base_orcam_despesa_item_fiscal, base_intra_orcam
   key <- c("uo_cod", "identificador_tipo_acao_cod", "projeto_atividade_cod", "grupo_cod", "modalidade_cod", "elemento_cod", "item_cod")
 
   x <- base_orcam_despesa_item_fiscal |>
-    summarize("vlr_loa_desp$", by = key, filter = modalidade_cod == 91)
+    aggregate("vlr_loa_desp$", by = key, filter = modalidade_cod == 91)
 
   y <- base_intra_orcamentaria_repasse |>
     tidyr::separate(programa_trabalho_fmt,
@@ -38,7 +38,7 @@ check_intra_despesa <- function(base_orcam_despesa_item_fiscal, base_intra_orcam
         "item_cod"
       )
     ) |>
-    summarize("vlr_repassado",
+    aggregate("vlr_repassado",
       by = key,
       rename = list(uo_repassadora_cod = "uo_cod")
     )
@@ -48,7 +48,7 @@ check_intra_despesa <- function(base_orcam_despesa_item_fiscal, base_intra_orcam
   check_result(df, report,
     stop_on_failure = stop_on_failure,
     output = output,
-    summary = summarize(df, "vlr")
+    summary = aggregate(df, "vlr")
   )
 }
 
@@ -57,10 +57,10 @@ check_intra_receita <- function(base_orcam_receita_fiscal, base_intra_orcamentar
   key <- c("uo_cod")
 
   x <- base_orcam_receita_fiscal |>
-    summarize("vlr_loa_rec$", by = key, filter = categoria %in% c(7, 8))
+    aggregate("vlr_loa_rec$", by = key, filter = categoria %in% c(7, 8))
 
   y <- base_intra_orcamentaria_repasse |>
-    summarize("vlr_repassado",
+    aggregate("vlr_repassado",
       by = key,
       rename = list(uo_beneficiada_cod = "uo_cod")
     )
@@ -70,7 +70,7 @@ check_intra_receita <- function(base_orcam_receita_fiscal, base_intra_orcamentar
   check_result(df, report,
     stop_on_failure = stop_on_failure, 
     output = output, 
-    summary = summarize(df, "vlr")
+    summary = aggregate(df, "vlr")
   )
 }
 
@@ -81,6 +81,6 @@ check_intra_detalhamento <- function(base_intra_orcamentaria_detalhamento, stop_
   check_result(base_intra_orcamentaria_detalhamento, report,
     stop_on_failure = stop_on_failure, 
     output = output,
-    summary = summarize(df, "vlr")
+    summary = aggregate(df, "vlr")
   )
 }

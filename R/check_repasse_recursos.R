@@ -8,10 +8,10 @@ check_repasse_recursos <- function(base_qdd_fiscal, base_repasse_recursos, stop_
   key <- c("uo_cod", "grupo_cod", "iag_cod", "fonte_cod", "ipu_cod")
 
   x <- base_qdd_fiscal |>
-    summarize("vlr_loa_desp$", by = key, filter = ipu_cod == 2 | (ipu_cod == 5 & fonte_cod %in% c(42, 43)))
+    aggregate("vlr_loa_desp$", by = key, filter = ipu_cod == 2 | (ipu_cod == 5 & fonte_cod %in% c(42, 43)))
 
   y <- base_repasse_recursos |>
-        summarize("vlr_repasse",
+        aggregate("vlr_repasse",
       by = key,
       rename = list(uo_beneficiada_cod = "uo_cod")
     )

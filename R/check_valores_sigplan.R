@@ -28,7 +28,7 @@ check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadore
   key <- c("programa_cod", "area_tematica_cod", "acao_cod", "uo_acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
   
   x <- acoes_planejamento |> 
-        summarize("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
+        aggregate("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
                   by = key,
                   filter = is_deleted_programa == FALSE & is_deleted_acao == FALSE,
                   rename = list(
@@ -44,7 +44,7 @@ check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadore
   
   # uma acao pode ter sido deletada sem que os seus localizadores sejam marcados como deletados
   y <- localizadores_todos_planejamento |> 
-        summarize("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
+        aggregate("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
                   filter = is_deleted_programa == FALSE & is_deleted_acao == FALSE & is_deleted_localizador == FALSE,
                   by = key,
                   rename = list(
@@ -78,7 +78,7 @@ check_valores_sigplan_programas <- function(acoes_planejamento, programas_planej
   key <- c("programa_cod", "area_tematica_cod", "uo_programa_cod")
   
   x <- acoes_planejamento |> 
-    summarize("vr_meta_orcamentaria_ano", 
+    aggregate("vr_meta_orcamentaria_ano", 
               by = key,
               filter = is_deleted_programa == FALSE & is_deleted_acao == FALSE,
               rename = list(
@@ -91,7 +91,7 @@ check_valores_sigplan_programas <- function(acoes_planejamento, programas_planej
   y <- programas_planejamento |> 
        dplyr::filter(is_deleted_programa == FALSE) |> 
        unique(by = c("uo_programa_cod", "programa_cod")) |> 
-    summarize("vr_meta_orcamentaria_ano", 
+    aggregate("vr_meta_orcamentaria_ano", 
               by = key,
               rename = list(
                 vr_meta_orcamentaria_ano0 = "vr_meta_orcamentaria_ano0_programas",

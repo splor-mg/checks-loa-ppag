@@ -8,10 +8,10 @@ check_fechamento_fonte_orcam_fiscal <- function(base_orcam_receita_fiscal, base_
   key <- c("fonte_cod")
 
   x <- base_orcam_receita_fiscal |>
-    summarize("vlr_loa_rec$", by = key)
+    aggregate("vlr_loa_rec$", by = key)
 
   y <- base_qdd_fiscal |>
-    summarize("vlr_loa_desp$",
+    aggregate("vlr_loa_desp$",
       by = key
     )
 
@@ -33,10 +33,10 @@ check_fechamento_fonte_orcam_investimento <- function(base_orcam_receita_investi
         str_pad(subalinea, 2, pad = "0")
       ))
     ) |>
-    summarize("vlr_loa_rec_invest$", by = key)
+    aggregate("vlr_loa_rec_invest$", by = key)
 
   y <- base_qdd_investimento |>
-    summarize("vlr_loa_desp_invest", by = "fonte_cod")
+    aggregate("vlr_loa_desp_invest", by = "fonte_cod")
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_rec_invest  == vlr_loa_desp_invest)

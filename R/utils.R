@@ -72,7 +72,7 @@ check_result <- function(df, report, status = "ok", stop_on_failure, output, sum
   result
 }
 
-summarize <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
+aggregate <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
   data <- as_data_table(data)
   
   if(!is.null(rename)) {
