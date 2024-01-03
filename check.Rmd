@@ -144,6 +144,20 @@ render_table(check$info)
 
 ## check_indicadores
 
+### check_indicadores_consistency_indice_de_referencia_exists
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_consistency_indice_de_referencia_exists(sigplan$indicadores_planejamento, output = TRUE)
+render_table(check$info)
+```
+
+### check_indicadores_consistency_indice_de_referencia_missing
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_consistency_indice_de_referencia_missing(sigplan$indicadores_planejamento, output = TRUE)
+render_table(check$info)
+```
+
 ### check_indicadores_justificativa_indice_referencia_em_apuracao
 
 ```{r, check=TRUE, echo=FALSE}
