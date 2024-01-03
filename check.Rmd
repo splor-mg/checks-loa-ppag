@@ -158,6 +158,13 @@ check <- check_indicadores_indice_referencia_data_futura(sigplan$indicadores_pla
 render_table(check$info)
 ```
 
+### check_indicadores_indice_referencia_exists
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_indice_referencia_exists(sigplan$indicadores_planejamento, output = TRUE)
+render_table(check$info)
+```
+
 ### check_indicadores_indice_referencia_zerado
 
 ```{r, check=TRUE, echo=FALSE}
@@ -171,6 +178,14 @@ render_table(check$info)
 check <- check_indicadores_justificativa_previsao_em_apuracao(sigplan$indicadores_planejamento, output = TRUE)
 render_table(check$info)
 ```
+
+### check_indicadores_previsoes_exists
+
+```{r, check=TRUE, echo=FALSE}
+check <- check_indicadores_previsoes_exists(sigplan$indicadores_planejamento, output = TRUE)
+render_table(check$info)
+```
+
 
 ### check_indicadores_previsoes_zeradas
 
