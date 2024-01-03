@@ -20,6 +20,7 @@ CHECK_COUNT <- list(pass = 0, fail = 0)
 
 sigplan <- read_datapackage("datapackages/sigplan/datapackage.json")
 sisor <- read_datapackage("datapackages/sisor/datapackage.json")
+aux <- read_datapackage("datapackages/auxiliares/datapackage.json")
 ```
 
 ## check_area_tematica_exists
@@ -280,7 +281,7 @@ render_table(check$info)
 ## check_setor_governo
 
 ```{r, check=TRUE, echo=FALSE}
-check <- check_setor_governo(sigplan$acoes_planejamento, output = TRUE)
+check <- check_setor_governo(sigplan$acoes_planejamento, aux$desc_setor_governo, output = TRUE)
 render_table(check$info)
 ```
 

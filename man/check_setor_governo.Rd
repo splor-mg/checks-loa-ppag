@@ -6,10 +6,13 @@
 \usage{
 check_setor_governo(
   acoes_planejamento,
+  aux_setor_governo,
   output = FALSE,
   stop_on_failure = FALSE
 )
 }
 \description{
-Verificar se os setores de governo estão corretos
+A referência correta dos setores de governo é disponibilizada
+pela DCPPN via tabela auxiliar no recurso
+\href{https://github.com/splor-mg/volumes-loa-dados}{\code{volumes-loa-dados.desc_setor_governo}}
 }
