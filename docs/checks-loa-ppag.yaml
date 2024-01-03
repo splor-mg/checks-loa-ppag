@@ -22,7 +22,7 @@
   functions: check_ods_exists
   docs: check_ods
   issues: 
-    - splor-mg/checks-planejamento#9
+    - splor-mg/checks-planejamento#9(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 4
   rule: Verificar se existem programas com ODS 18 - Não Possui Objetivo de Desenvolvimento
@@ -45,7 +45,7 @@
   functions: check_count_programas_is_deleted
   docs: check_count
   issues: 
-    - splor-mg/checks-planejamento#12
+    - splor-mg/checks-planejamento#12(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 7
   rule: Os programas incluídos (novos) devem ser os mesmos nas bases programas e ação.
@@ -97,7 +97,7 @@
   functions: check_count_acoes_is_deleted
   docs: check_count
   issues: 
-    - splor-mg/checks-planejamento#26
+    - splor-mg/checks-planejamento#26(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 16
   rule: Quantos programas existem? _____ (deverá ser a mesma quantidade da base programas
@@ -123,14 +123,14 @@
     também existe a justificativa;
   functions: check_indicadores_justificativa_indice_referencia_apuracao
   issues: 
-    - splor-mg/checks-planejamento#27
+    - splor-mg/checks-planejamento#27(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 21
   rule: Conferir se quando o indicador tiver alguma previsão “em apuração”, também
     existe a justificativa;
   functions: check_indicadores_justificativa_previsao_em_apuracao
   issues: 
-    - splor-mg/checks-planejamento#27
+    - splor-mg/checks-planejamento#27(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 22
   rule: Verificar se algum índice de referência está com data futura;
@@ -157,7 +157,7 @@
   functions: check_indicadores_previsoes_zeradas
   docs: check_indicadores
   issues: 
-    - splor-mg/checks-planejamento#23
+    - splor-mg/checks-planejamento#23(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 26
   rule: 'Observar se indicadores sem metas em anos específicos é devido à periodicidade
@@ -175,12 +175,12 @@
 - cod: 28
   rule: Verificar porque existem indicadores sem índice, mas com metas previstas;
   issues: 
-    - splor-mg/checks-planejamento#31
+    - splor-mg/checks-planejamento#31(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 29
   rule: Verificar porque existem indicadores com índice, mas sem metas previstas;
   issues: 
-    - splor-mg/checks-planejamento#32
+    - splor-mg/checks-planejamento#32(closed)
   source: Check List para Conferência das bases 2023.docx
 - cod: 30
   rule: Após conferir as bases do PPAG (Sigplan) é necessário verificar se estas estão
@@ -273,7 +273,7 @@
   functions: check_detalhamento_obras_orcam_fiscal_tesouro_plurianual
   docs: check_detalhamento_obras
   issues: 
-    - splor-mg/checks-planejamento#21
+    - splor-mg/checks-planejamento#21(closed)
   source: checklist_conferência_SISOR_2023.xlsx
 - cod: 43
   rule: Limite de Cota igual a Valor Limite anual = Valor Utilizado + Valor Transferido
