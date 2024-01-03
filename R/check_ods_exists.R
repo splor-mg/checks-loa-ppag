@@ -9,7 +9,7 @@
 check_ods_exists <- function(programas_planejamento, output = FALSE, stop_on_failure = FALSE) {
   
   df <- programas_planejamento |> 
-    filter(is_deleted_programa == FALSE & programa_cod %notin% c(705)) |> 
+    filter(is_deleted_programa == FALSE & programa_cod %notin% c(705, 999)) |> 
     distinct(programa_cod, programa_desc, ods_titulo, ods_subtitulo) |> 
     summarize(
       ods_count = sum(!is.na(ods_titulo) & ods_titulo != "18 - Não Possui Objetivo de Desenvolvimento Sustentável"), 
