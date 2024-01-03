@@ -148,3 +148,17 @@ document_hook <- function(x) {
   return(old_hook(c(header, "---", info, body)))
   
 }
+
+#' @export
+render_table <- function(data) {
+  DT::datatable(data,
+                extensions = "Buttons",
+                rownames = FALSE,
+                options = list(
+                  dom = "Blfrtip",
+                  buttons = c("copy"),
+                  searching = FALSE,
+                  lengthChange = FALSE
+                )
+  )
+}
