@@ -1,284 +1,208 @@
-- cod: 1
-  rule: Verificar em TODAS as colunas de TODAS as bases se os campos que começam com
+- code: 1
+  description: Verificar em TODAS as colunas de TODAS as bases se os campos que começam com
     “-“ (hífen) trouxeram todos os dados do sistema.
-  functions: NA
-  docs: NA
   issues: 
     - splor-mg/checks-planejamento#10
-  source: Check List para Conferência das bases 2023.docx
-- cod: 2
-  rule: Verificar se cada programa possui apenas uma área temática. É obrigatório
+- code: 2
+  description: Verificar se cada programa possui apenas uma área temática. É obrigatório
     a existência de uma área por programa;
-  functions: 
+  check: 
     - check_area_tematica_exists_programas
     - check_area_tematica_exists_acoes
     - check_area_tematica_exists_localizadores
-  docs: check_area_tematica_exists
   issues: 
     - splor-mg/checks-planejamento#5(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 3
-  rule: Verificar se cada programa possui pelo menos algum ODS;
-  functions: check_ods_exists
-  docs: check_ods
+- code: 3
+  description: Verificar se cada programa possui pelo menos algum ODS;
+  check: check_ods_exists
   issues: 
     - splor-mg/checks-planejamento#9(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 4
-  rule: Verificar se existem programas com ODS 18 - Não Possui Objetivo de Desenvolvimento
+- code: 4
+  description: Verificar se existem programas com ODS 18 - Não Possui Objetivo de Desenvolvimento
     Sustentável, conjugado com outro (s) ODS (s) (neste caso, verificar com o órgão
     qual deveria ser o correto);
-  functions: check_ods_consistency
-  docs: check_ods
+  check: check_ods_consistency
   issues: 
     - splor-mg/checks-planejamento#11(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 5
-  rule: Quantos programas existem? ______ (deverá ser a mesma quantidade das bases
+- code: 5
+  description: Quantos programas existem? ______ (deverá ser a mesma quantidade das bases
     ação e localizadores);
-  functions: check_count_programas
-  docs: check_count
-  source: Check List para Conferência das bases 2023.docx
-- cod: 6
-  rule: Os programas excluídos devem ser os mesmos nas bases programas, ações e localizadores
+  check: check_count_programas
+- code: 6
+  description: Os programas excluídos devem ser os mesmos nas bases programas, ações e localizadores
     assim como a quantidade destes;
-  functions: check_count_programas_is_deleted
-  docs: check_count
+  check: check_count_programas_is_deleted
   issues: 
     - splor-mg/checks-planejamento#12(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 7
-  rule: Os programas incluídos (novos) devem ser os mesmos nas bases programas e ação.
-  functions: check_count_programas_is_new
-  docs: check_count
-  source: Check List para Conferência das bases 2023.docx
-- cod: 8
-  rule: Verificar se as ações estratégicas possuem algum projeto estratégico;
-  functions: check_projetos_estrategicos
-  docs: check_projetos_estrategicos
-  source: Check List para Conferência das bases 2023.docx
-- cod: 9
-  rule: Verificar se cada programa possui apenas uma área temática. É obrigatório
+- code: 7
+  description: Os programas incluídos (novos) devem ser os mesmos nas bases programas e ação.
+  check: check_count_programas_is_new
+- code: 8
+  description: Verificar se as ações estratégicas possuem algum projeto estratégico;
+  check: check_projetos_estrategicos
+- code: 9
+  duplicated: 2
+  description: Verificar se cada programa possui apenas uma área temática. É obrigatório
     a existência de uma área por programa;
-  notes: duplicado (rule 2)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 10
-  rule: Verificar se os setores de governo estão corretos;
-  functions: check_setor_governo
-  docs: check_setor_governo
+- code: 10
+  description: Verificar se os setores de governo estão corretos;
+  check: check_setor_governo
   issues: 
     splor-mg/checks-planejamento#13
-  source: Check List para Conferência das bases 2023.docx
-- cod: 11
-  rule: Quantos programas existem? ______ (deverá ser a mesma quantidade da base programas
+- code: 11
+  duplicated: 5
+  description: Quantos programas existem? ______ (deverá ser a mesma quantidade da base programas
     e localizadores);
-  notes: duplicado (rule 5)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 12
-  rule: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
-  functions: check_count_acoes
-  docs: check_count
-  source: Check List para Conferência das bases 2023.docx
-- cod: 13
-  rule: Verificar se os totais dos valores orçamentários e físicos de cada ano do
+- code: 12
+  description: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
+  check: check_count_acoes
+- code: 13
+  description: Verificar se os totais dos valores orçamentários e físicos de cada ano do
     PPAG estão iguais aos da base localizadores;
-  functions: check_valores_sigplan_localizadores
-  docs: check_valores_sigplan
-  source: Check List para Conferência das bases 2023.docx
-- cod: 14
-  rule: Verificar quantos são e quais são os programas excluídos e incluídos;
-  functions: 
+  check: check_valores_sigplan_localizadores
+- code: 14
+  description: Verificar quantos são e quais são os programas excluídos e incluídos;
+  check: 
     - check_count_programas_is_deleted
     - check_count_programas_is_new
-  docs: check_count
-  source: Check List para Conferência das bases 2023.docx
-- cod: 15
-  rule: Verificar quantos são e quais são as ações excluídas e incluídas.
-  functions: check_count_acoes_is_deleted
-  docs: check_count
+- code: 15
+  description: Verificar quantos são e quais são as ações excluídas e incluídas.
+  check: check_count_acoes_is_deleted
   issues: 
     - splor-mg/checks-planejamento#26(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 16
-  rule: Quantos programas existem? _____ (deverá ser a mesma quantidade da base programas
+- code: 16
+  duplicated: 5
+  description: Quantos programas existem? _____ (deverá ser a mesma quantidade da base programas
     e localizadores);
-  notes: duplicado (rule 5)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 17
-  rule: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
-  notes: duplicado (rule 12)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 18
-  rule: Verificar se os totais dos valores orçamentários e físicos de cada ano do
+- code: 17
+  duplicated: 12
+  description: Quantas ações existem? _____ (deverá ser a mesma quantidade da base localizadores);
+- code: 18
+  duplicated: 13
+  description: Verificar se os totais dos valores orçamentários e físicos de cada ano do
     PPAG estão iguais aos da base localizadores;
-  notes: duplicado (rule 13)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 19
-  rule: Conferir os valores físicos e orçamentários (de todos os anos) das ações com
+- code: 19
+  duplicated: 13
+  description: Conferir os valores físicos e orçamentários (de todos os anos) das ações com
     a soma dos localizadores para cada ação.
-  notes: duplicado (rule 13)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 20
-  rule: Conferir se quando o indicador tiver o índice de referência “em apuração”,
+- code: 20
+  description: Conferir se quando o indicador tiver o índice de referência “em apuração”,
     também existe a justificativa;
-  functions: check_indicadores_justificativa_indice_referencia_apuracao
+  check: check_indicadores_justificativa_indice_referencia_apuracao
   issues: 
     - splor-mg/checks-planejamento#27(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 21
-  rule: Conferir se quando o indicador tiver alguma previsão “em apuração”, também
+- code: 21
+  description: Conferir se quando o indicador tiver alguma previsão “em apuração”, também
     existe a justificativa;
-  functions: check_indicadores_justificativa_previsao_em_apuracao
+  check: check_indicadores_justificativa_previsao_em_apuracao
   issues: 
     - splor-mg/checks-planejamento#27(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 22
-  rule: Verificar se algum índice de referência está com data futura;
-  functions: check_indicadores_indice_referencia_data_futura
-  docs: check_indicadores
+- code: 22
+  description: Verificar se algum índice de referência está com data futura;
+  check: check_indicadores_indice_referencia_data_futura
   issues: 
     - splor-mg/checks-planejamento#22(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 23
-  rule: Verificar se quando o indicador permanece na revisão, ele continua sem índice
+- code: 23
+  description: Verificar se quando o indicador permanece na revisão, ele continua sem índice
     de referência e/ou sem previsão das metas (isso ocorre quando estas estão marcadas
     - “em apuração”). O ideal é que esse indicador tenha índice de referência;
   issues:
     - splor-mg/checks-planejamento#30
-  source: Check List para Conferência das bases 2023.docx
-- cod: 24
-  rule: Verificar se índices de referência com valor “zero” estão corretos;
-  functions: check_indicadores_indice_referencia_zerado
-  docs: check_indicadores
-  source: Check List para Conferência das bases 2023.docx
-- cod: 25
-  rule: Verificar se indicadores com ausência de meta em algum ano estão corretos
+- code: 24
+  description: Verificar se índices de referência com valor “zero” estão corretos;
+  check: check_indicadores_indice_referencia_zerado
+- code: 25
+  description: Verificar se indicadores com ausência de meta em algum ano estão corretos
     - atentar principalmente para o último ano da revisão;
-  functions: check_indicadores_previsoes_zeradas
-  docs: check_indicadores
+  check: check_indicadores_previsoes_zeradas
   issues: 
     - splor-mg/checks-planejamento#23(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 26
-  rule: 'Observar se indicadores sem metas em anos específicos é devido à periodicidade
+- code: 26
+  description: 'Observar se indicadores sem metas em anos específicos é devido à periodicidade
     do indicador. Ex: indicador bianual só terá previsão de meta a cada dois anos;'
-  functions: check_indicadores_previsoes_zeradas
-  docs: check_indicadores
+  check: check_indicadores_previsoes_zeradas
   issues: 
     - splor-mg/checks-planejamento#23(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 27
-  rule: Verificar se as metas previstas como “zero” estão corretas;
-  functions: check_indicadores_previsoes_zeradas
-  docs: check_indicadores
-  source: Check List para Conferência das bases 2023.docx
-- cod: 28
-  rule: Verificar porque existem indicadores sem índice, mas com metas previstas;
+- code: 27
+  description: Verificar se as metas previstas como “zero” estão corretas;
+  check: check_indicadores_previsoes_zeradas
+- code: 28
+  description: Verificar porque existem indicadores sem índice, mas com metas previstas;
+  check: check_indicadores_consistency_indice_de_referencia_missing
   issues: 
     - splor-mg/checks-planejamento#31(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 29
-  rule: Verificar porque existem indicadores com índice, mas sem metas previstas;
+- code: 29
+  description: Verificar porque existem indicadores com índice, mas sem metas previstas;
+  check: check_indicadores_consistency_indice_de_referencia_exists
   issues: 
     - splor-mg/checks-planejamento#32(closed)
-  source: Check List para Conferência das bases 2023.docx
-- cod: 30
-  rule: Após conferir as bases do PPAG (Sigplan) é necessário verificar se estas estão
+- code: 30
+  description: Após conferir as bases do PPAG (Sigplan) é necessário verificar se estas estão
     compatíveis com as bases do Orçamento (Sisor);
-  functions: NA
-  docs: NA
-  issues: NA
-  source: Check List para Conferência das bases 2023.docx
-- cod: 31
-  rule: Verificar se o valor total do orçamento (orçamento fiscal e orçamento de investimento
+- code: 31
+  description: Verificar se o valor total do orçamento (orçamento fiscal e orçamento de investimento
     das empresas controladas) coincide com a projeção do PPAG para o ano seguinte;
-  functions: NA
-  docs: NA
-  issues: NA
-  source: Check List para Conferência das bases 2023.docx
-- cod: 32
-  rule: Verificar se o valor total do orçamento plurianual (orçamento fiscal e orçamento
+  check: 
+    - check_valores_qdd_fiscal
+    - check_valores_qdd_investimento
+- code: 32
+  description: Verificar se o valor total do orçamento plurianual (orçamento fiscal e orçamento
     de investimento das empresas controladas) coincide com a projeção do PPAG para
     os demais três anos;
-  functions: NA
-  docs: NA
-  issues: NA
-  source: Check List para Conferência das bases 2023.docx
-- cod: 33
-  rule: Conferir se o valor do orçamento de investimento é o mesmo nas bases do Sisor
+  check: 
+    - check_valores_qdd_plurianual
+    - check_valores_qdd_plurianual_invest
+- code: 33
+  duplicated: 31
+  description: Conferir se o valor do orçamento de investimento é o mesmo nas bases do Sisor
     e Sigplan;
-  functions: NA
-  docs: NA
-  issues: NA
-  source: Check List para Conferência das bases 2023.docx
-- cod: 34
-  rule: Conferir se o valor do orçamento fiscal é o mesmo nas bases Sisor e Sigplan
+- code: 34
+  duplicated: 31
+  description: Conferir se o valor do orçamento fiscal é o mesmo nas bases Sisor e Sigplan
     assim como da base Item fiscal;
-  functions: NA
-  docs: NA
-  issues: NA
-  source: Check List para Conferência das bases 2023.docx
-- cod: 35
-  rule: Verificar se a quantidade de ações orçamentárias do PPAG é a mesma nas bases
+- code: 35
+  description: Verificar se a quantidade de ações orçamentárias do PPAG é a mesma nas bases
     do orçamento fiscal e do orçamento de investimento. Para tanto, é importante lembrar
     de excluir as ações não orçamentárias nas bases do Sigplan.
-  functions: NA
-  docs: NA
-  issues: NA
-  source: Check List para Conferência das bases 2023.docx
-- cod: 36
-  rule: QDD Fiscal + QDD Investimento igual a Detalhamento Plurianual Fiscal + Detalhamento
+  check: NA
+- code: 36
+  duplicated: 32
+  description: QDD Fiscal + QDD Investimento igual a Detalhamento Plurianual Fiscal + Detalhamento
     Plurianual Investimento
-  functions: NA
-  docs: NA
-  issues: NA
-  source: checklist_conferência_SISOR_2023.xlsx
-- cod: 37
-  rule: QDD Fiscal igual a Orçamento da Despesa Fiscal/Itens de Despesa
-  functions: check_valores_sisor
-  docs: check_valores_sisor
-  issues: NA
-  source: checklist_conferência_SISOR_2023.xlsx
-- cod: 38
-  rule: Detalhamento de Obras igual a QDD Fiscal - elemento de despesa 51 | QDD Invest
+- code: 37
+  description: QDD Fiscal igual a Orçamento da Despesa Fiscal/Itens de Despesa
+  check: check_valores_sisor
+- code: 38
+  description: Detalhamento de Obras igual a QDD Fiscal - elemento de despesa 51 | QDD Invest
     - Cat. 4610
-  functions: NA
-  docs: NA
-  issues: NA
-  source: checklist_conferência_SISOR_2023.xlsx
-- cod: 39
-  rule: Repasse de Recursos  igual a QDD Fiscal - IPU 2 e IPU 5
-  functions: NA
-  docs: NA
-  issues: NA
-  source: checklist_conferência_SISOR_2023.xlsx
-- cod: 40
-  rule: Base Intraorçamentária de Repasse igual a QDD fiscal - modalidade 91
-  functions: 
+  check: 
+    - check_detalhamento_obras_orcam_fiscal_outros
+    - check_detalhamento_obras_orcam_fiscal_tesouro
+    - check_detalhamento_obras_orcam_investimento
+- code: 39
+  description: Repasse de Recursos  igual a QDD Fiscal - IPU 2 e IPU 5
+  check: check_repasse_recursos
+- code: 40
+  description: Base Intraorçamentária de Repasse igual a QDD fiscal - modalidade 91
+  check: 
     - check_intra_despesa
     - check_intra_receita
-  docs: check_intra_orcamentaria
-  issues: ""
-  source: checklist_conferência_SISOR_2023.xlsx
-- cod: 41
-  rule: Base Intraorçamentária de Repasse (valor UO Beneficiada) igual a Base Intraorçamentária
+- code: 41
+  description: Base Intraorçamentária de Repasse (valor UO Beneficiada) igual a Base Intraorçamentária
     Detalhamento (valor UO Beneficiada)
-  functions: check_intra_detalhamento
-  docs: check_intra_orcamentaria
+  check: check_intra_detalhamento
   issues: 
     - splor-mg/checks-planejamento#8
-  source: checklist_conferência_SISOR_2023.xlsx
-- cod: 42
-  rule: Detalhamento de Obras plurianual igual a Menor ou Igual ao GND 44 - QDD FISCAL*
-  functions: check_detalhamento_obras_orcam_fiscal_tesouro_plurianual
-  docs: check_detalhamento_obras
+- code: 42
+  description: Detalhamento de Obras plurianual igual a Menor ou Igual ao GND 44 - QDD FISCAL*
+  check: 
+    - check_detalhamento_obras_orcam_fiscal_outros_plurianual
+    - check_detalhamento_obras_orcam_fiscal_tesouro_plurianual
+    - check_detalhamento_obras_orcam_investimento_plurianual
   issues: 
     - splor-mg/checks-planejamento#21(closed)
-  source: checklist_conferência_SISOR_2023.xlsx
-- cod: 43
-  rule: Limite de Cota igual a Valor Limite anual = Valor Utilizado + Valor Transferido
-  functions: check_limite
-  docs: check_limite
+- code: 43
+  description: Limite de Cota igual a Valor Limite anual = Valor Utilizado + Valor Transferido
+  check: check_limite
   issues: 
     - splor-mg/checks-planejamento#24(closed)
-  source: checklist_conferência_SISOR_2023.xlsx
