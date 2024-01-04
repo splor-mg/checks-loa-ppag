@@ -15,6 +15,10 @@ RoxygenNote: 7.2.3
 Imports: 
   data.table,
   validate,
+  frictionless,
+  here,
+  DT,
+  glue,
   formattable,
   stringr,
   dplyr,
