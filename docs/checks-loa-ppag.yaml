@@ -164,7 +164,9 @@
   description: Verificar se a quantidade de ações orçamentárias do PPAG é a mesma nas bases
     do orçamento fiscal e do orçamento de investimento. Para tanto, é importante lembrar
     de excluir as ações não orçamentárias nas bases do Sigplan.
-  check: NA
+  check: 
+    - check_valores_qdd_fiscal
+    - check_valores_qdd_plurianual
 - code: 36
   duplicated: 32
   description: QDD Fiscal + QDD Investimento igual a Detalhamento Plurianual Fiscal + Detalhamento
