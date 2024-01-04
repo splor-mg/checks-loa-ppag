@@ -1,14 +1,14 @@
-Package: checks.planejamento
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Package: checksplanejamento
+Title: Validação das bases de dados do planejamento
+Version: 0.0.0.9001
 Authors@R: 
     person("Francisco", "Alves", , "francisco.junior@planejamento.mg.gov.br", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
         license
-URL: https://github.com/splor-mg/checks-loa-ppag
-BugReports: https://github.com/splor-mg/checks-loa-ppag/issues
+URL: https://github.com/splor-mg/checks-planejamento
+BugReports: https://github.com/splor-mg/checks-planejamento/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
