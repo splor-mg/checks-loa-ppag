@@ -37,6 +37,12 @@
     <loc>/reference/check_count_programas_is_new.html</loc>
   </url>
   <url>
+    <loc>/reference/check_detalhamento_obras_acoes_exists.html</loc>
+  </url>
+  <url>
+    <loc>/reference/check_detalhamento_obras_numero_siad_duplicated.html</loc>
+  </url>
+  <url>
     <loc>/reference/check_detalhamento_obras_orcam_fiscal_outros.html</loc>
   </url>
   <url>
