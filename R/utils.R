@@ -162,3 +162,7 @@ render_table <- function(data) {
                 )
   )
 }
+
+is_url <- function(x) {
+  grepl("http:|https:", x)
+}
