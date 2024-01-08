@@ -9,6 +9,7 @@ check_all(
   acoes_planejamento,
   localizadores_todos_planejamento,
   indicadores_planejamento,
+  base_categoria_pessoal,
   base_detalhamento_obras,
   base_intra_orcamentaria_detalhamento,
   base_intra_orcamentaria_repasse,
@@ -22,6 +23,7 @@ check_all(
   base_qdd_plurianual_invest,
   base_repasse_recursos,
   desc_setor_governo,
+  uo_acao_inativo_civil,
   output = FALSE,
   stop_on_failure = FALSE
 )
