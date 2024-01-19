@@ -24,6 +24,7 @@ check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadore
   key <- c("programa_cod", "area_tematica_cod", "acao_cod", "uo_acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
   
   x <- acoes_planejamento |> 
+        mutate(across(starts_with("vr_"), replace_na)) |> 
         aggregate("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
                   by = key,
                   filter = is_deleted_programa == FALSE & is_deleted_acao == FALSE,
@@ -37,9 +38,11 @@ check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadore
                     vr_meta_fisica_ano2 = "vr_meta_fisica_ano2_acoes",
                     vr_meta_fisica_ano3 = "vr_meta_fisica_ano3_acoes"
                   ))
+        
   
   # uma acao pode ter sido deletada sem que os seus localizadores sejam marcados como deletados
   y <- localizadores_todos_planejamento |> 
+        mutate(across(starts_with("vr_"), replace_na)) |> 
         aggregate("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
                   filter = is_deleted_programa == FALSE & is_deleted_acao == FALSE & is_deleted_localizador == FALSE,
                   by = key,
@@ -53,6 +56,7 @@ check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadore
                     vr_meta_fisica_ano2 = "vr_meta_fisica_ano2_localizadores",
                     vr_meta_fisica_ano3 = "vr_meta_fisica_ano3_localizadores"
                   ))
+        
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(
