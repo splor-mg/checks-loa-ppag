@@ -1,6 +1,6 @@
 Package: checksplanejamento
 Title: Validação das bases de dados do planejamento
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: 
     person("Francisco", "Alves", , "francisco.junior@planejamento.mg.gov.br", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
