@@ -48,9 +48,9 @@ check_result <- function(df, report, status = "ok", stop_on_failure, output, sum
   summary <- summary %||% check_summary
   if (any(check_summary$error)) {stop("Erro durante a validação da expressão ", check_summary$expression)}
   valid <- isTRUE(all.equal(check_summary$items, check_summary$passes))
-  pass <- validate::satisfying(df, report)
-  fail <- validate::violating(df, report, include_missing = TRUE)
-  info <- validate::satisfying(df, report)
+  pass <- tryCatch(validate::satisfying(df, report), error = function(e) NULL)
+  fail <- tryCatch(validate::violating(df, report, include_missing = TRUE), error = function(e) NULL)
+  info <- tryCatch(validate::satisfying(df, report), error = function(e) NULL)
   if(valid) {
     info <- summary
   } else {
