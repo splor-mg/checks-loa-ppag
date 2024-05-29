@@ -4,7 +4,7 @@
 #' 
 #'
 #' @export
-check_objetivos_estrategicos_exist <- function(programas_planejamento, output = FALSE, stop_on_failure = FALSE) {
+check_objetivos_estrategicos_exists <- function(programas_planejamento, output = FALSE, stop_on_failure = FALSE) {
 
   df <- programas_planejamento |> 
     filter(is_deleted_programa == FALSE) |> 
