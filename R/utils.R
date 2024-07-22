@@ -42,7 +42,7 @@ as_accounting <- function(df, pattern = "^vlr_|^vl_|^vr", replace_missing = FALS
   result[]
 }
 
-check_result <- function(df, report, status = "ok", stop_on_failure, output, summary = NULL) {
+check_result <- function(df, report, status = "ok", stop_on_failure, output, output_tojson = FALSE, summary = NULL, output_file = "logs/logfile.jsonl", msg_template) {
   check_summary <- validate::summary(report)
   # check_summary is too big for reporting, need only items, passes, fails, expression
   summary <- summary %||% check_summary
@@ -57,20 +57,36 @@ check_result <- function(df, report, status = "ok", stop_on_failure, output, sum
     if (stop_on_failure) { stop(status) }
     info <- fail
   }
-  
+
   if (output) {
-    result <- list("valid" = valid, 
+    result <- list("valid" = valid,
                    "summary" = summary,
                    "status" = status,
                    "info" = info,
                    "fail" = fail,
-                   "pass" = pass)  
+                   "pass" = pass)
   } else {
     result <- valid
   }
-  
+
+  # Write failure messages as a JSONLines file
+  if (output_tojson && !is.null(fail)) {
+    con <- file(output_file, open = "a", encoding = "UTF-8")
+    for (i in seq_len(nrow(fail))) {
+      log_entry <- list(
+        message = glue_data(fail[i, ], msg_template),
+        level = "error",
+        timestamp = Sys.time(),
+        valid = valid
+      )
+      writeLines(jsonlite::toJSON(log_entry, auto_unbox = TRUE), con)
+    }
+    close(con)
+  }
+
   result
 }
+
 
 aggregate <- function(data, cols, by = NULL, rename = NULL, filter = NULL) {
   data <- as_data_table(data)
