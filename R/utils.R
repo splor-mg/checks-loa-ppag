@@ -42,7 +42,10 @@ as_accounting <- function(df, pattern = "^vlr_|^vl_|^vr", replace_missing = FALS
   result[]
 }
 
-check_result <- function(df, report, status = "ok", stop_on_failure, output, output_tojson = FALSE, summary = NULL, output_file = "logs/logfile.jsonl", msg_template) {
+check_result <- function(df, report, status = "ok", stop_on_failure, output, summary = NULL,
+                         json_outfile = NULL, log_level = "ERROR",
+                         msg_template = "Foram encontrados erros no teste.") {
+
   check_summary <- validate::summary(report)
   # check_summary is too big for reporting, need only items, passes, fails, expression
   summary <- summary %||% check_summary
@@ -69,14 +72,20 @@ check_result <- function(df, report, status = "ok", stop_on_failure, output, out
     result <- valid
   }
 
-  # Write failure messages as a JSONLines file
-  if (output_tojson && !is.null(fail)) {
-    con <- file(output_file, open = "a", encoding = "UTF-8")
+  output_json_env = {tmp <- Sys.getenv("LOG_FILE", unset = NA); if (is.na(tmp)) NULL else tmp}
+
+  # prioritizes the environment variable
+  json_filename <- output_json_env %||% json_outfile
+
+  # Write failure messages as a JSON Lines file
+  if (!is.null(json_outfile) && !valid) {
+
+    con <- file(json_filename, open = "a", encoding = "UTF-8")
     for (i in seq_len(nrow(fail))) {
       log_entry <- list(
-        message = glue_data(fail[i, ], msg_template),
-        level = "error",
+        log_level = log_level,
         timestamp = Sys.time(),
+        message = glue_data(fail[i, ], msg_template),
         valid = valid
       )
       writeLines(jsonlite::toJSON(log_entry, auto_unbox = TRUE), con)

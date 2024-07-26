@@ -5,7 +5,8 @@
 #' @export
 check_area_tematica_exists_acoes <- function(acoes_planejamento,
                                              stop_on_failure = FALSE,
-                                             output = FALSE) {
+                                             output = FALSE,
+                                             json_outfile = NULL, log_level = "ERROR") {
   df <- acoes_planejamento |>
     filter(is_deleted_acao == FALSE) |>
     distinct(
@@ -19,5 +20,5 @@ check_area_tematica_exists_acoes <- function(acoes_planejamento,
 
   report <- check_that(df, area_tematica_cod_count == 1)
 
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output, json_outfile = json_outfile, log_level = log_level)
 }

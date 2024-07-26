@@ -3,7 +3,8 @@
 #' É obrigatório a existência de uma área por programa (ie. _one and only one_).
 #'
 #' @export
-check_area_tematica_exists_localizadores <- function(localizadores_todos_planejamento, stop_on_failure = FALSE, output = FALSE) {
+check_area_tematica_exists_localizadores <- function(localizadores_todos_planejamento, stop_on_failure = FALSE, output = FALSE,
+                                             json_outfile = NULL, log_level = "ERROR") {
   df <- localizadores_todos_planejamento |>
     filter(is_deleted_localizador == FALSE) |>
     distinct(programa_cod, programa_desc, area_tematica_cod, area_tematica_desc) |>
@@ -12,5 +13,6 @@ check_area_tematica_exists_localizadores <- function(localizadores_todos_planeja
 
   report <- check_that(df, area_tematica_cod_count == 1)
 
-  check_result(df, report, status = "Base localizadores_todos_planejamento possui erros.", stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, status = "Base localizadores_todos_planejamento possui erros.",
+  stop_on_failure = stop_on_failure, output = output, json_outfile = json_outfile, log_level = log_level)
 }

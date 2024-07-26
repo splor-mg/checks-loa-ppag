@@ -5,7 +5,10 @@
 #' Detalhamento de Obras plurianual igual a Menor ou Igual ao GND 44 - QDD FISCAL*
 #'
 #' @export
-check_detalhamento_obras_orcam_fiscal_outros <- function(base_qdd_fiscal, base_detalhamento_obras, stop_on_failure = FALSE, output = FALSE) {
+check_detalhamento_obras_orcam_fiscal_outros <- function(base_qdd_fiscal, base_detalhamento_obras,
+														stop_on_failure = FALSE, output = FALSE,
+														json_outfile = NULL, log_level = "ERROR") {
+
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
   x <- base_qdd_fiscal |> 
@@ -16,5 +19,5 @@ check_detalhamento_obras_orcam_fiscal_outros <- function(base_qdd_fiscal, base_d
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(vlr_loa_desp == vlr_outros_ano0)
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output, json_outfile = json_outfile, log_level = log_level)
 }

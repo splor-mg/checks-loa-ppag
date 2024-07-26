@@ -5,7 +5,8 @@ check_detalhamento_obras_acoes_exists <- function(
     base_detalhamento_obras, 
     acoes_planejamento, 
     stop_on_failure = FALSE, 
-    output = FALSE) {
+    output = FALSE,
+    json_outfile = NULL, log_level = "ERROR") {
   
   x <- base_detalhamento_obras |> 
     distinct(uo_cod, acao_cod)
