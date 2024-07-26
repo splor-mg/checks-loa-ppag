@@ -83,6 +83,7 @@ check_result <- function(df, report, status = "ok", stop_on_failure, output, sum
     con <- file(json_filename, open = "a", encoding = "UTF-8")
     for (i in seq_len(nrow(fail))) {
       log_entry <- list(
+      	type = as.character(sys.calls()[[sys.parent()]][[1]]),
         log_level = log_level,
         timestamp = Sys.time(),
         message = glue_data(fail[i, ], msg_template),
