@@ -6,7 +6,9 @@
 check_area_tematica_exists_acoes <- function(acoes_planejamento,
                                              stop_on_failure = FALSE,
                                              output = FALSE,
-                                             json_outfile = NULL, log_level = "ERROR") {
+                                             json_outfile = NULL, log_level = "ERROR",
+                                             msg_template = NULL
+                                             ) {
   df <- acoes_planejamento |>
     filter(is_deleted_acao == FALSE) |>
     distinct(
@@ -20,5 +22,12 @@ check_area_tematica_exists_acoes <- function(acoes_planejamento,
 
   report <- check_that(df, area_tematica_cod_count == 1)
 
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output, json_outfile = json_outfile, log_level = log_level)
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
+  
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output, 
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

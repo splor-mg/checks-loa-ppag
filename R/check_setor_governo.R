@@ -18,6 +18,11 @@ check_setor_governo <- function(acoes_planejamento,
   df <- merge(x, y, by = "uo_acao_cod", all = TRUE)
 
   report <- check_that(df, setor_governo == setor_governo_referencia)
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
 
   check_result(
     df, report,

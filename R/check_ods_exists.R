@@ -18,5 +18,10 @@ check_ods_exists <- function(programas_planejamento, output = FALSE, stop_on_fai
   
   report <- check_that(df, ods_count > 0)
   
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

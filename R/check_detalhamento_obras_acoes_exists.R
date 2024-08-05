@@ -18,5 +18,11 @@ check_detalhamento_obras_acoes_exists <- function(
   
   df <- merge(x, y, all.x = TRUE, by = c("uo_cod", "acao_cod"))
   report <- df |> check_that(is.na(is_deleted_acao))
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

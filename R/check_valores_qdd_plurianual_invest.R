@@ -26,6 +26,11 @@ check_valores_qdd_plurianual_invest <- function(base_qdd_plurianual_invest, acoe
     vlr_loa_desp_invest_ano2 == vr_meta_orcamentaria_ano2,
     vlr_loa_desp_invest_ano3 == vr_meta_orcamentaria_ano3
   )
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
 
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

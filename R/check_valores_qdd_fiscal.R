@@ -5,7 +5,10 @@
 #' para o ano seguinte
 #'
 #' @export
-check_valores_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, stop_on_failure = FALSE, output = FALSE, output_tojson = FALSE, msg_template = "") {
+check_valores_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, stop_on_failure = FALSE, 
+                                     output = FALSE, output_tojson = FALSE, 
+                                     msg_template = NULL) {
+  
   key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
 
   x <- base_qdd_fiscal |>
@@ -20,5 +23,15 @@ check_valores_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, stop_o
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_desp == vr_meta_orcamentaria_ano0)
+  
+  default_message = "Funcional programática {programa_cod}.{acao_cod}.{funcao_cod}.{subfuncao_cod} da UO {uo_cod} com valor na base QDD Fiscal ({vlr_loa_desp}) diferente da base Açoes Planejamento do SIGPLAN ({vr_meta_orcamentaria_ano0}"
+  
+  msg_template = msg_template %||% default_message
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output, output_tojson = output_tojson, msg_template = msg_template)
 }

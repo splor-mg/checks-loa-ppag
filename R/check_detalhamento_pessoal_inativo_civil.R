@@ -30,5 +30,11 @@ check_detalhamento_pessoal_inativo_civil <- function(base_categoria_pessoal,
         merge(z, by.x = "uo_inativo_cod" , by.y = "uo_cod", all = TRUE)
   
   report <- df |> check_that(if (vlr_loa_desp > 1000) !is.na(quantidade) & quantidade > 0)
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

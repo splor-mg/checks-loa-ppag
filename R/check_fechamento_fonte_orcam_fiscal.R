@@ -14,5 +14,11 @@ check_fechamento_fonte_orcam_fiscal <- function(base_orcam_receita_fiscal, base_
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_rec == vlr_loa_desp)
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

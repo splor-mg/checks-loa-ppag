@@ -21,6 +21,11 @@ check_indicadores_justificativa_previsao_em_apuracao <- function(
         (stringr::str_length(justificativa_status_apuracao_previsoes) > 50)
     
   )
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
 
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

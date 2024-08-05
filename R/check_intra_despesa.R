@@ -42,6 +42,12 @@ check_intra_despesa <- function(base_orcam_despesa_item_fiscal, base_intra_orcam
 
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_desp == vlr_repassado)
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report,
     stop_on_failure = stop_on_failure,
     output = output,

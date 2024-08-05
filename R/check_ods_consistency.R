@@ -16,5 +16,10 @@ check_ods_consistency <- function(programas_planejamento, output = FALSE, stop_o
     
   report <- check_that(df, is_unique(programa_cod))
   
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)  
 }

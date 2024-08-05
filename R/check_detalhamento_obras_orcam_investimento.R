@@ -16,5 +16,11 @@ check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento, b
   
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
   report <- df |> check_that(vlr_loa_desp_invest == vlr_outros_ano0)
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

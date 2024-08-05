@@ -21,5 +21,11 @@ check_detalhamento_obras_orcam_fiscal_tesouro_plurianual <- function(base_qdd_pl
     vlr_loa_desp_ano2 >= vlr_tesouro_ano2,
     vlr_loa_desp_ano3 >= vlr_tesouro_ano3
   )
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

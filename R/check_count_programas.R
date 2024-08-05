@@ -26,6 +26,11 @@ check_count_programas <- function(programas_planejamento,
     merge(z, by = "programa_cod", all = TRUE)
 
   report <- check_that(df, programas == acoes, acoes == localizadores)
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
 
   check_result(
     df, report,

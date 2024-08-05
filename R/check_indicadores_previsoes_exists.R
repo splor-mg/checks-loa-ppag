@@ -14,5 +14,10 @@ check_indicadores_previsoes_exists <- function(indicadores_planejamento, output 
                                  if(is_em_apuracao_ano2 == FALSE) !is.na(previsao_para_ano2),
                                  if(is_em_apuracao_ano3 == FALSE) !is.na(previsao_para_ano3))
   
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }

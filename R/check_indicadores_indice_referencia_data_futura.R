@@ -12,6 +12,11 @@ check_indicadores_indice_referencia_data_futura <- function(indicadores_planejam
   # operador menor ou igual pois o indice de referencia pode ter sido
   # calculado no dia da atualizacao (eg. Indicador "SUCESSO DO PLANEJAMENTO ORÇAMENTÁRIO")
   report <- check_that(df, dt_apuracao <= as.Date(updated_at))
+  
+  default_message = "String interpolada {placeholder}."
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
 
   check_result(df, report, stop_on_failure = stop_on_failure, output = output)
 }
