@@ -4,7 +4,9 @@
 #' investimento das empresas controladas) coincide com a projeção do PPAG
 #' para o ano seguinte
 #' @export
-check_repasse_recursos <- function(base_qdd_fiscal, base_repasse_recursos, stop_on_failure = FALSE, output = FALSE) {
+check_repasse_recursos <- function(base_qdd_fiscal, base_repasse_recursos, stop_on_failure = FALSE, output = FALSE,
+                                   json_outfile = NULL, log_level = "ERROR",
+                                   msg_template = NULL) {
   key <- c("uo_cod", "grupo_cod", "iag_cod", "fonte_cod", "ipu_cod")
 
   x <- base_qdd_fiscal |>
@@ -24,5 +26,6 @@ check_repasse_recursos <- function(base_qdd_fiscal, base_repasse_recursos, stop_
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

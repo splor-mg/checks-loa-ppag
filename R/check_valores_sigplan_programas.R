@@ -20,7 +20,9 @@
 #' - identificador de procedência e uso (IPU)
 #'  
 #' @export
-check_valores_sigplan_programas <- function(acoes_planejamento, programas_planejamento, stop_on_failure = FALSE, output = FALSE) {
+check_valores_sigplan_programas <- function(acoes_planejamento, programas_planejamento, stop_on_failure = FALSE, output = FALSE,
+                                            json_outfile = NULL, log_level = "ERROR",
+                                            msg_template = NULL) {
   key <- c("programa_cod", "area_tematica_cod", "uo_programa_cod")
   
   x <- acoes_planejamento |> 
@@ -58,5 +60,6 @@ check_valores_sigplan_programas <- function(acoes_planejamento, programas_planej
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

@@ -9,7 +9,8 @@ check_count_acoes_is_deleted <- function(acoes_planejamento,
                                          localizadores_todos_planejamento,
                                          output = FALSE,
                                          stop_on_failure = FALSE,
-                                         json_outfile = NULL, log_level = "ERROR") {
+                                         json_outfile = NULL, log_level = "ERROR",
+                                         msg_template = NULL) {
   x <- acoes_planejamento |>
     filter(is_deleted_acao == TRUE) |>
     distinct(uo_acao_cod, uo_acao_nome, acao_cod, acao_desc) |>
@@ -31,6 +32,7 @@ check_count_acoes_is_deleted <- function(acoes_planejamento,
 
   check_result(
     df, report,
-    stop_on_failure = stop_on_failure, output = output, summary = count(df), json_outfile = json_outfile, log_level = log_level
+    stop_on_failure = stop_on_failure, output = output, summary = count(df), 
+    json_outfile = json_outfile, log_level = log_level, msg_template = msg_template
   )
 }

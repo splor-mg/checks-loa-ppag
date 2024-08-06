@@ -5,7 +5,9 @@
 #' Detalhamento de Obras plurianual igual a Menor ou Igual ao GND 44 - QDD FISCAL*
 #'
 #' @export
-check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento, base_detalhamento_obras, stop_on_failure = FALSE, output = FALSE) {
+check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento, base_detalhamento_obras, stop_on_failure = FALSE, output = FALSE,
+                                                        json_outfile = NULL, log_level = "ERROR",
+                                                        msg_template = NULL) {
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
   x <- base_qdd_investimento |> 
@@ -22,5 +24,6 @@ check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento, b
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

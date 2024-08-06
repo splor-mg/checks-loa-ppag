@@ -7,7 +7,8 @@
 #' @export
 check_detalhamento_obras_orcam_fiscal_outros <- function(base_qdd_fiscal, base_detalhamento_obras,
 														stop_on_failure = FALSE, output = FALSE,
-														json_outfile = NULL, log_level = "ERROR") {
+														json_outfile = NULL, log_level = "ERROR",
+														msg_template = NULL) {
 
   key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
   
@@ -25,5 +26,6 @@ check_detalhamento_obras_orcam_fiscal_outros <- function(base_qdd_fiscal, base_d
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output, json_outfile = json_outfile, log_level = log_level)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output, 
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

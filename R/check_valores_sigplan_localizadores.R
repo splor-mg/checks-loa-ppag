@@ -20,7 +20,9 @@
 #' - identificador de procedência e uso (IPU)
 #'  
 #' @export
-check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadores_todos_planejamento, stop_on_failure = FALSE, output = FALSE) {
+check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadores_todos_planejamento, stop_on_failure = FALSE, output = FALSE,
+                                                json_outfile = NULL, log_level = "ERROR",
+                                                msg_template = NULL) {
   key <- c("programa_cod", "area_tematica_cod", "acao_cod", "uo_acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
   
   x <- acoes_planejamento |> 
@@ -74,5 +76,6 @@ check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadore
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

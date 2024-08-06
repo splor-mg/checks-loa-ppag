@@ -5,7 +5,9 @@
 #' para o ano seguinte
 #'
 #' @export
-check_valores_qdd_investimento <- function(base_qdd_investimento, acoes_planejamento, stop_on_failure = FALSE, output = FALSE) {
+check_valores_qdd_investimento <- function(base_qdd_investimento, acoes_planejamento, stop_on_failure = FALSE, output = FALSE,
+                                           json_outfile = NULL, log_level = "ERROR",
+                                           msg_template = NULL) {
   key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
 
   x <- base_qdd_investimento |>
@@ -27,5 +29,6 @@ check_valores_qdd_investimento <- function(base_qdd_investimento, acoes_planejam
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
 
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

@@ -24,7 +24,9 @@
 check_valores_sisor <- function(base_qdd_fiscal,
                                      base_orcam_despesa_item_fiscal,
                                      stop_on_failure = FALSE,
-                                     output = FALSE) {
+                                     output = FALSE, 
+                                json_outfile = NULL, log_level = "ERROR",
+                                msg_template = NULL) {
   key <- c(
     "orgao_cod", "uo_cod",
     "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod",
@@ -56,6 +58,7 @@ check_valores_sisor <- function(base_qdd_fiscal,
     report,
     stop_on_failure = stop_on_failure,
     output = output,
-    summary = aggregate(df, "vlr")
+    summary = aggregate(df, "vlr"),
+    json_outfile = json_outfile, log_level = log_level, msg_template = msg_template
   )
 }

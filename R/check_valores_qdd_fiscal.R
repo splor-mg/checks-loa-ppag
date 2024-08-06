@@ -5,8 +5,8 @@
 #' para o ano seguinte
 #'
 #' @export
-check_valores_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, stop_on_failure = FALSE, 
-                                     output = FALSE, output_tojson = FALSE, 
+check_valores_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, stop_on_failure = FALSE, output = FALSE, 
+                                     json_outfile = NULL, log_level = "ERROR",
                                      msg_template = NULL) {
   
   key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
@@ -33,5 +33,5 @@ check_valores_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, stop_o
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output, output_tojson = output_tojson, msg_template = msg_template)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output, json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

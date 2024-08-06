@@ -1,7 +1,9 @@
 #' Fechamento receita e despesa por fonte do orçamento de investimento
 #'
 #' @export
-check_fechamento_fonte_orcam_investimento <- function(base_orcam_receita_investimento, base_qdd_investimento, stop_on_failure = FALSE, output = FALSE) {
+check_fechamento_fonte_orcam_investimento <- function(base_orcam_receita_investimento, base_qdd_investimento, stop_on_failure = FALSE, output = FALSE,
+                                                      json_outfile = NULL, log_level = "ERROR",
+                                                      msg_template = NULL) {
   key <- c("fonte_cod")
 
   x <- base_orcam_receita_investimento |>
@@ -26,5 +28,6 @@ check_fechamento_fonte_orcam_investimento <- function(base_orcam_receita_investi
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
 }

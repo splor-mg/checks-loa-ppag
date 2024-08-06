@@ -4,7 +4,9 @@
 #' que outro ODS também seja selecionado
 #'
 #' @export
-check_ods_consistency <- function(programas_planejamento, output = FALSE, stop_on_failure = FALSE) {
+check_ods_consistency <- function(programas_planejamento, output = FALSE, stop_on_failure = FALSE,
+                                  json_outfile = NULL, log_level = "ERROR",
+                                  msg_template = NULL) {
   
   PROGRAMAS <- programas_planejamento |> 
     filter(ods_titulo == "18 - Não Possui Objetivo de Desenvolvimento Sustentável") |> 
@@ -21,5 +23,6 @@ check_ods_consistency <- function(programas_planejamento, output = FALSE, stop_o
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)  
+  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
+               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)  
 }

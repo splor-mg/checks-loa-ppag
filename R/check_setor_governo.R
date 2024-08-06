@@ -8,7 +8,9 @@
 check_setor_governo <- function(acoes_planejamento,
                                 aux_setor_governo,
                                 output = FALSE,
-                                stop_on_failure = FALSE) {
+                                stop_on_failure = FALSE,
+                                json_outfile = NULL, log_level = "ERROR",
+                                msg_template = NULL) {
   x <- acoes_planejamento |>
     distinct(uo_acao_cod, setor_governo)
 
@@ -26,6 +28,7 @@ check_setor_governo <- function(acoes_planejamento,
 
   check_result(
     df, report,
-    stop_on_failure = stop_on_failure, output = output
+    stop_on_failure = stop_on_failure, output = output,
+    json_outfile = json_outfile, log_level = log_level, msg_template = msg_template
   )
 }

@@ -4,7 +4,9 @@
 #' base intraorçamentária de repasse estão adequadamente detalhadas no orçamento.
 #'
 #' @export
-check_intra_receita <- function(base_orcam_receita_fiscal, base_intra_orcamentaria_repasse, stop_on_failure = FALSE, output = FALSE) {
+check_intra_receita <- function(base_orcam_receita_fiscal, base_intra_orcamentaria_repasse, stop_on_failure = FALSE, output = FALSE,
+                                json_outfile = NULL, log_level = "ERROR",
+                                msg_template = NULL) {
   key <- c("uo_cod")
 
   x <- base_orcam_receita_fiscal |>
@@ -27,6 +29,7 @@ check_intra_receita <- function(base_orcam_receita_fiscal, base_intra_orcamentar
   check_result(df, report,
     stop_on_failure = stop_on_failure, 
     output = output, 
-    summary = aggregate(df, "vlr")
+    summary = aggregate(df, "vlr"),
+    json_outfile = json_outfile, log_level = log_level, msg_template = msg_template
   )
 }
