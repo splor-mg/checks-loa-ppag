@@ -17,7 +17,7 @@ check_indicadores_justificativa_indice_referencia_em_apuracao <- function(indica
       (stringr::str_length(justificativa_status_apuracao_indice_ref) > 50)
   )
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

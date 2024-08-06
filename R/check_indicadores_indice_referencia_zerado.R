@@ -11,7 +11,7 @@ check_indicadores_indice_referencia_zerado <- function(indicadores_planejamento,
 
   report <- check_that(df, indice_de_referencia != 0)
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

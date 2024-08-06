@@ -25,7 +25,7 @@ check_count_acoes_is_deleted <- function(acoes_planejamento,
 
   report <- check_that(df, acoes == localizadores)
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

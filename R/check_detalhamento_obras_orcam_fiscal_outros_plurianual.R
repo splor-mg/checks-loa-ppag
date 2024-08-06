@@ -24,7 +24,7 @@ check_detalhamento_obras_orcam_fiscal_outros_plurianual <- function(base_qdd_plu
     vlr_loa_desp_ano3 >= vlr_outros_ano3
   )
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

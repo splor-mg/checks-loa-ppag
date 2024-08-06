@@ -10,7 +10,7 @@ check_intra_detalhamento <- function(base_intra_orcamentaria_detalhamento, stop_
   df <- base_intra_orcamentaria_detalhamento
   report <- df |> check_that(vlr_recebido == vlr_detalhado)
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

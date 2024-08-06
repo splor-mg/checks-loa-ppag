@@ -11,7 +11,7 @@ check_limite_plurianual <- function(base_limite_cota, stop_on_failure = FALSE, o
     vlr_limite_ano3 == vlr_utilizado_ano3
   )
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

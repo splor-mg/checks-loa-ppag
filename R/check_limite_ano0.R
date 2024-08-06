@@ -9,7 +9,7 @@ check_limite_ano0 <- function(base_limite_cota, stop_on_failure = FALSE, output 
     vlr_limite_ano0 == vlr_utilizado_ano0 + vlr_transferido
   )
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

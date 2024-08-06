@@ -21,7 +21,7 @@ check_count_programas_is_new <- function(programas_planejamento,
 
   report <- check_that(df, programas == acoes)
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

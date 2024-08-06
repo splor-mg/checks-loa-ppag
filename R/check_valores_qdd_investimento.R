@@ -24,7 +24,7 @@ check_valores_qdd_investimento <- function(base_qdd_investimento, acoes_planejam
 
   report <- df |> check_that(vlr_loa_desp_invest == vr_meta_orcamentaria_ano0)
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

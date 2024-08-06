@@ -28,7 +28,7 @@ check_valores_qdd_fiscal <- function(base_qdd_fiscal, acoes_planejamento, stop_o
   
   msg_template = msg_template %||% default_message
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

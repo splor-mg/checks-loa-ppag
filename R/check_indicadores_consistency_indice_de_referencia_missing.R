@@ -21,7 +21,7 @@ check_indicadores_consistency_indice_de_referencia_missing <- function(
     
   )
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

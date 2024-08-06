@@ -15,7 +15,7 @@ check_indicadores_indice_referencia_data_futura <- function(indicadores_planejam
   # calculado no dia da atualizacao (eg. Indicador "SUCESSO DO PLANEJAMENTO ORÇAMENTÁRIO")
   report <- check_that(df, dt_apuracao <= as.Date(updated_at))
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

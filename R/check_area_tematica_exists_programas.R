@@ -14,7 +14,7 @@ check_area_tematica_exists_programas <- function(programas_planejamento, stop_on
 
   report <- check_that(df, area_tematica_cod_count == 1)
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

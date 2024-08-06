@@ -21,7 +21,7 @@ check_repasse_recursos <- function(base_qdd_fiscal, base_repasse_recursos, stop_
   df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
   report <- df |> check_that(vlr_loa_desp == vlr_repasse)
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

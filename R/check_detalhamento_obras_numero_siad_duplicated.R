@@ -15,7 +15,7 @@ check_detalhamento_obras_numero_siad_duplicated <- function(
   df <- x
   report <- df |> check_that(is_unique(uo_cod, acao_cod, numero_da_obra_siad))
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

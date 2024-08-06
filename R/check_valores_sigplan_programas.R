@@ -55,7 +55,7 @@ check_valores_sigplan_programas <- function(acoes_planejamento, programas_planej
     vr_meta_orcamentaria_ano2_acoes == vr_meta_orcamentaria_ano2_programas,
     vr_meta_orcamentaria_ano3_acoes == vr_meta_orcamentaria_ano3_programas)
   
-  default_message = "String interpolada {placeholder}."
+  default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
