@@ -4,7 +4,7 @@
 #' base intraorçamentária de repasse estão adequadamente detalhadas no orçamento.
 #'
 #' @export
-check_intra_despesa <- function(base_orcam_despesa_item_fiscal, base_intra_orcamentaria_repasse, stop_on_failure = FALSE, output = FALSE
+check_intra_despesa <- function(base_orcam_despesa_item_fiscal, base_intra_orcamentaria_repasse, stop_on_failure = FALSE, output = FALSE,
                                 json_outfile = NULL, log_level = "ERROR",
                                 msg_template = NULL) {
   key <- c("uo_cod", "identificador_tipo_acao_cod", "projeto_atividade_cod", "grupo_cod", "modalidade_cod", "elemento_cod", "item_cod")
