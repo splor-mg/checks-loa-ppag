@@ -22,9 +22,11 @@ check_area_tematica_exists_acoes <- function(acoes_planejamento,
 
   report <- check_that(df, area_tematica_cod_count == 1)
 
-  default_message = "Na base acoes_planejamento o programa {programa_cod}\n",
+  default_message = paste0(
+                    "Na base acoes_planejamento o programa {programa_cod}\n",
                     "possui {area_tematica_cod_count} área(s) temática(s).\n",
                     "Cada programa deve possuir uma e somente uma área temática."
+                    )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
