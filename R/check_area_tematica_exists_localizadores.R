@@ -23,8 +23,8 @@ check_area_tematica_exists_localizadores <- function(localizadores_todos_planeja
   report <- check_that(df, area_tematica_cod_count == 1)
 
   default_message = paste0(
-                    "Na base localizadores_planejamento o programa {programa_cod}\n",
-                    "possui {area_tematica_cod_count} área(s) temática(s).\n",
+                    "Na base localizadores_planejamento o programa {programa_cod}",
+                    "possui {area_tematica_cod_count} área(s) temática(s).",
                     "Cada programa deve possuir uma e somente uma área temática."
                     )
   
