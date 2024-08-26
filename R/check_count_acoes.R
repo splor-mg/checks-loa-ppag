@@ -33,18 +33,18 @@ check_count_acoes <- function(acoes_planejamento,
 
   report <- check_that(df, acoes == localizadores)
   
-  default_message <- ifelse(is.na(localizadores),
+  default_message <- ifelse(is.na(df$localizadores),
                             paste0(
-                              "A ação {acao_cod}, da UO {uo_acao_cod} ",
+                              "A ação {df$acao_cod}, da UO {df$uo_acao_cod} ",
                               "consta na base acoes_planejamento, porém não ",
                               "na base localizadores_todos_planejamento."),
                             ifelse(is.na(df$acoes),
                               paste0(
-                               "A ação {acao_cod}, da UO {uo_acao_cod} ",
+                               "A ação {df$acao_cod}, da UO {df$uo_acao_cod} ",
                                "consta na base localizadores_todos_planejamento, ",
                                "porém não na base acoes_planejamento."),
                               paste0(
-                               "A ação {acao_cod}, da UO {uo_acao_cod} ",
+                               "A ação {df$acao_cod}, da UO {df$uo_acao_cod} ",
                                "apresenta descrição diferente nas bases ",
                                "localizadores_todos_planejamento e acoes_planejamento.")
                             )
