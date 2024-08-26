@@ -1,5 +1,7 @@
 #' Verificar quantidade de ações entre as bases
 #'
+#' É esperado que haja a mesma quantidade de ações nas bases de ações e de localizadores.
+#'
 #' @export
 check_count_acoes <- function(acoes_planejamento,
                               localizadores_todos_planejamento,
