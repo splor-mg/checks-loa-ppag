@@ -35,7 +35,7 @@ check_count_acoes_is_deleted <- function(acoes_planejamento,
 
   report <- check_that(df, acoes == localizadores)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "A acao_cod {acao_cod}, na UO {uo_acao_cod} consta na base {ifelse(is.na(localizadores), 'acoes_planejamento em inconsistência com a base localizadores_todos_planejamento', 'localizadores_todos_planejamento em inconsistência com a base acoes_planejamento')}"
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
