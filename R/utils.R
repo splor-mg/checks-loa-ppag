@@ -83,22 +83,36 @@ check_result <- function(df, report, status = "ok", stop_on_failure, output, sum
   # Write failures as a JSON Lines file 
   if (!is.null(json_outfile) && !valid) {
     
-    con <- file(json_outfile, open = "a", encoding = "UTF-8")  
+    con <- NULL
     
-    for (i in seq_len(nrow(fail))) {
+    tryCatch({
+      con <- file(json_outfile, open = "a", encoding = "UTF-8")  
       
-      log_entry <- list(
-        type = as.character(sys.calls()[[sys.parent()]][[1]]),
-        log_level = log_level,
-        timestamp = Sys.time(),
-        message = glue_data(fail[i, ], msg_template),
-        valid = valid,
-        row = as.list(fail[i, ])
+      for (i in seq_len(nrow(fail))) {
         
-      )
-      writeLines(jsonlite::toJSON(log_entry, auto_unbox = TRUE), con)
-    }
-    close(con)
+        log_entry <- list(
+          type = as.character(sys.calls()[[sys.parent()]][[1]]),
+          log_level = log_level,
+          timestamp = Sys.time(),
+          message = glue_data(fail[i, ], msg_template),
+          valid = valid,
+          row = as.list(fail[i, ])
+          
+        )
+        writeLines(jsonlite::toJSON(log_entry, auto_unbox = TRUE), con)
+      }
+      
+    }, error = function(e) {
+      # Handle the error (optional, can log or rethrow the error)
+      message("An error occurred: ", e$message)
+      stop(e)  # Rethrow the error to maintain existing behavior
+      
+    }, finally = {
+      # Ensure that the file is closed even if an error occurs
+      if (!is.null(con)) {
+        close(con)
+      }
+    })
   }
   
   result
