@@ -43,7 +43,7 @@ check_count_programas <- function(programas_planejamento,
   report <- check_that(df, programas == acoes,
                            acoes == localizadores)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "O programa_cod {programa_cod} {ifelse(is.na(acoes) & is.na(localizadores), 'consta na base programas, porém não nas bases ações e localizadores', ifelse(is.na(programas) & is.na(localizadores), 'consta na base ações, porém não nas bases programas e localizadores', ifelse(is.na(programas) & is.na(acoes), 'consta na base localizadores, porém não nas bases programas e ações', ifelse(is.na(programas), 'não consta na base programas, em detrimento das bases ações e localizadores', ifelse(is.na(acoes), 'não consta na base ações, em detrimento das bases programas e localizadores', ifelse(is.na(localizadores), 'não consta na base localizadores, em detrimento das bases programas e ações', 'apresenta descrição inconsistente entre as bases programas, ações e localizadores'))))))}"
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message

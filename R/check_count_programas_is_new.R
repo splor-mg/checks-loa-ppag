@@ -1,6 +1,6 @@
 #' Verificar quantidade de programas incluídos entre as bases
 #'
-#' Confere se o parâmetro is_new está identido entre as bases.
+#' Confere se o parâmetro is_new está idêntico entre as bases.
 #'
 #'
 #'
@@ -35,7 +35,7 @@ check_count_programas_is_new <- function(programas_planejamento,
 
   report <- check_that(df, programas == acoes)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "O programa_cod {programa_cod} {ifelse(is.na(acoes), 'consta como novo na base programas, porém não na base ações', ifelse(is.na(programas), 'consta como novo na base ações, porém não na base programas', 'apresenta descrição inconsistente entre as bases programas e ações'))}"
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
