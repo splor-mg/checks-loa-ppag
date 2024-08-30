@@ -41,7 +41,11 @@ check_detalhamento_obras_orcam_fiscal_tesouro <- function(base_qdd_fiscal,
   
   report <- df |> check_that(vlr_loa_desp == vlr_tesouro_ano0)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = paste0(
+                    "A ação {acao_cod}, na UO {uo_cod}, função-subfunção {funcao_cod}-{subfuncao_cod}, ",
+                    "programa {programa_cod} e iag {iag_cod} está com valores do Tesouro diferentes entre "
+                    " as bases, R$ {vlr_loa_desp} na qdd fiscal e R$ {vlr_tesouro_ano0} na detalhamento de obras."
+                    )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
