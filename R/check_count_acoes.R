@@ -11,7 +11,8 @@ check_count_acoes <- function(acoes_planejamento,
                               stop_on_failure = FALSE,
                               json_outfile = NULL,
                               log_level = "ERROR",
-                              msg_template = NULL) {
+                              msg_template = NULL
+                              ) {
   x <- acoes_planejamento |>
     filter(is_deleted_acao == FALSE) |>
     distinct(uo_acao_cod,
@@ -47,5 +48,5 @@ check_count_acoes <- function(acoes_planejamento,
                json_outfile = json_outfile,
                log_level = log_level,
                msg_template = msg_template
-  )
+               )
 }
