@@ -3,6 +3,7 @@
 #' É esperado que haja a mesma quantidade de ações nas bases de ações e de localizadores,
 #' ambas com a mesma descrição para cada ação.
 #'
+#'
 #' @export
 check_count_acoes <- function(acoes_planejamento,
                               localizadores_todos_planejamento,

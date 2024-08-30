@@ -1,5 +1,9 @@
 #' Verificar quantidade de programas incluídos entre as bases
 #'
+#' Confere se o parâmetro is_new está identido entre as bases.
+#'
+#'
+#'
 #' @export
 check_count_programas_is_new <- function(programas_planejamento,
                                          acoes_planejamento,

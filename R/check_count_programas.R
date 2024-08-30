@@ -3,6 +3,7 @@
 #' É esperado que haja a mesma quantidade de programas nas bases de programas, 
 #' ações e de localizadores, todas com a mesma descrição para cada programa.
 #'
+#'
 #' @export
 check_count_programas <- function(programas_planejamento,
                                   acoes_planejamento,
