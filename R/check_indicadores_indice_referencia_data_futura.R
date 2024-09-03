@@ -22,7 +22,7 @@ check_indicadores_indice_referencia_data_futura <- function(indicadores_planejam
   # calculado no dia da atualizacao (eg. Indicador "SUCESSO DO PLANEJAMENTO ORÇAMENTÁRIO")
   report <- check_that(df, dt_apuracao <= as.Date(updated_at))
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "O programa {programa_cod} contém indicador ({paste(unlist(strsplit(indicador, ' '))[1:3], collapse = ' ')}...) cujo índice de referência, apesar de não estar em apuração, apresenta data de apuração futura: {dt_apuracao}."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
