@@ -20,7 +20,7 @@ check_indicadores_indice_referencia_zerado <- function(indicadores_planejamento,
 
   report <- check_that(df, indice_de_referencia != 0)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "O programa {programa_cod} contém indicador ({paste(unlist(strsplit(indicador, ' '))[1:3], collapse = ' ')}...) que, apesar de não estar em apuração, está com índice de referência zerado."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
