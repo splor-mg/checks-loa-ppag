@@ -25,7 +25,7 @@ check_indicadores_consistency_indice_de_referencia_exists <- function(indicadore
                            !is.na(previsao_para_ano3)
                        )
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "O programa {programa_cod} contém indicador ({paste(unlist(strsplit(indicador, ' '))[1:3], collapse = ' ')}...) que, apesar de ter índice de referência de {indice_de_referencia}, está sem meta para o ano {ifelse(is.na(previsao_para_ano0), 0, ifelse(is.na(previsao_para_ano1), 1, ifelse(is.na(previsao_para_ano2), 2, 3)))}."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
