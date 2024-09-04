@@ -23,7 +23,7 @@ check_indicadores_previsoes_exists <- function(indicadores_planejamento,
                        if (is_em_apuracao_ano2 == FALSE) !is.na(previsao_para_ano2),
                        if (is_em_apuracao_ano3 == FALSE) !is.na(previsao_para_ano3))
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "O programa {programa_cod} previsão previsão ({paste(unlist(strsplit(indicador, ' '))[1:3], collapse = ' ')}...) que, apesar de não estar em apuração, está sem valor para o ano {ifelse(is.na(previsao_para_ano0), 0, ifelse(is.na(previsao_para_ano1), 1, ifelse(is.na(previsao_para_ano2), 2, 3)))}."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
