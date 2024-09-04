@@ -12,7 +12,8 @@ check_intra_detalhamento <- function(base_intra_orcamentaria_detalhamento,
                                      log_level = "ERROR",
                                      msg_template = NULL
                                      ) {
-  df <- base_intra_orcamentaria_detalhamento
+  df <- base_intra_orcamentaria_detalhamento |>
+        as_accounting()
   
   report <- check_that(df, vlr_recebido == vlr_detalhado)
   
