@@ -64,7 +64,7 @@ check_intra_despesa <- function(base_orcam_despesa_item_fiscal,
   
   report <- check_that(df, vlr_loa_desp == vlr_repassado)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "A uo {uo_cod}, na ação {identificador_tipo_acao_cod}{sprintf('%03d', projeto_atividade_cod)}, grupo {grupo_cod}, elemento-item {sprintf('%02d', elemento_cod)}{sprintf('%02d', item_cod)}, possui inconsistência nos valores da despesa intraorçamentária (modalidade 91) da base despesa-item fiscal (R$ {vlr_loa_desp}) e da base intra-repasse (R$ {vlr_repassado})."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
