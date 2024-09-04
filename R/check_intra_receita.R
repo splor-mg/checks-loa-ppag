@@ -35,7 +35,12 @@ check_intra_receita <- function(base_orcam_receita_fiscal,
   
   report <- check_that(df, vlr_loa_rec == vlr_repassado)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = paste0(
+                    "A uo {uo_cod} foi indicada como beneficiária de um valor total de R$ ",
+                    "{vlr_repassado} na base intra-repasse, porém a referida uo estimou valor ",
+                    "diferente de receita intraorcamentária, R$ {vlr_loa_rec}, diferença de R$ ",
+                    "{vlr_repassado - vlr_loa_rec}."
+                    )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
