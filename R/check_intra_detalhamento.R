@@ -16,7 +16,11 @@ check_intra_detalhamento <- function(base_intra_orcamentaria_detalhamento,
   
   report <- check_that(df, vlr_recebido == vlr_detalhado)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = paste0(
+                    "A uo {uo_cod} está com valor recebido de recursos intraorçamentários ",
+                    "(R$ {vlr_recebido}) diferente do valor detalhado (R$ {vlr_detalhado}) ",
+                    "na base intra-detalhamento."
+                    )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
