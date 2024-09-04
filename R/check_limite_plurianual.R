@@ -21,7 +21,7 @@ check_limite_plurianual <- function(base_limite_cota,
                        vlr_limite_ano3 == vlr_utilizado_ano3
                        )
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "A uo {uo_cod} está com uma diferença de R$ {ifelse(vlr_limite_ano1 != vlr_utilizado_ano1, vlr_limite_ano1 - vlr_utilizado_ano1, ifelse(vlr_limite_ano2 != vlr_utilizado_ano2, vlr_limite_ano2 - vlr_utilizado_ano2, vlr_limite_ano3 - vlr_utilizado_ano3))} entre o valor de limite no ano {ifelse(vlr_limite_ano1 != vlr_utilizado_ano1, 1, ifelse(vlr_limite_ano2 != vlr_utilizado_ano2, 2, 3))} (R$ {ifelse(vlr_limite_ano1 != vlr_utilizado_ano1, vlr_limite_ano1, ifelse(vlr_limite_ano2 != vlr_utilizado_ano2, vlr_limite_ano2, vlr_limite_ano3))}) e o valor utilizado no mesmo ano (R$ {ifelse(vlr_limite_ano1 != vlr_utilizado_ano1, vlr_utilizado_ano1, ifelse(vlr_limite_ano2 != vlr_utilizado_ano2, vlr_utilizado_ano2, vlr_utilizado_ano3))})."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
