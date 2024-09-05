@@ -9,15 +9,25 @@ check_setor_governo <- function(acoes_planejamento,
                                 aux_setor_governo,
                                 output = FALSE,
                                 stop_on_failure = FALSE,
-                                json_outfile = NULL, log_level = "ERROR",
-                                msg_template = NULL) {
+                                json_outfile = NULL,
+                                log_level = "ERROR",
+                                msg_template = NULL
+                                ) {
+  
   x <- acoes_planejamento |>
-    distinct(uo_acao_cod, setor_governo)
+       distinct(uo_acao_cod,
+                setor_governo
+                )
 
   y <- aux_setor_governo |>
-    select(uo_acao_cod = uo_cod, setor_governo_referencia = setor_governo_desc)
+       select(uo_acao_cod = uo_cod,
+              setor_governo_referencia = setor_governo_desc
+              )
 
-  df <- merge(x, y, by = "uo_acao_cod", all = TRUE)
+  df <- merge(x, y,
+              by = "uo_acao_cod",
+              all = TRUE
+              )
 
   report <- check_that(df, setor_governo == setor_governo_referencia)
   
@@ -26,9 +36,11 @@ check_setor_governo <- function(acoes_planejamento,
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
 
-  check_result(
-    df, report,
-    stop_on_failure = stop_on_failure, output = output,
-    json_outfile = json_outfile, log_level = log_level, msg_template = msg_template
-  )
+  check_result(df, report,
+               stop_on_failure = stop_on_failure,
+               output = output,
+               json_outfile = json_outfile,
+               log_level = log_level,
+               msg_template = msg_template
+               )
 }
