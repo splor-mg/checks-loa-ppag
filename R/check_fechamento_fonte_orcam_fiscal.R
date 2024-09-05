@@ -31,7 +31,7 @@ check_fechamento_fonte_orcam_fiscal <- function(base_orcam_receita_fiscal,
               ) |> 
         as_accounting()
   
-  report <- df |> check_that(vlr_loa_rec == vlr_loa_desp)
+  report <- check_that(df, vlr_loa_rec == vlr_loa_desp)
   
   default_message = "A Fonte de Recurso {fonte_cod} está com os valores totais de receita e despesa diferentes nas bases. R$ {vlr_loa_rec} na base orçamento fiscal da receita, e {vlr_loa_desp} na qdd fiscal. A diferença é de R$ {ifelse(is.na(vlr_loa_rec) | vlr_loa_rec == 0, vlr_loa_desp, ifelse(is.na(vlr_loa_desp) | vlr_loa_desp == 0,  vlr_loa_rec, vlr_loa_rec - vlr_loa_desp))}."
                     
