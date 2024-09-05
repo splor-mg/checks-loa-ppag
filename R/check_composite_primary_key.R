@@ -1,7 +1,14 @@
 #' @export
 check_composite_primary_key  <- function(siplan){
+  
+  pkey_list <- list(
+    programas = c('uo_programa_cod', 'programa_cod', 'is_deleted_programa', 'objetivo_estrategico_cod', 'diretriz_estrategica_cod', 'ods_titulo'),
+    acoes = c('uo_acao_cod', 'acao_cod', 'is_deleted_acao'),
+    localizadores = c('uo_acao_cod', 'acao_cod', 'is_deleted_acao', 'localizador_cod'),
+    indicadores = c('programa_cod', 'is_deleted_programa', 'indicador', 'is_deleted_indicador')
+  )
+  
   df_list <- list (
-    
     programas = sigplan$programas_planejamento|> 
       mutate(pkey = paste(uo_programa_cod, programa_cod, is_deleted_programa, objetivo_estrategico_cod, diretriz_estrategica_cod, ods_titulo, sep = '|')),
     acoes = sigplan$acoes_planejamento |> 
@@ -32,10 +39,26 @@ check_composite_primary_key  <- function(siplan){
   )
   
   report_list <- map2(df_list, rule_list, validate::confront)
-  violations_list <- map2(df_list, report_list, function(df, report) {
-    validate::violating(df, report) %>%
-      select(pkey)  
-  })
+  report_summary_list <- map(report_list, validate::summary)
+ 
+  check_validity <- function(df) {
+    isTRUE(all.equal(df$items, df$passes))
+  }
   
-  return(violations_list)
+  valid_list <- map(report_summary_list, check_validity)
+
+  for (name in names(valid_list)) {
+    if (valid_list[[name]] == FALSE) {
+      invalid_rows <- validate::violating(df_list[[name]], report_list[[name]], include_missing = TRUE)
+      invalid_rows <- invalid_rows[,.(pkey)]
+      pkey_columns <- paste(pkey_list[[name]], collapse = ", ")
+      msg <- glue::glue_data(invalid_rows,
+        "A base {name} contém erro na primary-key {pkey_columns}: {pkey}"
+      )
+    }
+  }
+  return(msg)
 }
+
+
+
