@@ -19,8 +19,7 @@ check_ods_consistency <- function(programas_planejamento,
   
   df <- programas_planejamento |> 
         filter(is_deleted_programa == FALSE &
-               programa_cod %in%
-               PROGRAMAS
+               programa_cod %in% PROGRAMAS
                ) |> 
         distinct(programa_cod,
                  programa_desc,
@@ -29,7 +28,7 @@ check_ods_consistency <- function(programas_planejamento,
     
   report <- check_that(df, is_unique(programa_cod))
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "O programa {programa_cod} está registrado tanto com a ods '18 - Não Possui ODS', quanto com a '{summarize(filter(filter(df, ods_titulo != '18 - Não Possui Objetivo de Desenvolvimento Sustentável'), programa_cod == programa_cod), primeiro_ods_titulo = first(ods_titulo))}'."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
