@@ -21,7 +21,11 @@ check_projetos_estrategicos <- function(acoes_planejamento,
                           !is.na(projeto_estrategico)
                        )
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = paste0(
+                    "A ação {acao_cod} no programa {programa_cod} está sem projeto estratégico ",
+                    "definido de forma válida. Código do projeto: {projeto_estrategico_cod}; ",
+                    "descrição do projeto: {projeto_estrategico}."
+                    )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
