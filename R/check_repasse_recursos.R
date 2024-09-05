@@ -41,7 +41,12 @@ check_repasse_recursos <- function(base_qdd_fiscal,
   
   report <- check_that(df, vlr_loa_desp == vlr_repasse)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = paste0(
+                    "A uo {uo_cod}, fonte {fonte_cod}, grupo {grupo_cod}, ipu {ipu_cod} está ",
+                    "com valor de despesa na base qdd-fiscal (R$ {vlr_loa_desp}) diferente do ",
+                    "valor repassado para essa mesma uo  na base repasse-recursos ",
+                    "(R$ {vlr_repasse}). Diferença de R$ {vlr_loa_desp - vlr_repasse}."
+                    )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
