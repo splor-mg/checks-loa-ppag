@@ -21,11 +21,11 @@ check_ods_exists <- function(programas_planejamento,
                  programa_desc,
                  ods_titulo,
                  ods_subtitulo
-                 ) |> 
+                 ) |>
+        group_by(programa_cod, programa_desc) |>  
         summarize(ods_count = sum(!is.na(ods_titulo) & 
                                   ods_titulo != "18 - Não Possui Objetivo de Desenvolvimento Sustentável"
-                                  ), 
-                  .by = c("programa_cod", "programa_desc")
+                                  ) 
                   )
       
   report <- check_that(df, ods_count > 0)
