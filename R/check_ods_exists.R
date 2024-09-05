@@ -30,7 +30,7 @@ check_ods_exists <- function(programas_planejamento,
       
   report <- check_that(df, ods_count > 0)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "O programa {programa_cod} está sem objetivo de desenvolvimento estratégico definido."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
