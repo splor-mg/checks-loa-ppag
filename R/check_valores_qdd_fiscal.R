@@ -43,15 +43,7 @@ check_valores_qdd_fiscal <- function(base_qdd_fiscal,
  
   report <- check_that(df, vlr_loa_desp == vr_meta_orcamentaria_ano0)
   
-  default_message = paste0(
-                    "Funcional programática {programa_cod}.{acao_cod}.{funcao_cod}.{subfuncao_cod} ",
-                    "da uo {uo_cod} com valor na base qdd-fiscal ({vlr_loa_desp}) diferente da base ",
-                    "ações-planejamento ({vr_meta_orcamentaria_ano0},"
-                    )
-  
-  msg_template = msg_template %||% default_message
-  
-  default_message = "Foram encontrados erros no teste."
+  default_message = "A uo {uo_cod}, programa {programa_cod}, ação {acao_cod}, função {funcao_cod}, subfunção {subfuncao_cod} está com valor na base qdd-fiscal (R$ {vlr_loa_desp}) diferente da base ações-planejamento (R$ {vr_meta_orcamentaria_ano0}). Diferença de R$ {ifelse(is.na(vlr_loa_desp) & is.na(vr_meta_orcamentaria_ano0), 'NA', ifelse(is.na(vlr_loa_desp), vr_meta_orcamentaria_ano0, ifelse(is.na(vr_meta_orcamentaria_ano0), vlr_loa_desp, vlr_loa_desp - vr_meta_orcamentaria_ano0)))}."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
