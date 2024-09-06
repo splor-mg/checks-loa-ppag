@@ -43,7 +43,7 @@ check_valores_qdd_investimento <- function(base_qdd_investimento,
 
   report <- check_that(df, vlr_loa_desp_invest == vr_meta_orcamentaria_ano0)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "A uo {uo_cod}, programa {programa_cod}, ação {acao_cod}, função {funcao_cod}, subfunção {subfuncao_cod} está com valor na base qdd-investimento (R$ {vlr_loa_desp_invest}) diferente da base ações-planejamento (R$ {vr_meta_orcamentaria_ano0}). Diferença de R$ {ifelse(is.na(vlr_loa_desp_invest) & is.na(vr_meta_orcamentaria_ano0), 'NA', ifelse(is.na(vlr_loa_desp_invest), vr_meta_orcamentaria_ano0, ifelse(is.na(vr_meta_orcamentaria_ano0), vlr_loa_desp_invest, vlr_loa_desp_invest - vr_meta_orcamentaria_ano0)))}."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
