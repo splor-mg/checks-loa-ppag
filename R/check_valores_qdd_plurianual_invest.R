@@ -5,35 +5,59 @@
 #' para o ano seguinte
 #'
 #' @export
-check_valores_qdd_plurianual_invest <- function(base_qdd_plurianual_invest, acoes_planejamento, stop_on_failure = FALSE, output = FALSE,
-                                                json_outfile = NULL, log_level = "ERROR",
-                                                msg_template = NULL) {
-  key <- c("uo_cod", "programa_cod", "acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
+check_valores_qdd_plurianual_invest <- function(base_qdd_plurianual_invest,
+                                                acoes_planejamento,
+                                                stop_on_failure = FALSE,
+                                                output = FALSE,
+                                                json_outfile = NULL,
+                                                log_level = "ERROR",
+                                                msg_template = NULL
+                                                ) {
+
+  key <- c("uo_cod",
+           "programa_cod",
+           "acao_cod",
+           "funcao_cod",
+           "subfuncao_cod",
+           "iag_cod"
+           )
 
   x <- base_qdd_plurianual_invest |>
-    aggregate("vlr_loa_desp_invest", by = key)
+       aggregate("vlr_loa_desp_invest",
+                 by = key
+                 )
 
   y <- acoes_planejamento |>
-    aggregate("vr_meta_orcamentaria_ano",
-      by = key,
-      rename = list(uo_acao_cod = "uo_cod"),
-      filter = is_deleted_acao == FALSE & identificador_tipo_acao_cod %in% c(3, 6, 8)
-    )
+       aggregate("vr_meta_orcamentaria_ano",
+                 by = key,
+                 filter = is_deleted_acao == FALSE &
+                          identificador_tipo_acao_cod %in% c(3, 6, 8),
+                 rename = list(uo_acao_cod = "uo_cod")
+                 )
 
-  df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
+  df <- merge(x, y,
+              by = key,
+              all = TRUE
+              ) |>
+        as_accounting()
 
-  report <- df |> check_that(
-    vlr_loa_desp_invest_ano0 == vr_meta_orcamentaria_ano0,
-    vlr_loa_desp_invest_ano1 == vr_meta_orcamentaria_ano1,
-    vlr_loa_desp_invest_ano2 == vr_meta_orcamentaria_ano2,
-    vlr_loa_desp_invest_ano3 == vr_meta_orcamentaria_ano3
-  )
+  report <- check_that(df,
+                       vlr_loa_desp_invest_ano0 == vr_meta_orcamentaria_ano0,
+                       vlr_loa_desp_invest_ano1 == vr_meta_orcamentaria_ano1,
+                       vlr_loa_desp_invest_ano2 == vr_meta_orcamentaria_ano2,
+                       vlr_loa_desp_invest_ano3 == vr_meta_orcamentaria_ano3
+                       )
   
   default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
 
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
-               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
+  check_result(df, report,
+               stop_on_failure = stop_on_failure,
+               output = output,
+               json_outfile = json_outfile,
+               log_level = log_level,
+               msg_template = msg_template
+               )
 }
