@@ -20,62 +20,95 @@
 #' - identificador de procedência e uso (IPU)
 #'  
 #' @export
-check_valores_sigplan_localizadores <- function(acoes_planejamento, localizadores_todos_planejamento, stop_on_failure = FALSE, output = FALSE,
-                                                json_outfile = NULL, log_level = "ERROR",
-                                                msg_template = NULL) {
-  key <- c("programa_cod", "area_tematica_cod", "acao_cod", "uo_acao_cod", "funcao_cod", "subfuncao_cod", "iag_cod")
+check_valores_sigplan_localizadores <- function(acoes_planejamento,
+                                                localizadores_todos_planejamento,
+                                                stop_on_failure = FALSE,
+                                                output = FALSE,
+                                                json_outfile = NULL,
+                                                log_level = "ERROR",
+                                                msg_template = NULL
+                                                ) {
+
+  key <- c("uo_acao_cod",
+           "programa_cod",
+           "area_tematica_cod",
+           "acao_cod",
+           "funcao_cod",
+           "subfuncao_cod",
+           "iag_cod"
+           )
   
   x <- acoes_planejamento |> 
-        mutate(across(starts_with("vr_"), replace_na)) |> 
-        aggregate("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
-                  by = key,
-                  filter = is_deleted_programa == FALSE & is_deleted_acao == FALSE,
-                  rename = list(
-                    vr_meta_orcamentaria_ano0 = "vr_meta_orcamentaria_ano0_acoes",
-                    vr_meta_orcamentaria_ano1 = "vr_meta_orcamentaria_ano1_acoes",
-                    vr_meta_orcamentaria_ano2 = "vr_meta_orcamentaria_ano2_acoes",
-                    vr_meta_orcamentaria_ano3 = "vr_meta_orcamentaria_ano3_acoes",
-                    vr_meta_fisica_ano0 = "vr_meta_fisica_ano0_acoes",
-                    vr_meta_fisica_ano1 = "vr_meta_fisica_ano1_acoes",
-                    vr_meta_fisica_ano2 = "vr_meta_fisica_ano2_acoes",
-                    vr_meta_fisica_ano3 = "vr_meta_fisica_ano3_acoes"
-                  ))
-        
+       mutate(across(starts_with("vr_"),
+                     replace_na
+                     )
+              ) |> 
+       aggregate("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
+                 by = key,
+                 filter = is_deleted_programa == FALSE &
+                          is_deleted_acao == FALSE,
+                 rename = list(
+                               vr_meta_orcamentaria_ano0 = "vr_meta_orcamentaria_ano0_acoes",
+                               vr_meta_orcamentaria_ano1 = "vr_meta_orcamentaria_ano1_acoes",
+                               vr_meta_orcamentaria_ano2 = "vr_meta_orcamentaria_ano2_acoes",
+                               vr_meta_orcamentaria_ano3 = "vr_meta_orcamentaria_ano3_acoes",
+                               vr_meta_fisica_ano0 = "vr_meta_fisica_ano0_acoes",
+                               vr_meta_fisica_ano1 = "vr_meta_fisica_ano1_acoes",
+                               vr_meta_fisica_ano2 = "vr_meta_fisica_ano2_acoes",
+                               vr_meta_fisica_ano3 = "vr_meta_fisica_ano3_acoes"
+                                )
+                 )
   
   # uma acao pode ter sido deletada sem que os seus localizadores sejam marcados como deletados
   y <- localizadores_todos_planejamento |> 
-        mutate(across(starts_with("vr_"), replace_na)) |> 
-        aggregate("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
-                  filter = is_deleted_programa == FALSE & is_deleted_acao == FALSE & is_deleted_localizador == FALSE,
-                  by = key,
-                  rename = list(
-                    vr_meta_orcamentaria_ano0 = "vr_meta_orcamentaria_ano0_localizadores",
-                    vr_meta_orcamentaria_ano1 = "vr_meta_orcamentaria_ano1_localizadores",
-                    vr_meta_orcamentaria_ano2 = "vr_meta_orcamentaria_ano2_localizadores",
-                    vr_meta_orcamentaria_ano3 = "vr_meta_orcamentaria_ano3_localizadores",
-                    vr_meta_fisica_ano0 = "vr_meta_fisica_ano0_localizadores",
-                    vr_meta_fisica_ano1 = "vr_meta_fisica_ano1_localizadores",
-                    vr_meta_fisica_ano2 = "vr_meta_fisica_ano2_localizadores",
-                    vr_meta_fisica_ano3 = "vr_meta_fisica_ano3_localizadores"
-                  ))
+       mutate(across(starts_with("vr_"),
+                     replace_na
+                     )
+              ) |> 
+       aggregate("vr_meta_orcamentaria_ano|vr_meta_fisica_ano", 
+                 by = key,
+                 filter = is_deleted_programa == FALSE & 
+                          is_deleted_acao == FALSE &
+                          is_deleted_localizador == FALSE,
+                 rename = list(
+                               vr_meta_orcamentaria_ano0 = "vr_meta_orcamentaria_ano0_localizadores",
+                               vr_meta_orcamentaria_ano1 = "vr_meta_orcamentaria_ano1_localizadores",
+                               vr_meta_orcamentaria_ano2 = "vr_meta_orcamentaria_ano2_localizadores",
+                               vr_meta_orcamentaria_ano3 = "vr_meta_orcamentaria_ano3_localizadores",
+                               vr_meta_fisica_ano0 = "vr_meta_fisica_ano0_localizadores",
+                               vr_meta_fisica_ano1 = "vr_meta_fisica_ano1_localizadores",
+                               vr_meta_fisica_ano2 = "vr_meta_fisica_ano2_localizadores",
+                               vr_meta_fisica_ano3 = "vr_meta_fisica_ano3_localizadores"
+                              )
+                 )
         
+  df <- merge(x, y,
+              by = key,
+              all = TRUE
+              ) |>
+        as_accounting()
   
-  df <- merge(x, y, by = key, all = TRUE) |> as_accounting()
-  report <- df |> check_that(
-    vr_meta_orcamentaria_ano0_acoes == vr_meta_orcamentaria_ano0_localizadores,
-    vr_meta_orcamentaria_ano1_acoes == vr_meta_orcamentaria_ano1_localizadores,
-    vr_meta_orcamentaria_ano2_acoes == vr_meta_orcamentaria_ano2_localizadores,
-    vr_meta_orcamentaria_ano3_acoes == vr_meta_orcamentaria_ano3_localizadores,
-    vr_meta_fisica_ano0_acoes == vr_meta_fisica_ano0_localizadores,
-    vr_meta_fisica_ano1_acoes == vr_meta_fisica_ano1_localizadores,
-    vr_meta_fisica_ano2_acoes == vr_meta_fisica_ano2_localizadores,
-    vr_meta_fisica_ano3_acoes == vr_meta_fisica_ano3_localizadores)
+  report <- check_that(df,
+                       vr_meta_orcamentaria_ano0_acoes == vr_meta_orcamentaria_ano0_localizadores,
+                       vr_meta_orcamentaria_ano1_acoes == vr_meta_orcamentaria_ano1_localizadores,
+                       vr_meta_orcamentaria_ano2_acoes == vr_meta_orcamentaria_ano2_localizadores,
+                       vr_meta_orcamentaria_ano3_acoes == vr_meta_orcamentaria_ano3_localizadores,
+                       vr_meta_fisica_ano0_acoes == vr_meta_fisica_ano0_localizadores,
+                       vr_meta_fisica_ano1_acoes == vr_meta_fisica_ano1_localizadores,
+                       vr_meta_fisica_ano2_acoes == vr_meta_fisica_ano2_localizadores,
+                       vr_meta_fisica_ano3_acoes == vr_meta_fisica_ano3_localizadores
+                       )
   
   default_message = "Foram encontrados erros no teste."
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
   
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output,
-               json_outfile = json_outfile, log_level = log_level, msg_template = msg_template)
+  check_result(df, report,
+               stop_on_failure = stop_on_failure,
+               output = output,
+               json_outfile = json_outfile,
+               log_level = log_level,
+               msg_template = msg_template
+               )
 }
