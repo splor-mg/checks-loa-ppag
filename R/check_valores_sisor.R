@@ -65,7 +65,7 @@ check_valores_sisor <- function(base_qdd_fiscal,
 
   report <- check_that(df, vlr_qdd_fiscal == vlr_item_fiscal)
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = "A uo {uo_cod}, fonte {fonte_cod}, funcional programática {funcao_cod}.{subfuncao_cod}-{programa_cod}, ação {acao_cod}, elemento {elemento_cod} está com valores diferentes na base qdd-fiscal (R$ {vlr_qdd_fiscal}) e na base despesa-item-fiscal (R$ {vlr_item_fiscal}). Diferença de R$ {ifelse(is.na(vlr_qdd_fiscal) & is.na(vlr_item_fiscal), 'NA', ifelse(is.na(vlr_qdd_fiscal), vlr_item_fiscal, ifelse(is.na(vlr_item_fiscal), vlr_qdd_fiscal, vlr_qdd_fiscal - vlr_item_fiscal)))}." 
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
