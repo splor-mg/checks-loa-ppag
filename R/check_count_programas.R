@@ -57,7 +57,7 @@ check_count_programas <- function(programas_planejamento,
                             'não consta na base programas, em detrimento das bases ações e localizadores.', 
                             ifelse(
                               is.na(acoes), 
-                              'não consta na base ações, em detrimento das bases programas e localizadores', 
+                              'não consta na ações-planejamento, em detrimento das bases programas e localizadores', 
                               ifelse(
                                 is.na(localizadores), 
                                 'não consta na base localizadores, em detrimento das bases programas e ações', 
