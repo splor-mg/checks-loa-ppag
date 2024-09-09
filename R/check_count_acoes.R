@@ -36,22 +36,21 @@ check_count_acoes <- function(acoes_planejamento,
 
   report <- check_that(df, acoes == localizadores)
   
-  default_message = 
-  "A ação {acao_cod}, uo {uo_acao_cod}, consta {ifelse(
-      is.na(acoes), 
-      paste('na base localizadores (',
-            paste(unlist(strsplit(localizadores, ' '))[1:2], collapse = ' '),
-            '...) em inconsistência com a base ações-planejamento (NA).'), ifelse(
-      is.na(localizadores),
-      paste('na base ações-planejamento (',
-            paste(unlist(strsplit(acoes, ' '))[1:2], collapse = ' '),
-            '...) em inconsistência com a base localizadores (NA).'),
-      paste('na base ações-planejamento (',
-            paste(unlist(strsplit(acoes, ' '))[1:2], collapse = ' '),
-            '...) em inconsistência com a base localizadores (',
-            paste(unlist(strsplit(localizadores, ' '))[1:2], collapse = ' '),
-            '...).')
-            ))}"
+  default_message = "A ação {acao_cod}, uo {uo_acao_cod}, consta {ifelse(
+                    is.na(acoes), 
+                    paste('na base localizadores (',
+                          paste(unlist(strsplit(localizadores, ' '))[1:2], collapse = ' '),
+                          '...) em inconsistência com a base ações-planejamento (NA).'), ifelse(
+                    is.na(localizadores),
+                    paste('na base ações-planejamento (',
+                          paste(unlist(strsplit(acoes, ' '))[1:2], collapse = ' '),
+                          '...) em inconsistência com a base localizadores (NA).'),
+                    paste('na base ações-planejamento (',
+                          paste(unlist(strsplit(acoes, ' '))[1:2], collapse = ' '),
+                          '...) em inconsistência com a base localizadores (',
+                          paste(unlist(strsplit(localizadores, ' '))[1:2], collapse = ' '),
+                          '...).')
+                          ))}"
 
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
