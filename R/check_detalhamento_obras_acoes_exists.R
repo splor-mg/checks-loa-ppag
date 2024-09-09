@@ -33,7 +33,10 @@ check_detalhamento_obras_acoes_exists <- function(base_detalhamento_obras,
   
   report <- df |> check_that(is.na(is_deleted_acao))
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = paste0(
+                    "A ação {acao_cod}, apesar de constar como deletada na base ações-planejamento ",
+                    "possui valores registrados na uo {uo_cod}, base detalhamento de obras."
+                    )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
