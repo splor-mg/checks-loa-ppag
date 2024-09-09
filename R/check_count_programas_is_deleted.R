@@ -43,7 +43,39 @@ check_count_programas_is_deleted <- function(programas_planejamento,
   report <- check_that(df, programas == acoes,
                            acoes == localizadores)
   
-  default_message = "O programa_cod {programa_cod} {ifelse(is.na(acoes) & is.na(localizadores), 'consta como deletado na base programas, porém não nas bases ações e localizadores', ifelse(is.na(programas) & is.na(localizadores), 'consta como deletado na base ações, porém não nas bases programas e localizadores', ifelse(is.na(programas) & is.na(acoes), 'consta como deletado na base localizadores, porém não nas bases programas e ações', ifelse(is.na(programas), 'não consta como deletado na base programas, em detrimento das bases ações e localizadores', ifelse(is.na(acoes), 'não consta como deletado na base ações, em detrimento das bases programas e localizadores', ifelse(is.na(localizadores), 'não consta como deletado na base localizadores, em detrimento das bases programas e ações', 'apresenta descrição inconsistente entre as bases programas, ações e localizadores'))))))}"
+  default_message =   "O programa {programa_cod} {ifelse(
+                      is.na(acoes) & is.na(localizadores), 
+                      'consta como deletado na base programas, porém não nas bases ações-planejamento e localizadores.', 
+                      ifelse(
+                        is.na(programas) & is.na(localizadores), 
+                        'consta como deletado na base ações-planejamento, porém não nas bases programas e localizadores.', 
+                        ifelse(
+                          is.na(programas) & is.na(acoes), 
+                          'consta como deletado na base localizadores, porém não nas bases programas e ações-planejamento.', 
+                          ifelse(
+                            is.na(programas), 
+                            'não consta como deletado na base programas, em detrimento das bases ações-planejamento e localizadores.', 
+                            ifelse(
+                              is.na(acoes), 
+                              'não consta como deletado na base ações-planejamento, em detrimento das bases programas e localizadores', 
+                              ifelse(
+                                is.na(localizadores), 
+                                'não consta como deletado na base localizadores, em detrimento das bases programas e ações-planejamento', 
+                                paste('apresenta descrição inconsistente entre as bases programas (',
+                                      paste(unlist(strsplit(programas, ' '))[1:2], collapse = ' '),
+                                      '...), ações-planejamento (',
+                                      paste(unlist(strsplit(acoes, ' '))[1:2], collapse = ' '),
+                                      '...) e localizadores (',
+                                      paste(unlist(strsplit(localizadores, ' '))[1:2], collapse = ' '),
+                                      ').'
+                                      )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  }"
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
