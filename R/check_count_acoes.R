@@ -38,11 +38,11 @@ check_count_acoes <- function(acoes_planejamento,
   
   default_message = "A ação {acao_cod}, uo {uo_acao_cod}, consta {ifelse(
                     is.na(acoes), 
-                    paste('na base localizadores (',
+                    paste('na base localizadores (desc.:',
                           paste(unlist(strsplit(localizadores, ' '))[1:2], collapse = ' '),
                           '...) em inconsistência com a base ações-planejamento (NA).'), ifelse(
                     is.na(localizadores),
-                    paste('na base ações-planejamento (',
+                    paste('na base ações-planejamento (desc.:',
                           paste(unlist(strsplit(acoes, ' '))[1:2], collapse = ' '),
                           '...) em inconsistência com a base localizadores (NA).'),
                     paste('na base ações-planejamento (',
