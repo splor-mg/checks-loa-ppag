@@ -25,8 +25,8 @@ check_detalhamento_obras_numero_siad_duplicated <- function(base_detalhamento_ob
   report <- df |> check_that(is_unique(uo_cod, acao_cod, numero_da_obra_siad))
   
   default_message = paste0(
-                    "Existe mais de um número de obra associado à ação {acao_cod}, UO {uo_cod} ", 
-                    "na base de detalhamento de obras."
+                    "O número de obra siad {numero_da_obra_siad}, na uo {uo_cod}, ação {acao_cod}, ",
+                    "está associado a mais de um número de obra sisor na base detalhamento de obras."
                     )
   
   # prioritize the parameter error message if used
