@@ -23,7 +23,7 @@ check_area_tematica_exists_programas <- function(programas_planejamento,
   report <- check_that(df, area_tematica_cod_count == 1)
   
   default_message = paste0(
-                    "Na base programas_planejamento o programa {programa_cod} ",
+                    "Na base programas-planejamento, o programa {programa_cod} ",
                     "possui {area_tematica_cod_count} área(s) temática(s). ",
                     "Cada programa deve possuir uma e somente uma área temática."
                     )
