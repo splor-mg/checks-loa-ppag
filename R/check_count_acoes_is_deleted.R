@@ -11,7 +11,8 @@ check_count_acoes_is_deleted <- function(acoes_planejamento,
                                          stop_on_failure = FALSE,
                                          json_outfile = NULL,
                                          log_level = "ERROR",
-                                         msg_template = NULL) {
+                                         msg_template = NULL
+                                         ) {
   x <- acoes_planejamento |>
     filter(is_deleted_acao == TRUE) |>
     distinct(uo_acao_cod,
