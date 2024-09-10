@@ -63,9 +63,17 @@ check_detalhamento_pessoal_inativo_civil <- function(base_categoria_pessoal,
               all = TRUE
               )
   
-  report <- df |> check_that(if (vlr_loa_desp > 1000) !is.na(quantidade) & quantidade > 0)
+  report <- check_that(df,
+                      if (vlr_loa_desp > 1000)
+                          !is.na(quantidade) &
+                          quantidade > 0
+                          )
   
-  default_message = "Foram encontrados erros no teste."
+  default_message = paste0(
+                      "A ação {acao_cod}, na uo {uo_cod}, possui valor na base qdd-fiscal superior ",
+                      "a R$ 1.000,00, porém não contém detalhamento de quantitativo de inativos ",
+                      "civis na base categoria-pessoal."
+                      )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
