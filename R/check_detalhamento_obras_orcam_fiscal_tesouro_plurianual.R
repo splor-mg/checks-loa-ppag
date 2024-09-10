@@ -45,7 +45,44 @@ check_detalhamento_obras_orcam_fiscal_tesouro_plurianual <- function(base_qdd_pl
                              vlr_loa_desp_ano3 >= vlr_tesouro_ano3
                             )
   
-  default_message = "A ação {acao_cod}, na UO {uo_cod}, função-subfunção {funcao_cod}-{subfuncao_cod}, programa {programa_cod} e iag {iag_cod} está com valor do Tesouro na base qdd plurianual R$ {ifelse(vlr_loa_desp_ano0 < vlr_tesouro_ano0, vlr_loa_desp_ano0, ifelse(vlr_loa_desp_ano1 < vlr_tesouro_ano1, vlr_loa_desp_ano1, ifelse(vlr_loa_desp_ano2 < vlr_tesouro_ano2, vlr_loa_desp_ano2, vlr_loa_desp_ano3)))} menor do que na base detalhamento de obras R$ {ifelse(vlr_loa_desp_ano0 < vlr_tesouro_ano0, vlr_tesouro_ano0, ifelse(vlr_loa_desp_ano1 < vlr_tesouro_ano1, vlr_tesouro_ano1, ifelse(vlr_loa_desp_ano2 < vlr_tesouro_ano2, vlr_tesouro_ano2, vlr_tesouro_ano3)))}."
+  default_message = default_message = paste0(
+                    "A ação {acao_cod}, na uo {uo_cod}, funcional-programática {sprintf('%02d', funcao_cod)}.",
+                    "{sprintf('%03d', subfuncao_cod)}.{sprintf('%03d', programa_cod)}, iag {iag_cod}, está com ",
+                    "valor do Tesouro na base qdd-plurianual (R$ ",
+                    "{ifelse(",
+                    " vlr_loa_desp_ano0 < vlr_tesouro_ano0, ",
+                    " vlr_loa_desp_ano0,",
+                    " ifelse(",
+                    "  vlr_loa_desp_ano1 < vlr_tesouro_ano1, ",
+                    "  vlr_loa_desp_ano1, ",
+                    "  ifelse(",
+                    "   vlr_loa_desp_ano2 < vlr_tesouro_ano2, ",
+                    "   vlr_loa_desp_ano2, ",
+                    "   vlr_loa_desp_ano3)))})", 
+                    "menor do que na base detalhamento de obras (R$ ",
+                    "{ifelse(",
+                    "  vlr_loa_desp_ano0 < vlr_tesouro_ano0, ",
+                    "  vlr_tesouro_ano0, ",
+                    "  ifelse(",
+                    "   vlr_loa_desp_ano1 < vlr_tesouro_ano1, ",
+                    "   vlr_tesouro_ano1, ",
+                    "   ifelse(",
+                    "    vlr_loa_desp_ano2 < vlr_tesouro_ano2, ",
+                    "    vlr_tesouro_ano2, ",
+                    "    vlr_tesouro_ano3)))}",
+                    ") para o ano ",
+                    "{ifelse(",
+                    "  vlr_loa_desp_ano0 < vlr_tesouro_ano0, ",
+                    "  0, ",
+                    "  ifelse(",
+                    "   vlr_loa_desp_ano1 < vlr_tesouro_ano1, ",
+                    "   1, ",
+                    "   ifelse(",
+                    "    vlr_loa_desp_ano2 < vlr_tesouro_ano2, ",
+                    "    2, ",
+                    "    3)))}",
+                    "."
+                    )
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
