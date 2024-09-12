@@ -20,7 +20,11 @@ check_objetivos_estrategicos_exists <- function(programas_planejamento,
                  objetivo_estrategico_cod,
                  objetivo_estrategico_desc
                  ) |> 
-        group_by(programa_cod, programa_desc) |>  
+        group_by(programa_cod, 
+                 programa_desc,
+                 objetivo_estrategico_cod,
+                 objetivo_estrategico_desc
+                 ) |>  
         summarize(objetivo_estrategico_count = sum(!is.na(objetivo_estrategico_cod) & 
                                                          objetivo_estrategico_cod != 3
                                                          )
