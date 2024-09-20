@@ -9,7 +9,10 @@ check_detalhamento_pessoal_inativo_civil(
   base_qdd_fiscal,
   uo_acao_inativo_civil,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{

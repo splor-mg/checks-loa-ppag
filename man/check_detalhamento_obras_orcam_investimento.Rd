@@ -8,7 +8,10 @@ check_detalhamento_obras_orcam_investimento(
   base_qdd_investimento,
   base_detalhamento_obras,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{
