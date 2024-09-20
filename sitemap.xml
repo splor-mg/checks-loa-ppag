@@ -1,153 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_all.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_area_tematica_exists_acoes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_area_tematica_exists_localizadores.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_area_tematica_exists_programas.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_count_acoes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_count_acoes_is_deleted.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_count_programas.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_count_programas_is_deleted.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_count_programas_is_new.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_obras_acoes_exists.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_obras_numero_siad_duplicated.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_obras_orcam_fiscal_outros.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_obras_orcam_fiscal_outros_plurianual.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_obras_orcam_fiscal_tesouro.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_obras_orcam_fiscal_tesouro_plurianual.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_obras_orcam_investimento.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_obras_orcam_investimento_plurianual.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_detalhamento_pessoal_inativo_civil.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_fechamento_fonte_orcam_fiscal.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_fechamento_fonte_orcam_investimento.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_consistency_indice_de_referencia_exists.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_consistency_indice_de_referencia_missing.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_indice_referencia_data_futura.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_indice_referencia_exists.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_indice_referencia_zerado.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_justificativa_indice_referencia_em_apuracao.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_justificativa_previsao_em_apuracao.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_previsoes_exists.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_indicadores_previsoes_zeradas.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_intra_despesa.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_intra_detalhamento.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_intra_receita.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_limite_ano0.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_limite_plurianual.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_ods_consistency.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_ods_exists.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_projetos_estrategicos.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_repasse_recursos.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_setor_governo.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_valores_qdd_fiscal.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_valores_qdd_investimento.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_valores_qdd_plurianual.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_valores_qdd_plurianual_invest.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_valores_sigplan_localizadores.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_valores_sigplan_programas.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_valores_sisor.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/check_all.html</loc></url>
+<url><loc>/reference/check_area_tematica_exists_acoes.html</loc></url>
+<url><loc>/reference/check_area_tematica_exists_localizadores.html</loc></url>
+<url><loc>/reference/check_area_tematica_exists_programas.html</loc></url>
+<url><loc>/reference/check_count_acoes.html</loc></url>
+<url><loc>/reference/check_count_acoes_is_deleted.html</loc></url>
+<url><loc>/reference/check_count_programas.html</loc></url>
+<url><loc>/reference/check_count_programas_is_deleted.html</loc></url>
+<url><loc>/reference/check_count_programas_is_new.html</loc></url>
+<url><loc>/reference/check_detalhamento_obras_acoes_exists.html</loc></url>
+<url><loc>/reference/check_detalhamento_obras_numero_siad_duplicated.html</loc></url>
+<url><loc>/reference/check_detalhamento_obras_orcam_fiscal_outros.html</loc></url>
+<url><loc>/reference/check_detalhamento_obras_orcam_fiscal_outros_plurianual.html</loc></url>
+<url><loc>/reference/check_detalhamento_obras_orcam_fiscal_tesouro.html</loc></url>
+<url><loc>/reference/check_detalhamento_obras_orcam_fiscal_tesouro_plurianual.html</loc></url>
+<url><loc>/reference/check_detalhamento_obras_orcam_investimento.html</loc></url>
+<url><loc>/reference/check_detalhamento_obras_orcam_investimento_plurianual.html</loc></url>
+<url><loc>/reference/check_detalhamento_pessoal_inativo_civil.html</loc></url>
+<url><loc>/reference/check_fechamento_fonte_orcam_fiscal.html</loc></url>
+<url><loc>/reference/check_fechamento_fonte_orcam_investimento.html</loc></url>
+<url><loc>/reference/check_indicadores_consistency_indice_de_referencia_exists.html</loc></url>
+<url><loc>/reference/check_indicadores_consistency_indice_de_referencia_missing.html</loc></url>
+<url><loc>/reference/check_indicadores_indice_referencia_data_futura.html</loc></url>
+<url><loc>/reference/check_indicadores_indice_referencia_exists.html</loc></url>
+<url><loc>/reference/check_indicadores_indice_referencia_zerado.html</loc></url>
+<url><loc>/reference/check_indicadores_justificativa_indice_referencia_em_apuracao.html</loc></url>
+<url><loc>/reference/check_indicadores_justificativa_previsao_em_apuracao.html</loc></url>
+<url><loc>/reference/check_indicadores_previsoes_exists.html</loc></url>
+<url><loc>/reference/check_indicadores_previsoes_zeradas.html</loc></url>
+<url><loc>/reference/check_intra_despesa.html</loc></url>
+<url><loc>/reference/check_intra_detalhamento.html</loc></url>
+<url><loc>/reference/check_intra_receita.html</loc></url>
+<url><loc>/reference/check_limite_ano0.html</loc></url>
+<url><loc>/reference/check_limite_plurianual.html</loc></url>
+<url><loc>/reference/check_ods_consistency.html</loc></url>
+<url><loc>/reference/check_ods_exists.html</loc></url>
+<url><loc>/reference/check_projetos_estrategicos.html</loc></url>
+<url><loc>/reference/check_repasse_recursos.html</loc></url>
+<url><loc>/reference/check_setor_governo.html</loc></url>
+<url><loc>/reference/check_valores_qdd_fiscal.html</loc></url>
+<url><loc>/reference/check_valores_qdd_investimento.html</loc></url>
+<url><loc>/reference/check_valores_qdd_plurianual.html</loc></url>
+<url><loc>/reference/check_valores_qdd_plurianual_invest.html</loc></url>
+<url><loc>/reference/check_valores_sigplan_localizadores.html</loc></url>
+<url><loc>/reference/check_valores_sigplan_programas.html</loc></url>
+<url><loc>/reference/check_valores_sisor.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
 </urlset>
+
