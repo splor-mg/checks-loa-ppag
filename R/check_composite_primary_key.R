@@ -1,3 +1,7 @@
+#' Verifica chaves das bases
+#'
+#' Existência de linhas duplicadas
+#'
 #' @export
 check_composite_primary_key_programas <- function(
     programas_planejamento,
