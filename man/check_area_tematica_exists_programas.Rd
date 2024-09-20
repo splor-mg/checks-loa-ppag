@@ -7,7 +7,10 @@
 check_area_tematica_exists_programas(
   programas_planejamento,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{

@@ -4,7 +4,14 @@
 \alias{check_limite_ano0}
 \title{Valor Limite anual = Valor Utilizado + Valor Transferido}
 \usage{
-check_limite_ano0(base_limite_cota, stop_on_failure = FALSE, output = FALSE)
+check_limite_ano0(
+  base_limite_cota,
+  stop_on_failure = FALSE,
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
+)
 }
 \description{
 Valor Limite anual = Valor Utilizado + Valor Transferido

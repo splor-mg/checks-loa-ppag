@@ -7,7 +7,10 @@
 check_indicadores_previsoes_exists(
   indicadores_planejamento,
   output = FALSE,
-  stop_on_failure = FALSE
+  stop_on_failure = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{

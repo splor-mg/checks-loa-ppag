@@ -5,16 +5,57 @@
 #' Detalhamento de Obras plurianual igual a Menor ou Igual ao GND 44 - QDD FISCAL*
 #'
 #' @export
-check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento, base_detalhamento_obras, stop_on_failure = FALSE, output = FALSE) {
-  key <- c("uo_cod", "funcao_cod", "subfuncao_cod", "programa_cod", "acao_cod", "iag_cod")
+check_detalhamento_obras_orcam_investimento <- function(base_qdd_investimento,
+                                                        base_detalhamento_obras,
+                                                        stop_on_failure = FALSE,
+                                                        output = FALSE,
+                                                        json_outfile = NULL,
+                                                        log_level = "ERROR",
+                                                        msg_template = NULL
+                                                        ) {
+  key <- c("uo_cod",
+           "funcao_cod",
+           "subfuncao_cod",
+           "programa_cod",
+           "acao_cod",
+           "iag_cod"
+           )
   
   x <- base_qdd_investimento |> 
-    aggregate("vlr_loa_desp_invest", by = key, filter = natureza_cod == 4613)
+    aggregate("vlr_loa_desp_invest",
+              by = key,
+              filter = natureza_cod == 4613
+              )
   
   y <- base_detalhamento_obras |> 
-    aggregate("vlr_outros_ano0", by = key, filter = str_sub(uo_cod, 1, 1) == 5)
+    aggregate("vlr_outros_ano0",
+              by = key,
+              filter = str_sub(uo_cod, 1, 1) == 5
+              )
   
-  df <- merge(x, y, by = key, all = TRUE) |> as_accounting(replace_missing = TRUE)
+  df <- merge(x, y,
+              by = key,
+              all = TRUE
+              ) |>
+     as_accounting(replace_missing = TRUE)
+
   report <- df |> check_that(vlr_loa_desp_invest == vlr_outros_ano0)
-  check_result(df, report, stop_on_failure = stop_on_failure, output = output)
+  
+  default_message = paste0(
+                    "A ação {acao_cod}, na uo {uo_cod}, funcional-programática {sprintf('%02d', funcao_cod)}.",
+                    "{sprintf('%03d', subfuncao_cod)}.{sprintf('%03d', programa_cod)}, iag {iag_cod}, está com ",
+                    "valores diferentes entre as bases, R$ {vlr_loa_desp_invest} na qdd-investimento e R$ ",
+                    "{vlr_outros_ano0} na detalhamento de obras."
+                    )
+  
+  # prioritize the parameter error message if used
+  msg_template = msg_template %||% default_message
+  
+  check_result(df, report,
+               stop_on_failure = stop_on_failure,
+               output = output,
+               json_outfile = json_outfile,
+               log_level = log_level,
+               msg_template = msg_template
+              )
 }

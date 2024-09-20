@@ -7,7 +7,10 @@
 check_intra_detalhamento(
   base_intra_orcamentaria_detalhamento,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{

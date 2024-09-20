@@ -42,7 +42,10 @@ as_accounting <- function(df, pattern = "^vlr_|^vl_|^vr", replace_missing = FALS
   result[]
 }
 
-check_result <- function(df, report, status = "ok", stop_on_failure, output, summary = NULL) {
+check_result <- function(df, report, status = "ok", stop_on_failure, output, summary = NULL,
+                         json_outfile = NULL, log_level = "ERROR", 
+                         msg_template = "Foram encontrados erros no teste.") {
+  
   check_summary <- validate::summary(report)
   # check_summary is too big for reporting, need only items, passes, fails, expression
   summary <- summary %||% check_summary
@@ -67,6 +70,49 @@ check_result <- function(df, report, status = "ok", stop_on_failure, output, sum
                    "pass" = pass)  
   } else {
     result <- valid
+  }
+  
+  output_json_env <- Sys.getenv("LOG_FILE")
+  if (output_json_env == "") {
+    output_json_env <- NULL
+  }
+  
+  # environment variable overlaps the param to write the json
+  json_outfile <- json_outfile %||% output_json_env
+  
+  # Write failures as a JSON Lines file 
+  if (!is.null(json_outfile) && !valid) {
+    
+    con <- NULL
+    
+    tryCatch({
+      con <- file(json_outfile, open = "a", encoding = "UTF-8")  
+      
+      for (i in seq_len(nrow(fail))) {
+        
+        log_entry <- list(
+          type = as.character(sys.calls()[[sys.parent()]][[1]]),
+          log_level = log_level,
+          timestamp = Sys.time(),
+          message = glue::glue_data(fail[i, ], msg_template),
+          valid = valid,
+          row = as.list(fail[i, ])
+          
+        )
+        writeLines(jsonlite::toJSON(log_entry, auto_unbox = TRUE), con)
+      }
+      
+    }, error = function(e) {
+      # Handle the error (optional, can log or rethrow the error)
+      message("An error occurred: ", e$message)
+      stop(e)  # Rethrow the error to maintain existing behavior
+      
+    }, finally = {
+      # Ensure that the file is closed even if an error occurs
+      if (!is.null(con)) {
+        close(con)
+      }
+    })
   }
   
   result
