@@ -8,7 +8,10 @@ check_intra_receita(
   base_orcam_receita_fiscal,
   base_intra_orcamentaria_repasse,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{

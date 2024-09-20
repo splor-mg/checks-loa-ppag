@@ -8,7 +8,10 @@ check_valores_sigplan_localizadores(
   acoes_planejamento,
   localizadores_todos_planejamento,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{

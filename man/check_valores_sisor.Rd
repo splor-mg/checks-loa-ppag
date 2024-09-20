@@ -8,7 +8,10 @@ check_valores_sisor(
   base_qdd_fiscal,
   base_orcam_despesa_item_fiscal,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{
