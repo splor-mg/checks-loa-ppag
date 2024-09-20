@@ -2,7 +2,10 @@
 check_composite_primary_key_programas <- function(
     sigplan,
     stop_on_failure = FALSE,
-    output = TRUE
+    output = TRUE,
+    json_outfile = NULL, 
+    log_level = "ERROR",
+    msg_template = NULL
 ){
   df <- sigplan$programas_planejamento
   rule <- validate::validator(
@@ -11,8 +14,9 @@ check_composite_primary_key_programas <- function(
   )
   report <- validate::confront(df, rule)
   
-  default_message = "Linha contém valores ausentes ou duplicados na chave uo_programa_cod = {uo_programa_cod}, programa_cod = {programa_cod}, is_deleted_programa = {is_deleted_programa},
-  objetivo_estrategico_cod = {objetivo_estrategico_cod}, diretriz_estrategica_cod = {diretriz_estrategica_cod}, ods_titulo = {ods_titulo}"
+  default_message = paste0("Linha contém valores ausentes ou duplicados na chave uo_programa_cod = {uo_programa_cod}, programa_cod = {programa_cod}, ",
+                              "is_deleted_programa = {is_deleted_programa}, objetivo_estrategico_cod = {objetivo_estrategico_cod}, ",
+                           "diretriz_estrategica_cod = {diretriz_estrategica_cod}, ods_titulo = {ods_titulo}")
   
   # prioritize the parameter error message if used
   msg_template = msg_template %||% default_message
@@ -30,9 +34,12 @@ check_composite_primary_key_programas <- function(
 check_composite_primary_key_acoes <- function(
     sigplan,
     stop_on_failure = FALSE,
-    output = TRUE
+    output = TRUE,
+    json_outfile = NULL, 
+    log_level = "ERROR",
+    msg_template = NULL
 ){
-  df <- sigplan$programas_planejamento
+  df <- sigplan$acoes_planejamento
   rule <- validate::validator(
     is_complete(uo_acao_cod, acao_cod, is_deleted_acao),
     is_unique(uo_acao_cod, acao_cod, is_deleted_acao)
@@ -57,9 +64,12 @@ check_composite_primary_key_acoes <- function(
 check_composite_primary_key_localizadores <- function(
     sigplan,
     stop_on_failure = FALSE,
-    output = TRUE
+    output = TRUE,
+    json_outfile = NULL, 
+    log_level = "ERROR",
+    msg_template = NULL
 ){
-  df <- sigplan$programas_planejamento
+  df <- sigplan$localizadores_todos_planejamento
   rule <- validate::validator(
     is_complete(uo_acao_cod, acao_cod, is_deleted_acao, localizador_cod),
     is_unique(uo_acao_cod, acao_cod, is_deleted_acao, localizador_cod)
@@ -85,9 +95,12 @@ check_composite_primary_key_localizadores <- function(
 check_composite_primary_key_indicadores <- function(
     sigplan,
     stop_on_failure = FALSE,
-    output = TRUE
+    output = TRUE,
+    json_outfile = NULL, 
+    log_level = "ERROR",
+    msg_template = NULL
 ){
-  df <- sigplan$programas_planejamento
+  df <- sigplan$indicadores_planejamento
   rule <- validate::validator(
     is_complete(programa_cod, is_deleted_programa, indicador, is_deleted_indicador),
     is_unique(programa_cod, is_deleted_programa, indicador, is_deleted_indicador)
@@ -107,54 +120,3 @@ check_composite_primary_key_indicadores <- function(
                msg_template = msg_template
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
