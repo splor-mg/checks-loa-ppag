@@ -3,14 +3,18 @@
 %   R/check_detalhamento_obras_numero_siad_duplicated.R
 \name{check_detalhamento_obras_numero_siad_duplicated}
 \alias{check_detalhamento_obras_numero_siad_duplicated}
-\title{Verifica se número da obra siad possui valores duplicados por ação}
+\title{Verifica se o número da obra siad possui valores duplicados por ação}
 \usage{
 check_detalhamento_obras_numero_siad_duplicated(
   base_detalhamento_obras,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{
-Verifica se número da obra siad possui valores duplicados por ação
+Espera-se que haja um, e somente uma, obra (nº de obra) por ação em cada
+unidade orçamentária.
 }

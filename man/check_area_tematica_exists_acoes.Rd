@@ -2,12 +2,15 @@
 % Please edit documentation in R/check_area_tematica_exists_acoes.R
 \name{check_area_tematica_exists_acoes}
 \alias{check_area_tematica_exists_acoes}
-\title{Verifica se cada programa possui uma única área temática - acoes_planejamento}
+\title{Verifica se cada programa possui apenas uma área temática - acoes_planejamento}
 \usage{
 check_area_tematica_exists_acoes(
   acoes_planejamento,
   stop_on_failure = FALSE,
-  output = FALSE
+  output = FALSE,
+  json_outfile = NULL,
+  log_level = "ERROR",
+  msg_template = NULL
 )
 }
 \description{
