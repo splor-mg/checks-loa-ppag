@@ -94,7 +94,7 @@ check_result <- function(df, report, status = "ok", stop_on_failure, output, sum
           type = as.character(sys.calls()[[sys.parent()]][[1]]),
           log_level = log_level,
           timestamp = Sys.time(),
-          message = glue_data(fail[i, ], msg_template),
+          message = glue::glue_data(fail[i, ], msg_template),
           valid = valid,
           row = as.list(fail[i, ])
           
