@@ -6,7 +6,7 @@
 check_composite_primary_key_programas <- function(
     programas_planejamento,
     stop_on_failure = FALSE,
-    output = TRUE,
+    output = FALSE,
     json_outfile = NULL, 
     log_level = "ERROR",
     msg_template = NULL
@@ -38,7 +38,7 @@ check_composite_primary_key_programas <- function(
 check_composite_primary_key_acoes <- function(
     acoes_planejamento,
     stop_on_failure = FALSE,
-    output = TRUE,
+    output = FALSE,
     json_outfile = NULL, 
     log_level = "ERROR",
     msg_template = NULL
@@ -68,7 +68,7 @@ check_composite_primary_key_acoes <- function(
 check_composite_primary_key_localizadores <- function(
     localizadores_todos_planejamento,
     stop_on_failure = FALSE,
-    output = TRUE,
+    output = FALSE,
     json_outfile = NULL, 
     log_level = "ERROR",
     msg_template = NULL
@@ -99,7 +99,7 @@ check_composite_primary_key_localizadores <- function(
 check_composite_primary_key_indicadores <- function(
     indicadores_planejamento,
     stop_on_failure = FALSE,
-    output = TRUE,
+    output = FALSE,
     json_outfile = NULL, 
     log_level = "ERROR",
     msg_template = NULL
