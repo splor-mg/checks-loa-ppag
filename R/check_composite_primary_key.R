@@ -1,13 +1,20 @@
+#' Verifica chaves das bases
+#'
+#' Existência de linhas duplicadas
+#'
+#'
+#'
 #' @export
 check_composite_primary_key_programas <- function(
     programas_planejamento,
     stop_on_failure = FALSE,
-    output = TRUE,
+    output = FALSE,
     json_outfile = NULL, 
     log_level = "ERROR",
     msg_template = NULL
 ){
-  df <- programas_planejamento
+  df <- programas_planejamento |>
+    filter(is_deleted_programa == FALSE)
   rule <- validate::validator(
     is_complete(uo_programa_cod, programa_cod, is_deleted_programa, objetivo_estrategico_cod, diretriz_estrategica_cod, ods_titulo),
     is_unique(uo_programa_cod, programa_cod, is_deleted_programa, objetivo_estrategico_cod, diretriz_estrategica_cod, ods_titulo)
@@ -34,12 +41,13 @@ check_composite_primary_key_programas <- function(
 check_composite_primary_key_acoes <- function(
     acoes_planejamento,
     stop_on_failure = FALSE,
-    output = TRUE,
+    output = FALSE,
     json_outfile = NULL, 
     log_level = "ERROR",
     msg_template = NULL
 ){
-  df <- acoes_planejamento
+  df <- acoes_planejamento |>
+    filter(is_deleted_acao == FALSE)
   rule <- validate::validator(
     is_complete(uo_acao_cod, acao_cod, is_deleted_acao),
     is_unique(uo_acao_cod, acao_cod, is_deleted_acao)
@@ -64,12 +72,13 @@ check_composite_primary_key_acoes <- function(
 check_composite_primary_key_localizadores <- function(
     localizadores_todos_planejamento,
     stop_on_failure = FALSE,
-    output = TRUE,
+    output = FALSE,
     json_outfile = NULL, 
     log_level = "ERROR",
     msg_template = NULL
 ){
-  df <- localizadores_todos_planejamento
+  df <- localizadores_todos_planejamento |>
+    filter(is_deleted_localizador == FALSE)
   rule <- validate::validator(
     is_complete(uo_acao_cod, acao_cod, is_deleted_acao, localizador_cod),
     is_unique(uo_acao_cod, acao_cod, is_deleted_acao, localizador_cod)
@@ -95,12 +104,13 @@ check_composite_primary_key_localizadores <- function(
 check_composite_primary_key_indicadores <- function(
     indicadores_planejamento,
     stop_on_failure = FALSE,
-    output = TRUE,
+    output = FALSE,
     json_outfile = NULL, 
     log_level = "ERROR",
     msg_template = NULL
 ){
-  df <- indicadores_planejamento
+  df <- indicadores_planejamento |>
+    filter(is_deleted_indicador == FALSE)
   rule <- validate::validator(
     is_complete(programa_cod, is_deleted_programa, indicador, is_deleted_indicador),
     is_unique(programa_cod, is_deleted_programa, indicador, is_deleted_indicador)
